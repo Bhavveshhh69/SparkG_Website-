@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(327, 100%, 54%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+  
+  /* Klowt specific colors */
+  --klowt-pink: hsl(327, 100%, 54%);
+  --klowt-dark: hsl(240, 21%, 11%);
+  --klowt-blue: hsl(225, 44%, 16%);
+  --klowt-gray: hsl(218, 27%, 73%);
+  --klowt-border: hsl(215, 16%, 21%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background: var(--klowt-dark);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .klowt-pink {
+    color: var(--klowt-pink);
+  }
+  
+  .bg-klowt-pink {
+    background-color: var(--klowt-pink);
+  }
+  
+  .bg-klowt-dark {
+    background-color: var(--klowt-dark);
+  }
+  
+  .bg-klowt-blue {
+    background-color: var(--klowt-blue);
+  }
+  
+  .text-klowt-gray {
+    color: var(--klowt-gray);
+  }
+  
+  .border-klowt-border {
+    border-color: var(--klowt-border);
+  }
+}
+
+/* Custom animations */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.8s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
