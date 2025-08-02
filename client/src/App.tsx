@@ -19,7 +19,7 @@ function Router() {
       <Route path="/community" component={Community} />
       <Route path="/workshops" component={Workshops} />
       <Route path="/about" component={About} />
-      <Route path="/sparkgladmin" component={Admin} />
+      <Route path="/sparkgadmin" component={Admin} />
       <Route component={NotFound} />
     </Switch>
   );
