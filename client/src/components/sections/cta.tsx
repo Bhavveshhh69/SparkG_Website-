@@ -29,13 +29,13 @@ export default function CTA() {
             <span className="text-white">Your Digital Presence?</span>
           </h2>
           
-          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
             Join hundreds of successful brands who've already made the leap. 
             Your audience is waiting—let's make them notice.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link href="/community">
+            <Link href="/about">
               <Button 
                 size="lg"
                 className="bg-gradient-to-r from-sparkg-gold to-yellow-500 hover:from-yellow-500 hover:to-sparkg-gold text-black font-bold px-10 py-4 text-lg rounded-full shadow-2xl hover:shadow-sparkg-gold/25 transform hover:scale-105 transition-all duration-300 group"
@@ -59,15 +59,15 @@ export default function CTA() {
           <div className="mt-12 grid md:grid-cols-3 gap-8 text-center">
             <div className="animate-fadeIn">
               <div className="text-2xl font-bold text-sparkg-gold mb-2">Free Consultation</div>
-              <p className="text-gray-400">No commitment required</p>
+              <p className="text-gray-300">No commitment required</p>
             </div>
             <div className="animate-fadeIn" style={{ animationDelay: "0.2s" }}>
               <div className="text-2xl font-bold text-sparkg-gold mb-2">30-Day Guarantee</div>
-              <p className="text-gray-400">See results or money back</p>
+              <p className="text-gray-300">See results or money back</p>
             </div>
             <div className="animate-fadeIn" style={{ animationDelay: "0.4s" }}>
               <div className="text-2xl font-bold text-sparkg-gold mb-2">24/7 Support</div>
-              <p className="text-gray-400">We're here when you need us</p>
+              <p className="text-gray-300">We're here when you need us</p>
             </div>
           </div>
         </div>

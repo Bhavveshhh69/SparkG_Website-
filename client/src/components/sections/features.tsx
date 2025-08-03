@@ -58,7 +58,7 @@ export default function Features() {
             <br />
             <span className="text-white">SparkG Media?</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             We don't just create content—we craft experiences that drive real business results
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function Features() {
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{feature.description}</p>
+                <p className="text-gray-200 leading-relaxed">{feature.description}</p>
               </CardContent>
             </Card>
           ))}

@@ -30,7 +30,7 @@ export default function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/community">
+              <Link href="/about">
                 <Button 
                   size="lg"
                   className="bg-gradient-to-r from-sparkg-gold to-yellow-500 hover:from-yellow-500 hover:to-sparkg-gold transform hover:scale-105 transition-all duration-300 text-black font-semibold px-8 py-4 text-lg shadow-2xl hover:shadow-sparkg-gold/25"

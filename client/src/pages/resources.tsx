@@ -6,29 +6,26 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function Resources() {
   const resources = [
     {
-      title: "THE $4 MILLION SALES METHOD",
+      title: "THE SALES METHOD GUIDE",
       subtitle: "The ultimate guide to pitching and winning new business.",
       description: "Learn how to position your offer, pitch with confidence, and turn your personal brand into a pipeline of premium clients – without discounting, chasing, or second-guessing yourself.",
-      type: "PAID DOWNLOAD",
-      price: "$97",
-      typeColor: "bg-klowt-pink",
+      type: "GUIDE",
+      typeColor: "bg-sparkg-gold",
       image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
     },
     {
       title: "THE LINKEDIN PLAYBOOK",
       subtitle: "Tired of being overlooked on LinkedIn?",
       description: "Download the exact framework we use with clients to generate over 20 million views every month on LinkedIn.",
-      type: "PAID DOWNLOAD",
-      price: "$47",
-      typeColor: "bg-klowt-pink",
+      type: "PLAYBOOK",
+      typeColor: "bg-sparkg-gold",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
     },
     {
       title: "THE LINKEDIN CONTENT ENGINE",
       subtitle: "The system for generating engagement, on repeat.",
       description: "Go from unseen to in-demand with fill-in-the-blank templates designed to unlock your expertise, share your stories, and create authentic content your audience loves.",
-      type: "FREE DOWNLOAD",
-      price: "FREE",
+      type: "TEMPLATE",
       typeColor: "bg-green-500",
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
     },
@@ -36,8 +33,7 @@ export default function Resources() {
       title: "PERSONAL BRAND AUDIT CHECKLIST",
       subtitle: "Everything you need to audit your personal brand.",
       description: "A comprehensive checklist to evaluate your current personal brand across all platforms and identify areas for improvement.",
-      type: "FREE DOWNLOAD",
-      price: "FREE",
+      type: "CHECKLIST",
       typeColor: "bg-green-500",
       image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
     },
@@ -45,18 +41,16 @@ export default function Resources() {
       title: "CONTENT CALENDAR TEMPLATE",
       subtitle: "Plan your content strategy like a pro.",
       description: "A ready-to-use content calendar template that helps you plan, organize, and track your content across all platforms.",
-      type: "PAID DOWNLOAD",
-      price: "$27",
-      typeColor: "bg-klowt-pink",
+      type: "TEMPLATE",
+      typeColor: "bg-sparkg-gold",
       image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
     },
     {
       title: "EMAIL TEMPLATES FOR OUTREACH",
       subtitle: "Templates that get responses.",
       description: "Proven email templates for networking, collaboration requests, and business development that actually get opened and responded to.",
-      type: "PAID DOWNLOAD",
-      price: "$37",
-      typeColor: "bg-klowt-pink",
+      type: "TEMPLATE",
+      typeColor: "bg-sparkg-gold",  
       image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
     }
   ];
@@ -71,10 +65,10 @@ export default function Resources() {
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               THE RESOURCES
             </h1>
-            <p className="text-2xl text-klowt-gray mb-8 max-w-3xl mx-auto">
-              <em className="text-klowt-pink not-italic">DIY</em> your personal brand growth with our most-loved tools, templates, and playbooks.
+            <p className="text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+              <em className="text-sparkg-gold not-italic">DIY</em> your personal brand growth with our most-loved tools, templates, and playbooks.
             </p>
-            <p className="text-lg text-klowt-gray max-w-2xl mx-auto">
+            <p className="text-lg text-gray-200 max-w-2xl mx-auto">
               Everything you need to build a personal brand that gets noticed, gets paid, and gets results.
             </p>
           </div>
@@ -92,19 +86,14 @@ export default function Resources() {
                         {resource.type}
                       </span>
                     </div>
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-black/70 text-white px-3 py-1 rounded-full text-sm font-bold">
-                        {resource.price}
-                      </span>
-                    </div>
+
                   </div>
                   <CardContent className="p-6">
                     <CardTitle className="text-xl font-bold mb-2 text-white">{resource.title}</CardTitle>
                     <p className="text-klowt-gray mb-4 text-sm font-medium">{resource.subtitle}</p>
                     <p className="text-klowt-gray mb-6">{resource.description}</p>
                     <Button 
-                      className={`w-full ${resource.type === 'FREE DOWNLOAD' ? 'border-white/30 text-white hover:bg-white/10' : 'bg-klowt-pink hover:bg-klowt-pink/90'}`}
-                      variant={resource.type === 'FREE DOWNLOAD' ? 'outline' : 'default'}
+                      className="w-full bg-sparkg-gold hover:bg-sparkg-gold/90 text-black font-medium"
                     >
                       DOWNLOAD NOW
                     </Button>
@@ -121,11 +110,11 @@ export default function Resources() {
             <h2 className="text-4xl font-bold mb-6">
               Need More <em className="text-klowt-pink not-italic">Support</em>?
             </h2>
-            <p className="text-lg text-klowt-gray mb-8 max-w-2xl mx-auto">
-              Join our community for expert feedback, live coaching, and ongoing support to accelerate your personal brand growth.
+            <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
+              Get in touch with our team for personalized guidance and ongoing support to accelerate your personal brand growth.
             </p>
-            <Button size="lg" className="bg-klowt-pink hover:bg-klowt-pink/90">
-              JOIN THE COMMUNITY →
+            <Button size="lg" className="bg-sparkg-gold hover:bg-sparkg-gold/90 text-black font-medium">
+              GET IN TOUCH →
             </Button>
           </div>
         </section>

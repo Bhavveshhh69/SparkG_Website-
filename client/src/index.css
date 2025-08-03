@@ -27,7 +27,7 @@
   /* SparkG Media specific colors */
   --sparkg-gold: hsl(46, 69%, 40%); /* #9B7B0B */
   --sparkg-black: hsl(0, 0%, 0%); /* #000000 */
-  --sparkg-gray: hsl(0, 0%, 47%); /* #777777 */
+  --sparkg-gray: hsl(0, 0%, 70%); /* Better contrast light gray */
   --sparkg-white: hsl(0, 0%, 100%); /* #FFFFFF */
   --sparkg-dark: hsl(240, 21%, 11%);
   --sparkg-border: hsl(215, 16%, 21%);
@@ -75,7 +75,8 @@
   }
 
   .glow-text {
-    text-shadow: 0 0 10px var(--sparkg-gold), 0 0 20px var(--sparkg-gold), 0 0 30px var(--sparkg-gold);
+    text-shadow: 0 0 5px var(--sparkg-gold), 0 0 10px var(--sparkg-gold);
+    font-weight: 700;
   }
 
   .animate-slideUp {

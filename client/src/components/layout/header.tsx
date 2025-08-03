@@ -11,8 +11,6 @@ export default function Header() {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Resources", href: "/resources" },
-    { name: "Community", href: "/community" },
-    { name: "Workshops", href: "/workshops" },
     { name: "About", href: "/about" },
   ];
 
@@ -51,7 +49,7 @@ export default function Header() {
                 EXPLORE SERVICES
               </Button>
             </Link>
-            <Link href="/community">
+            <Link href="/about">
               <Button className="bg-sparkg-gold hover:bg-sparkg-gold/90 text-black text-sm px-4 py-2">
                 START YOUR JOURNEY
               </Button>
@@ -85,7 +83,7 @@ export default function Header() {
                       EXPLORE SERVICES
                     </Button>
                   </Link>
-                  <Link href="/community" onClick={() => setIsOpen(false)}>
+                  <Link href="/about" onClick={() => setIsOpen(false)}>
                     <Button className="w-full bg-sparkg-gold hover:bg-sparkg-gold/90 text-black">
                       START YOUR JOURNEY
                     </Button>

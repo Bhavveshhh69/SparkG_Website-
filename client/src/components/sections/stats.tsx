@@ -34,7 +34,7 @@ export default function Stats() {
             Results That Speak
             <span className="block text-sparkg-gold glow-text">Louder Than Words</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
             Don't just take our word for it—here's the impact we've made
           </p>
         </div>
@@ -51,7 +51,7 @@ export default function Stats() {
                   {stat.number}
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">{stat.label}</h3>
-                <p className="text-gray-400 text-sm">{stat.description}</p>
+                <p className="text-gray-300 text-sm">{stat.description}</p>
               </CardContent>
             </Card>
           ))}

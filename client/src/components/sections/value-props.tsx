@@ -14,16 +14,16 @@ export default function ValueProps() {
       number: "02", 
       title: "Brand Development & Positioning",
       description: "Build a distinctive brand identity that resonates with your target market and stands out from competitors.",
-      cta: "Join Community",
-      link: "/community",
+      cta: "Learn More",
+      link: "/about",
       gradient: "from-emerald-500 to-teal-600"
     },
     {
       number: "03",
       title: "Digital Marketing Excellence", 
       description: "Implement data-driven marketing campaigns that maximize ROI and accelerate your business growth.",
-      cta: "Book Workshop",
-      link: "/workshops",
+      cta: "Get Started",
+      link: "/about",
       gradient: "from-orange-500 to-red-600"
     }
   ];
@@ -42,7 +42,7 @@ export default function ValueProps() {
             <br />
             <span className="text-white">Into Digital Reality</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             We transform businesses through strategic digital solutions that deliver measurable results
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function ValueProps() {
                 </div>
                 
                 <h3 className="text-2xl font-bold text-white mb-4 relative z-10">{prop.title}</h3>
-                <p className="text-gray-300 mb-6 leading-relaxed relative z-10">{prop.description}</p>
+                <p className="text-gray-200 mb-6 leading-relaxed relative z-10">{prop.description}</p>
                 
                 <Link href={prop.link}>
                   <button className="text-sparkg-gold font-semibold hover:text-white transition-colors group-hover:translate-x-2 transform duration-300 relative z-10">

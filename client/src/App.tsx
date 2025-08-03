@@ -6,8 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Resources from "@/pages/resources";
-import Community from "@/pages/community";
-import Workshops from "@/pages/workshops";
+
 import About from "@/pages/about";
 import Admin from "@/pages/admin";
 
@@ -16,8 +15,6 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/resources" component={Resources} />
-      <Route path="/community" component={Community} />
-      <Route path="/workshops" component={Workshops} />
       <Route path="/about" component={About} />
       <Route path="/sparkgadmin" component={Admin} />
       <Route component={NotFound} />
