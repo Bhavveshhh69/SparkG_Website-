@@ -62,101 +62,77 @@ export default function CreativeComparison() {
           </p>
         </div>
 
-        {/* Creative Comparison Table */}
-        <div className="max-w-6xl mx-auto">
-          {/* Table Header */}
-          <div className="grid grid-cols-2 gap-8 mb-8">
-            <div className="text-center p-6 bg-red-500/10 rounded-2xl border-2 border-red-500/30">
-              <h3 className="text-2xl font-bold text-red-400 mb-2">Typical Agencies</h3>
-              <p className="text-gray-300">What everyone else does</p>
+        {/* Improved Comparison Table */}
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
+            {/* Table Header */}
+            <div className="grid grid-cols-3 bg-gradient-to-r from-gray-800 to-gray-900">
+              <div className="p-6 text-center">
+                <h3 className="text-lg font-semibold text-gray-400">Service Area</h3>
+              </div>
+              <div className="p-6 text-center bg-red-500/10 border-x border-red-500/20">
+                <h3 className="text-xl font-bold text-red-400">Typical Agencies</h3>
+                <p className="text-sm text-gray-300 mt-1">What everyone else does</p>
+              </div>
+              <div className="p-6 text-center bg-[#9B7B0B]/10">
+                <h3 className="text-xl font-bold text-[#9B7B0B]">SparkG Media</h3>
+                <p className="text-sm text-gray-300 mt-1">How we do it differently</p>
+              </div>
             </div>
-            <div className="text-center p-6 bg-[#9B7B0B]/10 rounded-2xl border-2 border-[#9B7B0B]/50">
-              <h3 className="text-2xl font-bold text-[#9B7B0B] mb-2">SparkG Media</h3>
-              <p className="text-gray-300">How we do it differently</p>
-            </div>
-          </div>
 
-          {/* Comparison Rows */}
-          <div className="space-y-6">
+            {/* Comparison Rows */}
             {comparisons.map((comparison, index) => {
               const rowRef = useScrollAnimation();
               return (
                 <div 
                   key={index}
                   ref={rowRef as any}
-                  className="scroll-fade-in"
+                  className="grid grid-cols-3 border-t border-white/10 hover:bg-white/5 transition-all duration-300 scroll-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="grid grid-cols-2 gap-8 relative">
-                    {/* VS Divider */}
-                    <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-                      <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-[#9B7B0B] rounded-full flex items-center justify-center shadow-2xl border-4 border-sparkg-black">
-                        <span className="text-white font-bold text-sm">VS</span>
-                      </div>
-                    </div>
-
-                    {/* Typical Agency Side */}
-                    <div className="bg-red-500/5 backdrop-blur-sm rounded-2xl p-6 border border-red-500/20 hover:border-red-500/40 transition-all duration-300 relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-2xl transform translate-x-8 -translate-y-8"></div>
-                      
-                      <div className="flex items-center justify-between relative z-10">
-                        <div className="flex-1">
-                          <p className="text-lg font-semibold text-red-300 mb-2">{comparison.typical}</p>
-                          <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center">
-                            <comparison.typicalIcon className="w-5 h-5 text-red-400" />
-                          </div>
-                        </div>
-                        
-                        {/* Animated disappointment indicator */}
-                        <div className="text-4xl opacity-20 group-hover:opacity-40 transition-opacity duration-300">
-                          😕
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* SparkG Media Side */}
-                    <div className="bg-[#9B7B0B]/5 backdrop-blur-sm rounded-2xl p-6 border border-[#9B7B0B]/20 hover:border-[#9B7B0B]/50 transition-all duration-300 relative overflow-hidden group">
-                      <div className="absolute top-0 left-0 w-32 h-32 bg-[#9B7B0B]/10 rounded-full blur-2xl transform -translate-x-8 -translate-y-8"></div>
-                      
-                      <div className="flex items-center justify-between relative z-10">
-                        <div className="flex-1">
-                          <p className="text-lg font-semibold text-[#9B7B0B] mb-2">{comparison.sparkG}</p>
-                          <div className="w-8 h-8 bg-[#9B7B0B]/20 rounded-full flex items-center justify-center">
-                            <comparison.sparkGIcon className="w-5 h-5 text-[#9B7B0B]" />
-                          </div>
-                        </div>
-                        
-                        {/* Animated success indicator */}
-                        <div className="text-4xl opacity-20 group-hover:opacity-60 transition-opacity duration-300">
-                          🚀
-                        </div>
-                      </div>
+                  {/* Service Category */}
+                  <div className="p-6 flex items-center">
+                    <div className="text-white font-semibold">
+                      {index === 0 && "Content Strategy"}
+                      {index === 1 && "Team Composition"}
+                      {index === 2 && "Content Approach"}
+                      {index === 3 && "Brand Positioning"}
+                      {index === 4 && "Service Model"}
                     </div>
                   </div>
 
-                  {/* Connecting Arrow Animation */}
-                  <div className="flex justify-center mt-4 mb-2">
-                    <div className="flex items-center space-x-2 opacity-60">
-                      <div className="w-2 h-2 bg-[#9B7B0B] rounded-full animate-ping"></div>
-                      <div className="w-8 h-0.5 bg-gradient-to-r from-red-500 to-[#9B7B0B]"></div>
-                      <Zap className="w-4 h-4 text-[#9B7B0B] animate-pulse" />
-                      <div className="w-8 h-0.5 bg-gradient-to-r from-red-500 to-[#9B7B0B]"></div>
-                      <div className="w-2 h-2 bg-[#9B7B0B] rounded-full animate-ping"></div>
+                  {/* Typical Agency */}
+                  <div className="p-6 border-x border-white/10 bg-red-500/5 flex items-center">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <comparison.typicalIcon className="w-4 h-4 text-red-400" />
+                      </div>
+                      <p className="text-red-300 font-medium">{comparison.typical}</p>
+                    </div>
+                  </div>
+
+                  {/* SparkG Media */}
+                  <div className="p-6 bg-[#9B7B0B]/5 flex items-center">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-[#9B7B0B]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <comparison.sparkGIcon className="w-4 h-4 text-[#9B7B0B]" />
+                      </div>
+                      <p className="text-[#9B7B0B] font-medium">{comparison.sparkG}</p>
                     </div>
                   </div>
                 </div>
               );
             })}
-          </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center mt-16 p-8 bg-gradient-to-r from-[#9B7B0B]/10 to-transparent rounded-3xl border border-[#9B7B0B]/20">
-            <p className="text-2xl font-bold text-white mb-4">
-              Ready to Level Up Your Brand?
-            </p>
-            <p className="text-gray-300">
-              Stop settling for typical. Start building something extraordinary.
-            </p>
+            {/* Table Footer */}
+            <div className="bg-gradient-to-r from-[#9B7B0B]/10 to-[#9B7B0B]/5 p-8 text-center border-t border-[#9B7B0B]/20">
+              <p className="text-xl font-bold text-white mb-2">
+                The Choice is Clear
+              </p>
+              <p className="text-gray-300">
+                Stop settling for typical. Start building something extraordinary.
+              </p>
+            </div>
           </div>
         </div>
       </div>

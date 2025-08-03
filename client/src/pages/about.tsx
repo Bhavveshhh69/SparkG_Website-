@@ -3,125 +3,164 @@ import Footer from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
+import { Target, Zap, TrendingUp, Users, Award, CheckCircle } from "lucide-react";
+import { useCounterAnimation } from "@/hooks/use-counter-animation";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function About() {
-  const team = [
+  const titleRef = useScrollAnimation();
+  
+  // Counter animations
+  const podcastListeners = useCounterAnimation({ end: 72, duration: 2500 });
+  const brandsElevated = useCounterAnimation({ end: 50, duration: 2000 });
+  const contentViews = useCounterAnimation({ end: 300, duration: 3000 });
+
+  const services = [
     {
-      name: "Amelia Sordell",
-      title: "Founder & CEO",
-      bio: "Personal branding expert who has helped build brands that generate over $4 million in revenue. LinkedIn Top Voice with 300k+ followers.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&w=400&h=400&fit=crop"
+      icon: Target,
+      title: "Magnetic Positioning",
+      description: "We identify what makes you powerful — and turn it into a market-dominating positioning."
     },
     {
-      name: "James Mitchell",
-      title: "Head of Strategy",
-      bio: "Former marketing director at Fortune 500 companies. Specializes in LinkedIn growth strategies and content optimization.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&w=400&h=400&fit=crop"
+      icon: Zap,
+      title: "Premium Content Engine",
+      description: "You show up. We do the rest. Includes short-form video, long-form repurposing, podcast invites, PR placements, and more."
     },
     {
-      name: "Sarah Chen",
-      title: "Content Director",
-      bio: "Award-winning content strategist with 8+ years experience helping executives build thought leadership platforms.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&w=400&h=400&fit=crop"
+      icon: TrendingUp,
+      title: "Legacy System Activation",
+      description: "Your brand becomes a magnet for speaking gigs, followers, sales, media features — all driven by your unique digital presence."
     }
   ];
 
-  const stats = [
-    { number: "10,000+", label: "People Helped" },
-    { number: "$4M+", label: "Revenue Generated" },
-    { number: "300K+", label: "Audience Built" },
-    { number: "95%", label: "Client Success Rate" }
-  ];
-
-  const values = [
-    {
-      title: "Authenticity First",
-      description: "We believe personal branding should amplify who you already are, not create a fake persona."
-    },
-    {
-      title: "Results-Driven",
-      description: "Every strategy we teach is backed by data and proven results from real businesses."
-    },
-    {
-      title: "Community Support", 
-      description: "We build supportive communities where everyone succeeds together, not alone."
-    },
-    {
-      title: "Continuous Learning",
-      description: "The digital landscape evolves rapidly, and we stay ahead of every trend and algorithm change."
-    }
+  const differentiators = [
+    "Strategists, Creators, Execs (not just editors & VAs)",
+    "Outcome-Driven Brand Assets (not 'post and hope')",
+    "Thought Leadership Positioning (not generic promos)",
+    "Done-For-You, High-Touch (not DIY stress)",
+    "Legacy System (not just content calendars)"
   ];
 
   return (
-    <div className="min-h-screen bg-klowt-dark">
+    <div className="min-h-screen bg-sparkg-dark">
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-klowt-dark via-klowt-blue/90 to-klowt-dark">
-          <div className="container mx-auto px-6 text-center">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              ABOUT US
-            </h1>
-            <p className="text-2xl text-klowt-gray mb-8 max-w-3xl mx-auto">
-              We're on a mission to help <em className="text-klowt-pink not-italic">ambitious professionals</em> build personal brands that drive real business results.
-            </p>
+        <section className="py-20 bg-gradient-to-br from-sparkg-dark via-gray-900 to-sparkg-black relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#9B7B0B] rounded-full blur-3xl"></div>
+          </div>
+          
+          <div className="container mx-auto px-6 text-center relative z-10">
+            <div ref={titleRef as any} className="scroll-fade-in">
+              <h1 className="text-5xl lg:text-7xl font-bold mb-6">
+                <span className="text-white">About </span>
+                <span className="text-[#9B7B0B] relative font-extrabold">
+                  <span className="absolute inset-0 bg-[#9B7B0B]/10 blur-lg rounded-lg"></span>
+                  <span className="relative">SparkG Media</span>
+                </span>
+              </h1>
+              <p className="text-2xl text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed">
+                SparkG Media is a <span className="text-[#9B7B0B] font-semibold">premium thought leadership agency</span> helping CEOs, coaches, and founders build iconic personal brands that generate trust, growth, and legacy.
+              </p>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                <em className="text-[#9B7B0B] not-italic font-semibold">"You're not building for likes. You're building for leverage."</em>
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Story Section */}
-        <section className="py-20">
+        {/* Our Mission */}
+        <section className="py-20 bg-gradient-to-br from-gray-900 via-sparkg-black to-gray-900">
           <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
               <div>
-                <h2 className="text-4xl font-bold mb-6">Our Story</h2>
-                <p className="text-lg text-klowt-gray mb-6">
-                  Klowt was born from a simple observation: the most successful professionals weren't just good at their jobs—they were known for being good at their jobs.
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
+                  Our Mission
+                </h2>
+                <p className="text-xl text-gray-200 mb-6 leading-relaxed">
+                  We transform ambitious leaders from invisible to iconic through strategic personal branding that drives real business outcomes.
                 </p>
-                <p className="text-lg text-klowt-gray mb-6">
-                  After building personal brands that generated millions in revenue and attracted hundreds of thousands of followers, we realized this wasn't just about social media. It was about creating a systematic approach to building professional reputation, authority, and influence.
+                <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+                  While typical agencies focus on content calendars and generic promotions, we build legacy systems that position you as the undisputed authority in your space.
                 </p>
-                <p className="text-lg text-klowt-gray">
-                  Today, we've helped over 10,000 professionals transform their careers and businesses through strategic personal branding. From first-time entrepreneurs to Fortune 500 executives, our proven frameworks work across every industry and career stage.
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  Every piece of content, every strategic decision, every brand asset we create is designed with one goal: turning your personal brand into your most valuable business asset.
                 </p>
               </div>
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600"
-                  alt="Team collaboration"
-                  className="rounded-2xl shadow-2xl"
-                />
+              <div className="grid gap-6">
+                {differentiators.map((item, index) => (
+                  <div key={index} className="flex items-center space-x-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+                    <CheckCircle className="w-6 h-6 text-[#9B7B0B] flex-shrink-0" />
+                    <p className="text-gray-200 font-medium">{item}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-20 bg-klowt-blue/20">
+        {/* Our Results */}
+        <section className="py-20 bg-gradient-to-br from-sparkg-black via-gray-900 to-gray-800">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-16">Our Impact</h2>
-            <div className="grid lg:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-5xl font-bold text-klowt-pink mb-2">{stat.number}</div>
-                  <div className="text-klowt-gray">{stat.label}</div>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Our Impact in Numbers
+              </h2>
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+                We measure success in outcomes that matter to your business
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div ref={podcastListeners.ref} className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-[#9B7B0B]/30 transition-all duration-300">
+                <div className="text-5xl md:text-6xl font-bold text-[#9B7B0B] mb-4">
+                  {podcastListeners.count}K+
                 </div>
-              ))}
+                <p className="text-xl text-white font-semibold mb-2">Podcast Listeners</p>
+                <p className="text-gray-400">Generated for our clients</p>
+              </div>
+
+              <div ref={brandsElevated.ref} className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-[#9B7B0B]/30 transition-all duration-300">
+                <div className="text-5xl md:text-6xl font-bold text-[#9B7B0B] mb-4">
+                  {brandsElevated.count}+
+                </div>
+                <p className="text-xl text-white font-semibold mb-2">Brands Elevated</p>
+                <p className="text-gray-400">To thought leadership status</p>
+              </div>
+
+              <div ref={contentViews.ref} className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-[#9B7B0B]/30 transition-all duration-300">
+                <div className="text-5xl md:text-6xl font-bold text-[#9B7B0B] mb-4">
+                  {contentViews.count}M+
+                </div>
+                <p className="text-xl text-white font-semibold mb-2">Content Views</p>
+                <p className="text-gray-400">Across all platforms</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Team Section */}
-        <section className="py-20">
+        {/* Our Framework */}
+        <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-sparkg-black">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-16">Meet Our Team</h2>
-            <div className="grid lg:grid-cols-3 gap-8">
-              {team.map((member, index) => (
-                <Card key={index} className="bg-klowt-blue/30 border-klowt-border/20 overflow-hidden">
-                  <div className="h-64 bg-cover bg-center" style={{ backgroundImage: `url('${member.image}')` }} />
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-1 text-white">{member.name}</h3>
-                    <p className="text-klowt-pink text-sm font-medium mb-4">{member.title}</p>
-                    <p className="text-klowt-gray">{member.bio}</p>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Our 3-Step Framework
+              </h2>
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+                How we transform you from invisible to iconic
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {services.map((service, index) => (
+                <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-[#9B7B0B]/50 transition-all duration-300 group">
+                  <CardContent className="p-8 text-center">
+                    <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-r from-[#9B7B0B] to-yellow-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <service.icon className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
+                    <p className="text-gray-200 leading-relaxed">{service.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -129,57 +168,24 @@ export default function About() {
           </div>
         </section>
 
-        {/* Values Section */}
-        <section className="py-20 bg-klowt-blue/20">
-          <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-16">Our Values</h2>
-            <div className="grid lg:grid-cols-2 gap-8">
-              {values.map((value, index) => (
-                <Card key={index} className="bg-klowt-blue/30 border-klowt-border/20">
-                  <CardContent className="p-8">
-                    <h3 className="text-xl font-bold mb-4 text-white">{value.title}</h3>
-                    <p className="text-klowt-gray">{value.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Mission Section */}
-        <section className="py-20">
+        {/* Call to Action Section */}
+        <section className="py-20 bg-gradient-to-br from-[#9B7B0B]/10 via-sparkg-black to-gray-900">
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-8">Our Mission</h2>
-            <p className="text-2xl text-klowt-gray max-w-4xl mx-auto mb-8">
-              To democratize personal branding and make it accessible for every ambitious professional who wants to build authority, attract opportunities, and create meaningful impact in their industry.
-            </p>
-            <p className="text-lg text-klowt-gray max-w-2xl mx-auto">
-              We believe everyone has unique value to offer the world. Our job is to help you package and present that value in a way that gets noticed, gets paid, and gets results.
-            </p>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-klowt-pink/20 to-purple-500/20">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-6">
-              Ready to Work Together?
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              Ready to Build the Brand That Builds Everything Else?
             </h2>
-            <p className="text-lg text-klowt-gray mb-8 max-w-2xl mx-auto">
-              Whether you're looking to join our community, download our resources, or book a corporate workshop, we're here to help you succeed.
+            <p className="text-xl text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed">
+              We work with a select group of high-performing leaders each quarter. Let's see if we're a fit.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/community">
-                <Button size="lg" className="bg-klowt-pink hover:bg-klowt-pink/90">
-                  JOIN THE COMMUNITY
-                </Button>
-              </Link>
-              <Link href="/workshops">
-                <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
-                  BOOK A WORKSHOP
-                </Button>
-              </Link>
-            </div>
+            <Link href="/about">
+              <Button 
+                size="lg"
+                className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white font-bold px-12 py-4 text-lg rounded-full shadow-2xl hover:shadow-[#9B7B0B]/25 transform hover:scale-105 transition-all duration-300"
+              >
+                Book a Discovery Call
+              </Button>
+            </Link>
+            <p className="text-[#9B7B0B] font-semibold mt-6">⚡ Limited availability for August onboarding</p>
           </div>
         </section>
       </main>
