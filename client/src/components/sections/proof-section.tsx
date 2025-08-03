@@ -76,15 +76,7 @@ export default function ProofSection() {
                 View Case Studies
               </Button>
             </Link>
-            <Link href="/about">
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-sparkg-gold text-sparkg-gold hover:bg-sparkg-gold hover:text-black transform hover:scale-105 transition-all duration-300 px-10 py-4 text-lg rounded-full border-2"
-              >
-                Watch Client Stories
-              </Button>
-            </Link>
+
           </div>
         </div>
       </div>

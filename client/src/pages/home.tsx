@@ -4,6 +4,7 @@ import Hero from "@/components/sections/hero";
 import Positioning from "@/components/sections/positioning";
 import HowItWorks from "@/components/sections/how-it-works";
 import ProofSection from "@/components/sections/proof-section";
+import TestimonialsGrid from "@/components/sections/testimonials-grid";
 import LogoStats from "@/components/sections/logo-stats";
 import CreativeComparison from "@/components/sections/creative-comparison";
 import ClientFit from "@/components/sections/client-fit";
@@ -20,6 +21,7 @@ export default function Home() {
         <LogoStats />
         <HowItWorks />
         <ProofSection />
+        <TestimonialsGrid />
         <CreativeComparison />
         <ClientFit />
         <CTA />

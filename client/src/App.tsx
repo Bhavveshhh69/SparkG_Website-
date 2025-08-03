@@ -9,6 +9,7 @@ import Resources from "@/pages/resources";
 
 import About from "@/pages/about";
 import Admin from "@/pages/admin";
+import SparkGAdmin from "@/pages/sparkgadmin";
 
 function Router() {
   return (
@@ -16,7 +17,8 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/resources" component={Resources} />
       <Route path="/about" component={About} />
-      <Route path="/sparkgadmin" component={Admin} />
+      <Route path="/admin" component={Admin} />
+      <Route path="/sparkgadmin" component={SparkGAdmin} />
       <Route component={NotFound} />
     </Switch>
   );
