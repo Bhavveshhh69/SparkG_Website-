@@ -3,35 +3,37 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20">
-      {/* Hero Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-sparkg-dark via-sparkg-black/90 to-transparent z-10"></div>
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080')`
-        }}
-      />
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      {/* Animated Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-sparkg-dark via-sparkg-black to-gray-900"></div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-sparkg-gold/10 via-transparent to-sparkg-gold/5 animate-pulse"></div>
       
-      <div className="container mx-auto px-6 relative z-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-slideUp">
-            <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-              spark your digital<br />
-              <span className="text-white">presence</span> with{" "}
-              <em className="text-sparkg-gold not-italic">media</em><br />
-              that <span className="text-white">converts</span>.
+      {/* Animated Background Elements */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sparkg-gold/5 rounded-full blur-3xl animate-bounce"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-sparkg-gold/10 rounded-full blur-2xl animate-pulse"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-20">
+        <div className="flex flex-col items-center text-center min-h-[80vh] justify-center">
+          <div className="max-w-5xl mx-auto space-y-8 animate-slideUp">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight">
+              <span className="bg-gradient-to-r from-white via-sparkg-gold to-white bg-clip-text text-transparent animate-pulse">
+                Spark Your Digital
+              </span>
+              <br />
+              <span className="text-white">Presence With</span>
+              <br />
+              <em className="text-sparkg-gold not-italic glow-text">Media That Converts</em>
             </h1>
             
-            <p className="text-lg text-sparkg-gray mb-8 max-w-md">
+            <p className="text-lg md:text-xl text-sparkg-gray mb-8 max-w-3xl mx-auto leading-relaxed">
               Transform your brand with strategic content creation and digital marketing that drives real results for your business.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/community">
                 <Button 
                   size="lg"
-                  className="bg-sparkg-gold hover:bg-sparkg-gold/90 transform hover:scale-105 transition-all text-black"
+                  className="bg-gradient-to-r from-sparkg-gold to-yellow-500 hover:from-yellow-500 hover:to-sparkg-gold transform hover:scale-105 transition-all duration-300 text-black font-semibold px-8 py-4 text-lg shadow-2xl hover:shadow-sparkg-gold/25"
                 >
                   START YOUR JOURNEY →
                 </Button>
@@ -40,7 +42,7 @@ export default function Hero() {
                 <Button 
                   variant="outline" 
                   size="lg"
-                  className="border-white/30 text-white hover:bg-white/10"
+                  className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-sparkg-gold/50 transition-all duration-300 px-8 py-4 text-lg backdrop-blur-sm"
                 >
                   EXPLORE SERVICES →
                 </Button>

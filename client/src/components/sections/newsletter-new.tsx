@@ -104,8 +104,3 @@ export default function Newsletter() {
     </section>
   );
 }
-        </div>
-      </div>
-    </section>
-  );
-}

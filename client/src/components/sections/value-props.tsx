@@ -4,48 +4,70 @@ export default function ValueProps() {
   const valueProps = [
     {
       number: "01",
-      title: "Learn through expert-made playbooks and templates",
-      description: "Download the exact strategies we've used to grow personal brands to 300k+ audiences and close 6-figure sales.",
-      cta: "Explore Resources",
-      link: "/resources"
+      title: "Strategic Content Creation",
+      description: "Develop compelling content strategies that engage your audience and drive conversions across all digital platforms.",
+      cta: "Explore Services",
+      link: "/resources",
+      gradient: "from-blue-500 to-purple-600"
     },
     {
       number: "02", 
-      title: "Receive expert coaching, feedback and strategies",
-      description: "Our membership gives you expert feedback, resources and a real support system so you actually stick with it and start seeing results.",
-      cta: "Join the community",
-      link: "/community"
+      title: "Brand Development & Positioning",
+      description: "Build a distinctive brand identity that resonates with your target market and stands out from competitors.",
+      cta: "Join Community",
+      link: "/community",
+      gradient: "from-emerald-500 to-teal-600"
     },
     {
       number: "03",
-      title: "Empower your team or event to build influence online", 
-      description: "Corporate trainings, in-house workshops, and brand strategy that help your team show up online with confidence, clarity, and influence.",
-      cta: "Book a workshop",
-      link: "/workshops"
+      title: "Digital Marketing Excellence", 
+      description: "Implement data-driven marketing campaigns that maximize ROI and accelerate your business growth.",
+      cta: "Book Workshop",
+      link: "/workshops",
+      gradient: "from-orange-500 to-red-600"
     }
   ];
 
   return (
-    <section className="py-20 bg-klowt-dark">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            we help you turn your <em className="text-klowt-pink not-italic">personality</em><br />
-            into your competitive advantage.
+    <section className="py-20 bg-gradient-to-br from-sparkg-dark via-gray-900 to-sparkg-black relative overflow-hidden">
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-sparkg-gold/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="text-center mb-16 animate-fadeIn">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            Turn Your <span className="bg-gradient-to-r from-sparkg-gold to-yellow-400 bg-clip-text text-transparent">Vision</span>
+            <br />
+            <span className="text-white">Into Digital Reality</span>
           </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            We transform businesses through strategic digital solutions that deliver measurable results
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {valueProps.map((prop) => (
-            <div key={prop.number} className="group hover:transform hover:scale-105 transition-all duration-300">
-              <div className="bg-klowt-blue/30 rounded-2xl p-8 h-full border border-klowt-border/20 hover:border-klowt-pink/30">
-                <div className="flex items-center mb-6">
-                  <span className="text-6xl font-bold text-klowt-pink/20 mr-4">{prop.number}</span>
+        <div className="grid lg:grid-cols-3 gap-8">
+          {valueProps.map((prop, index) => (
+            <div 
+              key={prop.number} 
+              className="group hover:transform hover:scale-105 transition-all duration-500 animate-slideUp"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 h-full border border-white/10 hover:border-sparkg-gold/30 relative overflow-hidden">
+                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-r ${prop.gradient} opacity-10 rounded-full blur-2xl transform translate-x-8 -translate-y-8`}></div>
+                
+                <div className="flex items-center mb-6 relative z-10">
+                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${prop.gradient} flex items-center justify-center mr-4`}>
+                    <span className="text-2xl font-bold text-white">{prop.number}</span>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{prop.title}</h3>
-                <p className="text-klowt-gray mb-6">{prop.description}</p>
+                
+                <h3 className="text-2xl font-bold text-white mb-4 relative z-10">{prop.title}</h3>
+                <p className="text-gray-300 mb-6 leading-relaxed relative z-10">{prop.description}</p>
+                
                 <Link href={prop.link}>
-                  <button className="text-klowt-pink font-medium hover:underline group-hover:text-white transition-colors">
+                  <button className="text-sparkg-gold font-semibold hover:text-white transition-colors group-hover:translate-x-2 transform duration-300 relative z-10">
                     {prop.cta} →
                   </button>
                 </Link>

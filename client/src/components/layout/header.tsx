@@ -45,14 +45,14 @@ export default function Header() {
           </div>
           
           {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-3">
             <Link href="/resources">
-              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 text-sm px-4 py-2">
                 EXPLORE SERVICES
               </Button>
             </Link>
             <Link href="/community">
-              <Button className="bg-sparkg-gold hover:bg-sparkg-gold/90 text-black">
+              <Button className="bg-sparkg-gold hover:bg-sparkg-gold/90 text-black text-sm px-4 py-2">
                 START YOUR JOURNEY
               </Button>
             </Link>
