@@ -50,15 +50,7 @@ export default function CTA() {
               </Button>
             </Link>
             
-            <Link href="/resources">
-              <Button 
-                variant="outline"
-                size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-black px-10 py-4 text-lg rounded-full backdrop-blur-sm transition-all duration-300"
-              >
-                Explore Our Services
-              </Button>
-            </Link>
+
           </div>
           
           <div className="mt-8 text-center">

@@ -4,7 +4,8 @@ import Hero from "@/components/sections/hero";
 import Positioning from "@/components/sections/positioning";
 import HowItWorks from "@/components/sections/how-it-works";
 import ProofSection from "@/components/sections/proof-section";
-import Features from "@/components/sections/features";
+import LogoStats from "@/components/sections/logo-stats";
+import CreativeComparison from "@/components/sections/creative-comparison";
 import ClientFit from "@/components/sections/client-fit";
 import CTA from "@/components/sections/cta";
 import Newsletter from "@/components/sections/newsletter-new";
@@ -16,9 +17,10 @@ export default function Home() {
       <main>
         <Hero />
         <Positioning />
+        <LogoStats />
         <HowItWorks />
         <ProofSection />
-        <Features />
+        <CreativeComparison />
         <ClientFit />
         <CTA />
         <Newsletter />
