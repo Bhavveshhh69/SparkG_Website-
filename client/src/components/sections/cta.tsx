@@ -27,8 +27,9 @@ export default function CTA() {
           
           <h2 ref={titleRef as any} className="text-4xl md:text-6xl font-bold mb-6 scroll-fade-in">
             Ready to{" "}
-            <span ref={transformRef as any} className="bg-gradient-to-r from-sparkg-gold via-yellow-400 to-sparkg-gold bg-clip-text text-transparent glow-text scroll-blur-to-clear inline-block">
-              Build the Brand
+            <span ref={transformRef as any} className="text-[#9B7B0B] relative font-extrabold scroll-blur-to-clear inline-block">
+              <span className="absolute inset-0 bg-[#9B7B0B]/10 blur-lg rounded-lg"></span>
+              <span className="relative">Build the Brand</span>
             </span>
             <br />
             <span className="text-white">That Builds Everything Else?</span>
@@ -42,7 +43,7 @@ export default function CTA() {
             <Link href="/about">
               <Button 
                 size="lg"
-                className="bg-gradient-to-r from-sparkg-gold to-yellow-500 hover:from-yellow-500 hover:to-sparkg-gold text-black font-bold px-10 py-4 text-lg rounded-full shadow-2xl hover:shadow-sparkg-gold/25 transform hover:scale-105 transition-all duration-300 group"
+                className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white font-bold px-10 py-4 text-lg rounded-full shadow-2xl hover:shadow-[#9B7B0B]/25 transform hover:scale-105 transition-all duration-300 group border-2 border-[#9B7B0B]"
               >
                 Book a Discovery Call
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -53,7 +54,7 @@ export default function CTA() {
               <Button 
                 variant="outline"
                 size="lg"
-                className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-sparkg-gold/50 px-10 py-4 text-lg rounded-full backdrop-blur-sm transition-all duration-300"
+                className="border-2 border-white text-white hover:bg-white hover:text-black px-10 py-4 text-lg rounded-full backdrop-blur-sm transition-all duration-300"
               >
                 Explore Our Services
               </Button>
@@ -61,7 +62,7 @@ export default function CTA() {
           </div>
           
           <div className="mt-8 text-center">
-            <p className="text-sparkg-gold font-semibold">⚡ Limited availability for August onboarding</p>
+            <p className="text-[#9B7B0B] font-semibold">⚡ Limited availability for August onboarding</p>
           </div>
         </div>
       </div>

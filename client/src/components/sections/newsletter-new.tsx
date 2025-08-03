@@ -48,15 +48,18 @@ export default function Newsletter() {
   return (
     <section className="py-20 bg-gradient-to-r from-sparkg-black via-sparkg-dark to-sparkg-black relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/3 w-96 h-96 bg-sparkg-gold/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-0 left-1/3 w-96 h-96 bg-[#9B7B0B]/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-bounce"></div>
       </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="bg-gradient-to-r from-sparkg-gold/10 via-sparkg-gold/5 to-sparkg-gold/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 text-center border border-sparkg-gold/20">
+        <div className="bg-gradient-to-r from-[#9B7B0B]/10 via-[#9B7B0B]/5 to-[#9B7B0B]/10 backdrop-blur-sm rounded-3xl p-8 md:p-12 text-center border border-[#9B7B0B]/20">
           <div className="animate-fadeIn">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Join <span className="text-sparkg-gold glow-text">Thousands</span> of 
+              Join <span className="text-[#9B7B0B] font-extrabold relative">
+                <span className="absolute inset-0 bg-[#9B7B0B]/10 blur-lg rounded-lg"></span>
+                <span className="relative">Thousands</span>
+              </span> of 
               <br className="hidden sm:block" />
               <span className="text-white"> Smart Marketers</span>
             </h2>
@@ -74,7 +77,7 @@ export default function Newsletter() {
                 placeholder="Your Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="flex-1 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder-gray-400 focus:border-sparkg-gold/50 focus:ring-sparkg-gold/25 rounded-lg h-12"
+                className="flex-1 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder-gray-400 focus:border-[#9B7B0B]/50 focus:ring-[#9B7B0B]/25 rounded-lg h-12"
                 disabled={newsletterMutation.isPending}
               />
               <Input
@@ -82,13 +85,13 @@ export default function Newsletter() {
                 placeholder="Your Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder-gray-400 focus:border-sparkg-gold/50 focus:ring-sparkg-gold/25 rounded-lg h-12"
+                className="flex-1 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder-gray-400 focus:border-[#9B7B0B]/50 focus:ring-[#9B7B0B]/25 rounded-lg h-12"
                 disabled={newsletterMutation.isPending}
               />
               <Button
                 type="submit"
                 size="lg"
-                className="bg-gradient-to-r from-sparkg-gold to-yellow-500 hover:from-yellow-500 hover:to-sparkg-gold text-black font-semibold transform hover:scale-105 transition-all duration-300 rounded-lg h-12 px-8 shadow-2xl hover:shadow-sparkg-gold/25"
+                className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white font-bold transform hover:scale-105 transition-all duration-300 rounded-lg h-12 px-8 shadow-2xl hover:shadow-[#9B7B0B]/25 border-2 border-[#9B7B0B]"
                 disabled={newsletterMutation.isPending}
               >
                 {newsletterMutation.isPending ? "SUBSCRIBING..." : "GET FREE WEEKLY TIPS"}

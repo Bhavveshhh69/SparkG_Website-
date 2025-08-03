@@ -25,14 +25,14 @@ export default function HowItWorks() {
       title: "Legacy System Activation", 
       description: "Your brand becomes a magnet for speaking gigs, followers, sales, media features — all driven by your unique digital presence.",
       icon: TrendingUp,
-      color: "from-sparkg-gold to-yellow-500"
+      color: "from-[#9B7B0B] to-[#B8941A]"
     }
   ];
 
   return (
     <section className="py-24 bg-gradient-to-br from-sparkg-dark via-gray-900 to-sparkg-black relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-sparkg-gold/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-10 w-72 h-72 bg-[#9B7B0B]/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-10 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
       </div>
       
@@ -40,7 +40,10 @@ export default function HowItWorks() {
         <div ref={titleRef as any} className="text-center mb-20 scroll-fade-in">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-white">Done-For-You, But Built </span>
-            <span className="bg-gradient-to-r from-sparkg-gold to-yellow-400 bg-clip-text text-transparent">*For You*.</span>
+            <span className="text-[#9B7B0B] relative font-extrabold">
+              <span className="absolute inset-0 bg-[#9B7B0B]/10 blur-lg rounded-lg"></span>
+              <span className="relative">*For You*.</span>
+            </span>
           </h2>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             Our 3-Step Framework transforms you from invisible to iconic
@@ -54,7 +57,7 @@ export default function HowItWorks() {
               <Card 
                 key={step.number}
                 ref={cardRef as any}
-                className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-sparkg-gold/50 transition-all duration-500 hover:scale-105 scroll-scale-in group relative overflow-hidden"
+                className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-[#9B7B0B]/50 transition-all duration-500 hover:scale-105 scroll-scale-in group relative overflow-hidden"
               >
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-r ${step.color} opacity-10 rounded-full blur-2xl transform translate-x-8 -translate-y-8`}></div>
                 
@@ -63,7 +66,7 @@ export default function HowItWorks() {
                     <step.icon className="w-10 h-10 text-white" />
                   </div>
                   
-                  <div className="text-6xl font-bold text-sparkg-gold/20 mb-4 absolute top-4 left-6">
+                  <div className="text-6xl font-bold text-[#9B7B0B]/20 mb-4 absolute top-4 left-6">
                     {step.number}
                   </div>
                   

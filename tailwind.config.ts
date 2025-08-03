@@ -61,6 +61,18 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        // Brand Colors - Exact palette from image
+        'brand': {
+          'gold': '#9B7B0B',      // Primary
+          'black': '#000000',     // Secondary  
+          'gray': '#777777',      // Tertiary
+          'white': '#FFFFFF',     // Accent
+        },
+        // Legacy compatibility
+        'sparkg-gold': '#9B7B0B',
+        'sparkg-dark': '#0a0a0a',
+        'sparkg-black': '#000000',
+        'sparkg-gray': '#777777',
       },
       keyframes: {
         "accordion-down": {

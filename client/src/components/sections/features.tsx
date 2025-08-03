@@ -58,13 +58,13 @@ export default function Features() {
               What Makes Us
             </span>
             <br />
-            <span className="bg-gradient-to-r from-sparkg-gold to-yellow-400 bg-clip-text text-transparent relative">
-              <span className="absolute inset-0 bg-sparkg-gold/20 blur-lg rounded-lg transform -skew-y-1"></span>
+            <span className="text-[#9B7B0B] relative font-extrabold">
+              <span className="absolute inset-0 bg-[#9B7B0B]/10 blur-lg rounded-lg"></span>
               <span className="relative">Different?</span>
             </span>
           </h2>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            <em className="text-sparkg-gold not-italic">"You're not building for likes. You're building for leverage."</em>
+            <em className="text-[#9B7B0B] not-italic font-semibold">"You're not building for likes. You're building for leverage."</em>
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export default function Features() {
                 </div>
                 <div className="mb-4">
                   <div className="text-gray-400 text-sm mb-2 line-through">Typical Agencies: {comparisons[index]?.typical}</div>
-                  <h3 className="text-xl font-bold text-sparkg-gold mb-2">SparkG Media: {comparisons[index]?.sparkG}</h3>
+                  <h3 className="text-xl font-bold text-[#9B7B0B] mb-2">SparkG Media: {comparisons[index]?.sparkG}</h3>
                 </div>
                 <p className="text-gray-200 leading-relaxed">{comparisons[index]?.description}</p>
               </CardContent>

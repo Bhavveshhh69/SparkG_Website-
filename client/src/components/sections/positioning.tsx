@@ -14,8 +14,9 @@ export default function Positioning() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 ref={titleRef as any} className="text-4xl md:text-6xl font-bold mb-12 scroll-blur-to-clear">
-            <span className="bg-gradient-to-r from-sparkg-gold via-yellow-400 to-sparkg-gold bg-clip-text text-transparent">
-              Personal Branding That Pays Dividends Forever.
+            <span className="text-[#9B7B0B] relative font-extrabold">
+              <span className="absolute inset-0 bg-[#9B7B0B]/10 blur-lg rounded-lg"></span>
+              <span className="relative">Personal Branding That Pays Dividends Forever.</span>
             </span>
           </h2>
           

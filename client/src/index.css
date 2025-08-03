@@ -24,13 +24,18 @@
   --ring: hsl(240, 4.9%, 83.9%);
   --radius: 0.5rem;
   
-  /* SparkG Media specific colors */
-  --sparkg-gold: hsl(46, 69%, 40%); /* #9B7B0B */
-  --sparkg-black: hsl(0, 0%, 0%); /* #000000 */
-  --sparkg-gray: hsl(0, 0%, 70%); /* Better contrast light gray */
-  --sparkg-white: hsl(0, 0%, 100%); /* #FFFFFF */
-  --sparkg-dark: hsl(240, 21%, 11%);
-  --sparkg-border: hsl(215, 16%, 21%);
+  /* Brand Colors from provided palette */
+  --primary-gold: #9B7B0B; /* Primary - main brand color */
+  --secondary-black: #000000; /* Secondary - backgrounds */
+  --tertiary-gray: #777777; /* Tertiary - secondary text */
+  --accent-white: #FFFFFF; /* Accent - high contrast text */
+  
+  /* Legacy compatibility */
+  --sparkg-gold: #9B7B0B;
+  --sparkg-black: #000000;
+  --sparkg-gray: #777777;
+  --sparkg-white: #FFFFFF;
+  --sparkg-dark: #0a0a0a;
 }
 
 @layer base {
