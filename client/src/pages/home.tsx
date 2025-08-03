@@ -5,6 +5,7 @@ import Positioning from "@/components/sections/positioning";
 import HowItWorks from "@/components/sections/how-it-works";
 import ProofSection from "@/components/sections/proof-section";
 import Features from "@/components/sections/features";
+import ClientFit from "@/components/sections/client-fit";
 import CTA from "@/components/sections/cta";
 import Newsletter from "@/components/sections/newsletter-new";
 
@@ -18,6 +19,7 @@ export default function Home() {
         <HowItWorks />
         <ProofSection />
         <Features />
+        <ClientFit />
         <CTA />
         <Newsletter />
       </main>

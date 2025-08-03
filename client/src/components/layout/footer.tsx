@@ -18,21 +18,17 @@ export default function Footer() {
 
   const navigation = {
     main: [
-      { name: "HOME", href: "/" },
-      { name: "ABOUT US", href: "/about" },
-      { name: "BOOK A WORKSHOP", href: "/workshops" },
-    ],
-    services: [
-      { name: "JOIN THE COMMUNITY", href: "/community" },
-      { name: "RESOURCES", href: "/resources" },
-      { name: "WORK WITH US", href: "/workshops" },
+      { name: "About", href: "/about" },
+      { name: "Case Studies", href: "/case-studies" },
+      { name: "Podcast", href: "/podcast" },
+      { name: "Careers", href: "/careers" },
+      { name: "Privacy", href: "/privacy" },
     ],
   };
 
   const legalLinks = [
-    { name: "Privacy Policy", href: "#" },
-    { name: "Cookie Policy", href: "#" },
-    { name: "Terms and Conditions", href: "#" },
+    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms", href: "/terms" },
   ];
 
   return (
@@ -41,11 +37,15 @@ export default function Footer() {
         <div className="grid lg:grid-cols-4 gap-12">
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
-              <div className="w-8 h-8 bg-white rounded-sm flex items-center justify-center mr-4">
-                <span className="text-klowt-dark font-bold text-lg">K</span>
+              <div className="w-8 h-8 bg-[#9B7B0B] rounded-sm flex items-center justify-center mr-4">
+                <span className="text-white font-bold text-lg">S</span>
               </div>
-              <span className="text-2xl font-bold">Klowt</span>
+              <span className="text-2xl font-bold">SparkG Media</span>
             </div>
+            
+            <p className="text-gray-200 mb-8 max-w-md leading-relaxed">
+              SparkG Media is a premium thought leadership agency helping CEOs, coaches, and founders build iconic personal brands that generate trust, growth, and legacy.
+            </p>
             
             <div className="flex space-x-6 mb-8">
               {socialLinks.map((social) => (
@@ -54,7 +54,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-klowt-gray hover:text-klowt-pink transition-colors"
+                  className="text-klowt-gray hover:text-[#9B7B0B] transition-colors"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />
@@ -63,43 +63,37 @@ export default function Footer() {
             </div>
           </div>
           
-          <div>
-            <h4 className="text-lg font-bold mb-4">Navigation</h4>
-            <ul className="space-y-3">
-              {navigation.main.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-klowt-gray hover:text-white transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-bold mb-4">Services</h4>
-            <ul className="space-y-3">
-              {navigation.services.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-klowt-gray hover:text-white transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="lg:col-span-2">
+            <h4 className="text-lg font-bold mb-4">Links</h4>
+            <div className="grid grid-cols-2 gap-6">
+              <ul className="space-y-3">
+                {navigation.main.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-klowt-gray hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <div>
+                <h5 className="text-sm font-semibold text-gray-400 mb-3">Socials</h5>
+                <ul className="space-y-2">
+                  <li><a href="https://linkedin.com" className="text-klowt-gray hover:text-white transition-colors">LinkedIn</a></li>
+                  <li><a href="https://instagram.com" className="text-klowt-gray hover:text-white transition-colors">Instagram</a></li>
+                  <li><a href="https://youtube.com" className="text-klowt-gray hover:text-white transition-colors">YouTube</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
         
         <div className="border-t border-klowt-border/20 pt-8 mt-12">
           <div className="flex flex-col lg:flex-row justify-between items-center">
             <p className="text-klowt-gray text-sm mb-4 lg:mb-0">
-              Klowt Ltd © 2025 | All Rights Reserved
+              SparkG Media © 2025 | All Rights Reserved
             </p>
             <div className="flex space-x-6 text-sm">
               {legalLinks.map((link) => (
