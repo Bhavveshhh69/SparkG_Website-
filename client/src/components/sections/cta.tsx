@@ -28,15 +28,14 @@ export default function CTA() {
           <h2 ref={titleRef as any} className="text-4xl md:text-6xl font-bold mb-6 scroll-fade-in">
             Ready to{" "}
             <span ref={transformRef as any} className="bg-gradient-to-r from-sparkg-gold via-yellow-400 to-sparkg-gold bg-clip-text text-transparent glow-text scroll-blur-to-clear inline-block">
-              Transform
+              Build the Brand
             </span>
             <br />
-            <span className="text-white">Your Digital Presence?</span>
+            <span className="text-white">That Builds Everything Else?</span>
           </h2>
           
           <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join hundreds of successful brands who've already made the leap. 
-            Your audience is waiting—let's make them notice.
+            We work with a select group of high-performing leaders each quarter. Let's see if we're a fit.
           </p>
           
           <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-6 justify-center items-center scroll-scale-in">
@@ -45,7 +44,7 @@ export default function CTA() {
                 size="lg"
                 className="bg-gradient-to-r from-sparkg-gold to-yellow-500 hover:from-yellow-500 hover:to-sparkg-gold text-black font-bold px-10 py-4 text-lg rounded-full shadow-2xl hover:shadow-sparkg-gold/25 transform hover:scale-105 transition-all duration-300 group"
               >
-                Start Your Journey Today
+                Book a Discovery Call
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
             </Link>
@@ -61,19 +60,8 @@ export default function CTA() {
             </Link>
           </div>
           
-          <div className="mt-12 grid md:grid-cols-3 gap-8 text-center">
-            <div className="animate-fadeIn">
-              <div className="text-2xl font-bold text-sparkg-gold mb-2">Free Consultation</div>
-              <p className="text-gray-300">No commitment required</p>
-            </div>
-            <div className="animate-fadeIn" style={{ animationDelay: "0.2s" }}>
-              <div className="text-2xl font-bold text-sparkg-gold mb-2">30-Day Guarantee</div>
-              <p className="text-gray-300">See results or money back</p>
-            </div>
-            <div className="animate-fadeIn" style={{ animationDelay: "0.4s" }}>
-              <div className="text-2xl font-bold text-sparkg-gold mb-2">24/7 Support</div>
-              <p className="text-gray-300">We're here when you need us</p>
-            </div>
+          <div className="mt-8 text-center">
+            <p className="text-sparkg-gold font-semibold">⚡ Limited availability for August onboarding</p>
           </div>
         </div>
       </div>

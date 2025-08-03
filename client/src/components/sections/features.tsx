@@ -2,42 +2,41 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Rocket, Target, Zap, TrendingUp, Users, Award } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
-const features = [
+const comparisons = [
   {
-    icon: Rocket,
-    title: "Launch Your Brand",
-    description: "Strategic brand positioning that makes you stand out in crowded markets",
+    typical: "Content Calendar",
+    sparkG: "Legacy System",
+    description: "We don't just plan posts—we build systems that create lasting impact and thought leadership positioning.",
+    icon: Target,
     color: "from-blue-500 to-purple-600"
   },
   {
-    icon: Target,
-    title: "Targeted Campaigns",
-    description: "Precision marketing that reaches your ideal audience at the right time",
+    typical: "Editors & VAs",
+    sparkG: "Strategists, Creators, Execs",
+    description: "Work with senior-level professionals who understand business strategy, not just content creation.",
+    icon: Users,
     color: "from-emerald-500 to-teal-600"
   },
   {
-    icon: Zap,
-    title: "Lightning Fast Results",
-    description: "See measurable growth in engagement and conversions within weeks",
+    typical: "'Post and Hope'",
+    sparkG: "Outcome-Driven Brand Assets",
+    description: "Every piece of content is strategically designed to generate specific business outcomes and opportunities.",
+    icon: TrendingUp,
     color: "from-orange-500 to-red-600"
   },
   {
-    icon: TrendingUp,
-    title: "Scale Your Growth",
-    description: "Sustainable strategies that grow with your business ambitions",
+    typical: "Generic Promos",
+    sparkG: "Thought Leadership Positioning",
+    description: "Position yourself as the authority in your space through premium content that elevates your expertise.",
+    icon: Award,
     color: "from-purple-500 to-pink-600"
   },
   {
-    icon: Users,
-    title: "Build Community",
-    description: "Foster loyal audiences that become your brand ambassadors",
-    color: "from-cyan-500 to-blue-600"
-  },
-  {
-    icon: Award,
-    title: "Industry Recognition",
-    description: "Position yourself as a thought leader in your field",
-    color: "from-yellow-500 to-orange-600"
+    typical: "DIY Stress",
+    sparkG: "Done-For-You, High-Touch",
+    description: "Focus on running your business while we handle the complex work of building your digital legacy.",
+    icon: Zap,
+    color: "from-indigo-500 to-blue-600"
   }
 ];
 
@@ -55,19 +54,22 @@ export default function Features() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div ref={titleRef as any} className="text-center mb-16 scroll-fade-in">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="text-gray-100 font-bold">
-              Why Choose
+            <span className="text-white font-bold">
+              What Makes Us
             </span>
             <br />
-            <span className="bg-gradient-to-r from-sparkg-gold to-yellow-400 bg-clip-text text-transparent">SparkG Media?</span>
+            <span className="bg-gradient-to-r from-sparkg-gold to-yellow-400 bg-clip-text text-transparent relative">
+              <span className="absolute inset-0 bg-sparkg-gold/20 blur-lg rounded-lg transform -skew-y-1"></span>
+              <span className="relative">Different?</span>
+            </span>
           </h2>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            We don't just create content—we craft experiences that drive real business results
+            <em className="text-sparkg-gold not-italic">"You're not building for likes. You're building for leverage."</em>
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
+          {comparisons.slice(0, 5).map((comparison, index) => {
             const cardRef = useScrollAnimation();
             return (
               <Card 
@@ -78,11 +80,14 @@ export default function Features() {
                 }`}
               >
               <CardContent className="p-8 text-center">
-                <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                  <feature.icon className="w-8 h-8 text-white" />
+                <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${comparison.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                  <comparison.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
-                <p className="text-gray-200 leading-relaxed">{feature.description}</p>
+                <div className="mb-4">
+                  <div className="text-gray-400 text-sm mb-2 line-through">Typical Agencies: {comparisons[index]?.typical}</div>
+                  <h3 className="text-xl font-bold text-sparkg-gold mb-2">SparkG Media: {comparisons[index]?.sparkG}</h3>
+                </div>
+                <p className="text-gray-200 leading-relaxed">{comparisons[index]?.description}</p>
               </CardContent>
             </Card>
             );

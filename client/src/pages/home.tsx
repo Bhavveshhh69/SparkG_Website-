@@ -1,11 +1,10 @@
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Hero from "@/components/sections/hero";
+import Positioning from "@/components/sections/positioning";
+import HowItWorks from "@/components/sections/how-it-works";
+import ProofSection from "@/components/sections/proof-section";
 import Features from "@/components/sections/features";
-import Stats from "@/components/sections/stats";
-import LogoCarousel from "@/components/sections/logo-carousel";
-import ValueProps from "@/components/sections/value-props";
-import SocialProof from "@/components/sections/social-proof";
 import CTA from "@/components/sections/cta";
 import Newsletter from "@/components/sections/newsletter-new";
 
@@ -15,11 +14,10 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Positioning />
+        <HowItWorks />
+        <ProofSection />
         <Features />
-        <Stats />
-        <LogoCarousel />
-        <ValueProps />
-        <SocialProof />
         <CTA />
         <Newsletter />
       </main>
