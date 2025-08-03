@@ -102,6 +102,64 @@
   .animate-scroll {
     animation: scroll 30s linear infinite;
   }
+
+  /* Scroll-based animations */
+  .scroll-fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .scroll-fade-in.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-blur-to-clear {
+    filter: blur(8px);
+    transform: scale(0.9);
+    opacity: 0.6;
+    transition: filter 1s ease-out, transform 1s ease-out, opacity 1s ease-out;
+  }
+
+  .scroll-blur-to-clear.in-view {
+    filter: blur(0px);
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .scroll-scale-in {
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  }
+
+  .scroll-scale-in.in-view {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .scroll-slide-left {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  }
+
+  .scroll-slide-left.in-view {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .scroll-slide-right {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  }
+
+  .scroll-slide-right.in-view {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes scroll {

@@ -1,6 +1,9 @@
 import { Link } from "wouter";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function ValueProps() {
+  const titleRef = useScrollAnimation();
+  
   const valueProps = [
     {
       number: "01",
@@ -36,7 +39,7 @@ export default function ValueProps() {
       </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-16 animate-fadeIn">
+        <div ref={titleRef as any} className="text-center mb-16 scroll-fade-in">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             Turn Your <span className="bg-gradient-to-r from-sparkg-gold to-yellow-400 bg-clip-text text-transparent">Vision</span>
             <br />
@@ -48,12 +51,14 @@ export default function ValueProps() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {valueProps.map((prop, index) => (
-            <div 
-              key={prop.number} 
-              className="group hover:transform hover:scale-105 transition-all duration-500 animate-slideUp"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
+          {valueProps.map((prop, index) => {
+            const cardRef = useScrollAnimation();
+            return (
+              <div 
+                key={prop.number}
+                ref={cardRef as any}
+                className="group hover:transform hover:scale-105 transition-all duration-500 scroll-scale-in"
+              >
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 h-full border border-white/10 hover:border-sparkg-gold/30 relative overflow-hidden">
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-r ${prop.gradient} opacity-10 rounded-full blur-2xl transform translate-x-8 -translate-y-8`}></div>
                 
@@ -73,7 +78,8 @@ export default function ValueProps() {
                 </Link>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

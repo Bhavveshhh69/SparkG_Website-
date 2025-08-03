@@ -1,4 +1,9 @@
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+
 export default function SocialProof() {
+  const titleRef = useScrollAnimation();
+  const contentRef = useScrollAnimation();
+  
   const testimonials = [
     {
       quote: "SparkG Media transformed our digital presence completely. Our engagement rates increased by 400% in just 3 months.",
@@ -23,21 +28,21 @@ export default function SocialProof() {
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="animate-fadeIn">
+          <div ref={titleRef as any} className="scroll-slide-left">
             <h2 className="text-4xl md:text-6xl font-bold mb-8">
               Trusted by <span className="bg-gradient-to-r from-sparkg-gold to-yellow-400 bg-clip-text text-transparent">10,000+</span> 
               <br />
               <span className="text-white">Business Leaders</span>
             </h2>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-200 mb-8 leading-relaxed">
               <strong className="text-white">We've helped businesses generate over $10M in revenue through strategic digital marketing, build audiences of 500K+, and establish market-leading brand positions.</strong>
             </p>
-            <p className="text-gray-400 leading-relaxed">
+            <p className="text-gray-300 leading-relaxed">
               From ambitious startups to established enterprises, we work with visionary leaders who understand that digital excellence isn't optional—it's essential. Whether you're launching your first campaign or scaling to new markets, we have the expertise and proven strategies to accelerate your growth.
             </p>
           </div>
           
-          <div className="space-y-6 animate-slideUp">
+          <div ref={contentRef as any} className="space-y-6 scroll-slide-right">
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index}
@@ -51,7 +56,7 @@ export default function SocialProof() {
                     <p className="text-white mb-4 italic leading-relaxed">"{testimonial.quote}"</p>
                     <div>
                       <p className="font-semibold text-white">{testimonial.author}</p>
-                      <p className="text-gray-400 text-sm">{testimonial.title}</p>
+                      <p className="text-gray-300 text-sm">{testimonial.title}</p>
                     </div>
                   </div>
                 </div>

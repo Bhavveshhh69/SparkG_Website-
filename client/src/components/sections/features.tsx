@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Rocket, Target, Zap, TrendingUp, Users, Award } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const features = [
   {
@@ -41,6 +42,8 @@ const features = [
 ];
 
 export default function Features() {
+  const titleRef = useScrollAnimation();
+  
   return (
     <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-sparkg-black relative overflow-hidden">
       {/* Background Pattern */}
@@ -50,13 +53,13 @@ export default function Features() {
       </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-16 animate-fadeIn">
+        <div ref={titleRef as any} className="text-center mb-16 scroll-fade-in">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-sparkg-gold to-yellow-400 bg-clip-text text-transparent">
+            <span className="text-gray-100 font-bold">
               Why Choose
             </span>
             <br />
-            <span className="text-white">SparkG Media?</span>
+            <span className="bg-gradient-to-r from-sparkg-gold to-yellow-400 bg-clip-text text-transparent">SparkG Media?</span>
           </h2>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             We don't just create content—we craft experiences that drive real business results
@@ -64,12 +67,16 @@ export default function Features() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Card 
-              key={index} 
-              className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-sparkg-gold/50 transition-all duration-300 hover:scale-105 animate-slideUp group"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+          {features.map((feature, index) => {
+            const cardRef = useScrollAnimation();
+            return (
+              <Card 
+                key={index}
+                ref={cardRef as any}
+                className={`bg-white/5 backdrop-blur-sm border-white/10 hover:border-sparkg-gold/50 transition-all duration-300 hover:scale-105 group ${
+                  index % 2 === 0 ? 'scroll-slide-left' : 'scroll-slide-right'
+                }`}
+              >
               <CardContent className="p-8 text-center">
                 <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                   <feature.icon className="w-8 h-8 text-white" />
@@ -78,7 +85,8 @@ export default function Features() {
                 <p className="text-gray-200 leading-relaxed">{feature.description}</p>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

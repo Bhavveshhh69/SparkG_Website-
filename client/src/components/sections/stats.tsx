@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const stats = [
   {
@@ -24,12 +25,14 @@ const stats = [
 ];
 
 export default function Stats() {
+  const titleRef = useScrollAnimation();
+  
   return (
     <section className="py-20 bg-gradient-to-r from-sparkg-gold/10 via-sparkg-black to-sparkg-gold/10 relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--sparkg-gold)_0%,_transparent_50%)] opacity-5"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-16 animate-fadeIn">
+        <div ref={titleRef as any} className="text-center mb-16 scroll-blur-to-clear">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Results That Speak
             <span className="block text-sparkg-gold glow-text">Louder Than Words</span>
@@ -40,12 +43,14 @@ export default function Stats() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <Card 
-              key={index}
-              className="bg-white/5 backdrop-blur-md border-sparkg-gold/20 hover:border-sparkg-gold/50 transition-all duration-500 hover:scale-105 animate-scaleIn group"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
+          {stats.map((stat, index) => {
+            const cardRef = useScrollAnimation();
+            return (
+              <Card 
+                key={index}
+                ref={cardRef as any}
+                className="bg-white/5 backdrop-blur-md border-sparkg-gold/20 hover:border-sparkg-gold/50 transition-all duration-500 hover:scale-105 scroll-scale-in group"
+              >
               <CardContent className="p-8 text-center">
                 <div className="text-4xl md:text-5xl font-bold text-sparkg-gold mb-2 group-hover:scale-110 transition-transform duration-300">
                   {stat.number}
@@ -54,7 +59,8 @@ export default function Stats() {
                 <p className="text-gray-300 text-sm">{stat.description}</p>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

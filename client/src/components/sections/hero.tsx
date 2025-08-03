@@ -1,7 +1,12 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function Hero() {
+  const titleRef = useScrollAnimation();
+  const subtitleRef = useScrollAnimation();
+  const buttonsRef = useScrollAnimation();
+  
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Animated Gradient Background */}
@@ -14,9 +19,9 @@ export default function Hero() {
       
       <div className="container mx-auto px-4 md:px-6 relative z-20">
         <div className="flex flex-col items-center text-center min-h-[80vh] justify-center">
-          <div className="max-w-5xl mx-auto space-y-8 animate-slideUp">
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight">
-              <span className="bg-gradient-to-r from-white via-sparkg-gold to-white bg-clip-text text-transparent animate-pulse">
+          <div className="max-w-5xl mx-auto space-y-8">
+            <h1 ref={titleRef as any} className="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight scroll-blur-to-clear">
+              <span className="bg-gradient-to-r from-white via-sparkg-gold to-white bg-clip-text text-transparent">
                 Spark Your Digital
               </span>
               <br />
@@ -25,11 +30,11 @@ export default function Hero() {
               <em className="text-sparkg-gold not-italic glow-text">Media That Converts</em>
             </h1>
             
-            <p className="text-lg md:text-xl text-sparkg-gray mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p ref={subtitleRef as any} className="text-lg md:text-xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed scroll-fade-in">
               Transform your brand with strategic content creation and digital marketing that drives real results for your business.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-4 justify-center items-center scroll-scale-in">
               <Link href="/about">
                 <Button 
                   size="lg"

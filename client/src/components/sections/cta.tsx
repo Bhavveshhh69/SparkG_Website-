@@ -1,8 +1,13 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function CTA() {
+  const titleRef = useScrollAnimation();
+  const transformRef = useScrollAnimation();
+  const buttonsRef = useScrollAnimation();
+  
   return (
     <section className="py-20 bg-gradient-to-br from-sparkg-black via-gray-900 to-sparkg-dark relative overflow-hidden">
       {/* Animated Background Elements */}
@@ -20,9 +25,9 @@ export default function CTA() {
             </div>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 ref={titleRef as any} className="text-4xl md:text-6xl font-bold mb-6 scroll-fade-in">
             Ready to{" "}
-            <span className="bg-gradient-to-r from-sparkg-gold via-yellow-400 to-sparkg-gold bg-clip-text text-transparent glow-text">
+            <span ref={transformRef as any} className="bg-gradient-to-r from-sparkg-gold via-yellow-400 to-sparkg-gold bg-clip-text text-transparent glow-text scroll-blur-to-clear inline-block">
               Transform
             </span>
             <br />
@@ -34,7 +39,7 @@ export default function CTA() {
             Your audience is waiting—let's make them notice.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-6 justify-center items-center scroll-scale-in">
             <Link href="/about">
               <Button 
                 size="lg"
