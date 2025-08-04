@@ -42,6 +42,7 @@ import type {
   WorkshopRequest, 
   ContactForm 
 } from "@shared/schema";
+import { useToast } from "@/hooks/use-toast";
 
 const testimonialSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -104,40 +105,40 @@ export default function SparkGAdmin() {
 
   // Mutations
   const createTestimonialMutation = useMutation({
-    mutationFn: (data: any) => apiRequest("/api/admin/testimonials", "POST", data),
+    mutationFn: (data: any) => apiRequest("POST", "/api/admin/testimonials", data),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/testimonials"] }),
   });
 
   const updateTestimonialMutation = useMutation({
     mutationFn: ({ id, data }: { id: string; data: any }) => 
-      apiRequest(`/api/admin/testimonials/${id}`, "PATCH", data),
+      apiRequest("PATCH", `/api/admin/testimonials/${id}`, data),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/testimonials"] }),
   });
 
   const deleteTestimonialMutation = useMutation({
-    mutationFn: (id: string) => apiRequest(`/api/admin/testimonials/${id}`, "DELETE"),
+    mutationFn: (id: string) => apiRequest("DELETE", `/api/admin/testimonials/${id}`),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/testimonials"] }),
   });
 
   const createResourceMutation = useMutation({
-    mutationFn: (data: any) => apiRequest("/api/admin/resources", "POST", data),
+    mutationFn: (data: any) => apiRequest("POST", "/api/admin/resources", data),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/resources"] }),
   });
 
   const updateResourceMutation = useMutation({
     mutationFn: ({ id, data }: { id: string; data: any }) => 
-      apiRequest(`/api/admin/resources/${id}`, "PATCH", data),
+      apiRequest("PATCH", `/api/admin/resources/${id}`, data),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/resources"] }),
   });
 
   const deleteResourceMutation = useMutation({
-    mutationFn: (id: string) => apiRequest(`/api/admin/resources/${id}`, "DELETE"),
+    mutationFn: (id: string) => apiRequest("DELETE", `/api/admin/resources/${id}`),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/resources"] }),
   });
 
   const updateSiteSettingMutation = useMutation({
     mutationFn: ({ key, value }: { key: string; value: string }) => 
-      apiRequest("/api/admin/site-settings", "POST", { key, value }),
+      apiRequest("POST", "/api/admin/site-settings", { key, value }),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/site-settings"] }),
   });
 
@@ -378,6 +379,7 @@ export default function SparkGAdmin() {
 function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDelete }: any) {
   const [editingTestimonial, setEditingTestimonial] = useState<Testimonial | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm({
     resolver: zodResolver(testimonialSchema),
@@ -393,19 +395,42 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
   });
 
   const onSubmit = (data: any) => {
+    try {
     if (editingTestimonial) {
       onUpdate({ id: editingTestimonial.id, data });
+        toast({
+          title: "Success!",
+          description: "Testimonial updated successfully.",
+        });
     } else {
       onCreate(data);
+        toast({
+          title: "Success!",
+          description: "Testimonial created successfully.",
+        });
     }
     setIsDialogOpen(false);
     setEditingTestimonial(null);
     form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to save testimonial. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleEdit = (testimonial: Testimonial) => {
     setEditingTestimonial(testimonial);
     form.reset({
+      name: "",
+      title: "",
+      company: "",
+      content: "",
+      image: "",
+      rating: 5,
+      isActive: true,
       name: testimonial.name,
       title: testimonial.title,
       company: testimonial.company,
@@ -417,6 +442,15 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
     setIsDialogOpen(true);
   };
 
+  const handleDelete = (id: string, name: string) => {
+    if (window.confirm(`Are you sure you want to delete the testimonial from ${name}?`)) {
+      onDelete(id);
+      toast({
+        title: "Success!",
+        description: "Testimonial deleted successfully.",
+      });
+    }
+  };
   const handleAdd = () => {
     setEditingTestimonial(null);
     form.reset();
@@ -589,7 +623,7 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
                   <Button
                     size="sm"
                     variant="outline"
-                    onClick={() => onDelete(testimonial.id)}
+                    onClick={() => handleDelete(testimonial.id, testimonial.name)}
                     className="border-red-500/20 text-red-400 hover:bg-red-500/10"
                   >
                     <Trash2 className="w-4 h-4" />

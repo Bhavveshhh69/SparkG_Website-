@@ -205,7 +205,14 @@ export class MemStorage implements IStorage {
     const existing = this.testimonials.get(id);
     if (!existing) throw new Error('Testimonial not found');
     
-    const updated = { ...existing, ...data };
+    const updated = { 
+      ...existing, 
+      ...data,
+      // Ensure proper type handling for optional fields
+      image: data.image === "" ? null : (data.image ?? existing.image),
+      rating: data.rating ?? existing.rating,
+      isActive: data.isActive ?? existing.isActive,
+    };
     this.testimonials.set(id, updated);
     return updated;
   }

@@ -26,7 +26,7 @@ export default function TestimonialsGrid() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[1, 2, 3].map((i) => (
               <div key={i} className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 animate-pulse">
-                <div className="h-4 bg-gray-600 rounded mb-4"></div>
+              className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-[#9B7B0B]/50 transition-all duration-300 group"
                 <div className="h-4 bg-gray-600 rounded mb-4"></div>
                 <div className="h-4 bg-gray-600 rounded mb-6"></div>
                 <div className="flex items-center space-x-4">

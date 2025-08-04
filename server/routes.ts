@@ -115,6 +115,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error instanceof z.ZodError) {
         res.status(400).json({ message: "Invalid input data", errors: error.errors });
       } else {
+        console.error("Error creating testimonial:", error);
         res.status(500).json({ message: "Internal server error" });
       }
     }
@@ -132,6 +133,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } else if (error instanceof Error && error.message === 'Testimonial not found') {
         res.status(404).json({ message: "Testimonial not found" });
       } else {
+        console.error("Error updating testimonial:", error);
         res.status(500).json({ message: "Internal server error" });
       }
     }
@@ -143,6 +145,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await storage.deleteTestimonial(id);
       res.json({ success: true });
     } catch (error) {
+      console.error("Error deleting testimonial:", error);
       res.status(500).json({ message: "Internal server error" });
     }
   });
