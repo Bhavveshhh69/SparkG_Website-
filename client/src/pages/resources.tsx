@@ -3,12 +3,19 @@ import Footer from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
-import type { Resource } from "@shared/schema";
+import type { Resource, SiteSetting } from "@shared/schema";
+import { Link } from "wouter";
 
 export default function Resources() {
   const { data: resources = [], isLoading } = useQuery<Resource[]>({
     queryKey: ["/api/resources"],
   });
+
+  const { data: siteSettings = [] } = useQuery<SiteSetting[]>({
+    queryKey: ["/api/site-settings"],
+  });
+
+  const headerCtaUrl = siteSettings.find(s => s.key === 'header_cta_url')?.value || '/about';
 
   // Resources are already filtered for active ones in the API
   const activeResources = resources;
@@ -150,9 +157,11 @@ export default function Resources() {
             <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
               Get in touch with our team for personalized guidance and ongoing support to accelerate your personal brand growth.
             </p>
-            <Button size="lg" className="bg-sparkg-gold hover:bg-sparkg-gold/90 text-black font-medium">
-              GET IN TOUCH →
-            </Button>
+            <Link href={headerCtaUrl}>
+              <Button size="lg" className="bg-sparkg-gold hover:bg-sparkg-gold/90 text-black font-medium">
+                Book Your Strategy Call
+              </Button>
+            </Link>
           </div>
         </section>
       </main>

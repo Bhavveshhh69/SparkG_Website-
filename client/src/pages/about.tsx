@@ -6,9 +6,17 @@ import { Link } from "wouter";
 import { Target, Zap, TrendingUp, Users, Award, CheckCircle } from "lucide-react";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useQuery } from "@tanstack/react-query";
+import type { SiteSetting } from "@shared/schema";
 
 export default function About() {
   const titleRef = useScrollAnimation();
+
+  const { data: siteSettings = [] } = useQuery<SiteSetting[]>({
+    queryKey: ["/api/site-settings"],
+  });
+
+  const headerCtaUrl = siteSettings.find(s => s.key === 'header_cta_url')?.value || '/about';
   
   // Counter animations
   const podcastListeners = useCounterAnimation({ end: 72, duration: 2500 });
@@ -177,12 +185,12 @@ export default function About() {
             <p className="text-xl text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed">
               We work with a select group of high-performing leaders each quarter. Let's see if we're a fit.
             </p>
-            <Link href="/about">
+            <Link href={headerCtaUrl}>
               <Button 
                 size="lg"
                 className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white font-bold px-12 py-4 text-lg rounded-full shadow-2xl hover:shadow-[#9B7B0B]/25 transform hover:scale-105 transition-all duration-300"
               >
-                Book a Discovery Call
+                Book Your Strategy Call
               </Button>
             </Link>
             <p className="text-[#9B7B0B] font-semibold mt-6">⚡ Limited availability for August onboarding</p>

@@ -389,6 +389,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Public Site Settings
+  app.get("/api/site-settings", async (req, res) => {
+    try {
+      const settings = await storage.getSiteSettings();
+      res.json(settings);
+    } catch (error) {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
   // Site Settings
   app.get("/api/admin/site-settings", async (req, res) => {
     try {

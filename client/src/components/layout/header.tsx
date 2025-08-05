@@ -3,10 +3,18 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import type { SiteSetting } from "@shared/schema";
 
 export default function Header() {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+
+  const { data: siteSettings = [] } = useQuery<SiteSetting[]>({
+    queryKey: ["/api/site-settings"],
+  });
+
+  const headerCtaUrl = siteSettings.find(s => s.key === 'header_cta_url')?.value || '/about';
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -45,14 +53,9 @@ export default function Header() {
           
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center space-x-3">
-            <Link href="/resources">
-              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 text-sm px-4 py-2">
-                EXPLORE SERVICES
-              </Button>
-            </Link>
-            <Link href="/about">
+            <Link href={headerCtaUrl}>
               <Button className="bg-sparkg-gold hover:bg-sparkg-gold/90 text-black text-sm px-4 py-2">
-                START YOUR JOURNEY
+                Book Your Strategy Call
               </Button>
             </Link>
           </div>
@@ -79,14 +82,9 @@ export default function Header() {
                   </Link>
                 ))}
                 <div className="flex flex-col space-y-4 pt-6">
-                  <Link href="/resources" onClick={() => setIsOpen(false)}>
-                    <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10">
-                      EXPLORE SERVICES
-                    </Button>
-                  </Link>
-                  <Link href="/about" onClick={() => setIsOpen(false)}>
+                  <Link href={headerCtaUrl} onClick={() => setIsOpen(false)}>
                     <Button className="w-full bg-sparkg-gold hover:bg-sparkg-gold/90 text-black">
-                      START YOUR JOURNEY
+                      Book Your Strategy Call
                     </Button>
                   </Link>  
                 </div>

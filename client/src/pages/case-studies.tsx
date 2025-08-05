@@ -6,12 +6,18 @@ import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { ArrowRight, TrendingUp, Users, Target } from "lucide-react";
-import type { CaseStudy } from "@shared/schema";
+import type { CaseStudy, SiteSetting } from "@shared/schema";
 
 export default function CaseStudies() {
   const { data: caseStudies = [], isLoading } = useQuery<CaseStudy[]>({
     queryKey: ["/api/case-studies"],
   });
+
+  const { data: siteSettings = [] } = useQuery<SiteSetting[]>({
+    queryKey: ["/api/site-settings"],
+  });
+
+  const headerCtaUrl = siteSettings.find(s => s.key === 'header_cta_url')?.value || '/about';
 
   // Case studies are already filtered for published ones in the API
   const publishedCaseStudies = caseStudies;
@@ -126,9 +132,9 @@ export default function CaseStudies() {
                   <p className="text-xl text-gray-300 mb-8">
                     We're currently documenting our most impressive client transformations. Check back soon to see how we've helped businesses generate millions in opportunities through strategic personal branding.
                   </p>
-                  <Link href="/about">
+                  <Link href={headerCtaUrl}>
                     <Button className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white">
-                      Book a Discovery Call
+                      Book Your Strategy Call
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
@@ -147,12 +153,12 @@ export default function CaseStudies() {
             <p className="text-xl text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed">
               Join the ranks of successful entrepreneurs and professionals who've transformed their personal brands into powerful business assets.
             </p>
-            <Link href="/about">
+            <Link href={headerCtaUrl}>
               <Button 
                 size="lg"
                 className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white font-bold px-12 py-4 text-lg rounded-full shadow-2xl hover:shadow-[#9B7B0B]/25 transform hover:scale-105 transition-all duration-300"
               >
-                Start Your Transformation
+                Book Your Strategy Call
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
