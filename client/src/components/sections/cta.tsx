@@ -88,23 +88,3 @@ export default function CTA() {
     </section>
   );
 }
-              <Button 
-                size="lg"
-                className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white font-bold px-10 py-4 text-lg rounded-full shadow-2xl hover:shadow-[#9B7B0B]/25 transform hover:scale-105 transition-all duration-300 group border-2 border-[#9B7B0B]"
-              >
-                Book a Discovery Call
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
-            </Link>
-            
-
-          </div>
-          
-          <div className="mt-8 text-center">
-            <p className="text-[#9B7B0B] font-semibold">⚡ Limited availability for August onboarding</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}

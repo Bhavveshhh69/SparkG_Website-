@@ -289,7 +289,7 @@ export class MemStorage implements IStorage {
   }
 
   async getCaseStudyBySlug(slug: string): Promise<CaseStudy | null> {
-    const caseStudy = Array.from(this.caseStudies.values()).find(cs => cs.slug === slug);
+    const caseStudy = Array.from(this.caseStudies.values()).find(cs => cs.slug === slug && cs.isPublished);
     return caseStudy || null;
   }
 

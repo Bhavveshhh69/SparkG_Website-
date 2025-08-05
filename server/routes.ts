@@ -1,4 +1,5 @@
 import type { Express } from "express";
+import express from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { 
@@ -11,8 +12,109 @@ import {
   insertSiteSettingSchema
 } from "@shared/schema";
 import { z } from "zod";
+import multer from "multer";
+import path from "path";
+import { promises as fs } from "fs";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Configure multer for file uploads
+  const uploadDir = path.join(process.cwd(), 'uploads');
+
+  // Ensure upload directory exists
+  await fs.mkdir(uploadDir, { recursive: true }).catch(() => {});
+
+  const upload = multer({
+    dest: uploadDir,
+    limits: {
+      fileSize: 5 * 1024 * 1024, // 5MB limit
+    },
+    fileFilter: (req, file, cb) => {
+      // Only allow image files
+      if (file.mimetype.startsWith('image/')) {
+        cb(null, true);
+      } else {
+        cb(new Error('Only image files are allowed'));
+      }
+    },
+  });
+  // Debug endpoint to test file access
+  app.get('/api/test-upload/:filename', async (req, res) => {
+    const { filename } = req.params;
+    const filePath = path.join(uploadDir, filename);
+    
+    try {
+      const stats = await fs.stat(filePath);
+      res.json({
+        exists: true,
+        size: stats.size,
+        path: filePath,
+        url: `/uploads/${filename}`
+      });
+    } catch (error) {
+      res.json({
+        exists: false,
+        error: error.message,
+        path: filePath
+      });
+    }
+  });
+
+  // Serve uploaded files statically
+  app.use('/uploads', (req, res, next) => {
+    console.log('Serving upload file:', req.url, 'from:', uploadDir);
+    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+    res.setHeader('Cache-Control', 'public, max-age=31536000');
+    next();
+  });
+  app.use('/uploads', express.static(uploadDir));
+
+  // File upload endpoint with error handling
+  app.post("/api/upload", (req, res) => {
+    upload.single('file')(req, res, async (err) => {
+      try {
+        if (err) {
+          console.error('Multer error:', err);
+          if (err instanceof multer.MulterError) {
+            if (err.code === 'LIMIT_FILE_SIZE') {
+              return res.status(400).json({ message: "File too large. Maximum size is 5MB." });
+            }
+            return res.status(400).json({ message: `Upload error: ${err.message}` });
+          }
+          return res.status(400).json({ message: err.message || "File upload failed" });
+        }
+
+        if (!req.file) {
+          return res.status(400).json({ message: "No file uploaded" });
+        }
+
+        console.log('File uploaded:', req.file);
+
+        // Generate a unique filename with original extension
+        const ext = path.extname(req.file.originalname);
+        const filename = `${Date.now()}-${Math.random().toString(36).substring(2)}${ext}`;
+        const newPath = path.join(uploadDir, filename);
+
+        // Move file to final location with proper name
+        await fs.rename(req.file.path, newPath);
+
+        // Return the URL that can be used to access the file
+        const fileUrl = `/uploads/${filename}`;
+        
+        console.log('File processed successfully:', fileUrl);
+        
+        res.json({ 
+          success: true, 
+          url: fileUrl,
+          filename: filename,
+          originalName: req.file.originalname,
+          size: req.file.size
+        });
+      } catch (error) {
+        console.error('Upload processing error:', error);
+        res.status(500).json({ message: "File upload failed", error: error.message });
+      }
+    });
+  });
   // Newsletter signup
   app.post("/api/newsletter", async (req, res) => {
     try {
@@ -111,6 +213,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const caseStudies = await storage.getPublishedCaseStudies();
       res.json(caseStudies);
+    } catch (error) {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
+  // Get Case Study by Slug
+  app.get("/api/case-studies/:slug", async (req, res) => {
+    try {
+      const { slug } = req.params;
+      const caseStudy = await storage.getCaseStudyBySlug(slug);
+      if (!caseStudy) {
+        res.status(404).json({ message: "Case study not found" });
+        return;
+      }
+      res.json(caseStudy);
     } catch (error) {
       res.status(500).json({ message: "Internal server error" });
     }

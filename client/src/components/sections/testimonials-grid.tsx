@@ -53,12 +53,12 @@ export default function TestimonialsGrid() {
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div ref={titleRef as any} className="text-center mb-16 scroll-fade-in">
+        <div ref={titleRef as any} className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-white">Results That </span>
             <span className="text-[#9B7B0B] relative font-extrabold">
               <span className="absolute inset-0 bg-[#9B7B0B]/10 blur-lg rounded-lg"></span>
-              <span className="relative">Speak for Themselves</span>
+              <span className="relative">Speak for Themselves.</span>
             </span>
           </h2>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">

@@ -63,13 +63,6 @@ export default function Hero() {
                   </Button>
                 </Link>
               )}
-                <Button 
-                  size="lg"
-                  className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 transform hover:scale-105 transition-all duration-300 text-white font-bold px-10 py-4 text-lg shadow-2xl hover:shadow-[#9B7B0B]/25 rounded-full border-2 border-[#9B7B0B]"
-                >
-                  Book Strategy Call
-                </Button>
-              </Link>
               <Link href="/resources">
                 <Button 
                   variant="outline" 
@@ -93,8 +86,20 @@ export default function Hero() {
                     <div className="w-8 h-0.5 bg-[#9B7B0B]"></div>
                   </div>
                   <div className="flex flex-wrap items-center justify-center gap-6 text-white font-medium">
-                    <span className="px-4 py-2 bg-[#9B7B0B]/10 rounded-full border border-[#9B7B0B]/30">Forbes</span>
-                    <span className="px-4 py-2 bg-[#9B7B0B]/10 rounded-full border border-[#9B7B0B]/30">Entrepreneur</span>
+                    <div className="px-4 py-2 bg-[#9B7B0B]/10 rounded-full border border-[#9B7B0B]/30 flex items-center gap-3">
+                      <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Forbes_logo.svg/1024px-Forbes_logo.svg.png" 
+                        alt="Forbes" 
+                        className="h-6 w-auto filter brightness-0 invert"
+                      />
+                    </div>
+                    <div className="px-4 py-2 bg-[#9B7B0B]/10 rounded-full border border-[#9B7B0B]/30 flex items-center gap-3">
+                      <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Entrepreneur_logo.png" 
+                        alt="Entrepreneur" 
+                        className="h-6 w-auto filter brightness-0 invert"
+                      />
+                    </div>
                     <span className="px-4 py-2 bg-[#9B7B0B]/10 rounded-full border border-[#9B7B0B]/30">Spotify</span>
                     <span className="px-4 py-2 bg-[#9B7B0B]/10 rounded-full border border-[#9B7B0B]/30">Apple Podcasts</span>
                   </div>

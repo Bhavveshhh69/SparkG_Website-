@@ -118,11 +118,11 @@ export default function Resources() {
                 ].map((resource, index) => (
                   <Card key={index} className="bg-klowt-blue/30 border-klowt-border/20 overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
                     <div className="h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${resource.image}')` }}>
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-sparkg-gold text-white px-3 py-1 rounded-full text-sm font-medium">
-                        {resource.type}
-                      </span>
-                    </div>
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-sparkg-gold text-white px-3 py-1 rounded-full text-sm font-medium">
+                          {resource.type}
+                        </span>
+                      </div>
                     </div>
                     <CardContent className="p-6">
                       <CardTitle className="text-xl font-bold mb-2 text-white">{resource.title}</CardTitle>
@@ -138,8 +138,7 @@ export default function Resources() {
                 ))}
               </div>
             </div>
-          </div>
-        </section>
+          </section>
         )}
 
         {/* CTA Section */}

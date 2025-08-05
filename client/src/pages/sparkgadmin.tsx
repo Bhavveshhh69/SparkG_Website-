@@ -9,6 +9,7 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { FileUpload } from "@/components/ui/file-upload";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -62,7 +63,6 @@ const resourceSchema = z.object({
   fileType: z.string().optional(),
   fileSize: z.number().optional(),
   isActive: z.boolean().default(true),
-  isDirectUpload: z.boolean().default(true),
 });
 
 const siteSettingSchema = z.object({
@@ -424,13 +424,6 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
   const handleEdit = (testimonial: Testimonial) => {
     setEditingTestimonial(testimonial);
     form.reset({
-      name: "",
-      title: "",
-      company: "",
-      content: "",
-      image: "",
-      rating: 5,
-      isActive: true,
       name: testimonial.name,
       title: testimonial.title,
       company: testimonial.company,
@@ -677,7 +670,6 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
       fileType: "",
       fileSize: 0,
       isActive: true,
-      isDirectUpload: true,
     },
   });
 
@@ -718,7 +710,6 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
       fileType: resource.fileType || "",
       fileSize: resource.fileSize || 0,
       isActive: resource.isActive,
-      isDirectUpload: resource.isDirectUpload,
     });
     setIsDialogOpen(true);
   };
@@ -793,9 +784,13 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
                   name="fileUrl"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Cover Image URL</FormLabel>
                       <FormControl>
-                        <Input {...field} className="bg-white/5 border-white/20" placeholder="https://..." />
+                        <FileUpload
+                          onFileUrl={field.onChange}
+                          currentUrl={field.value}
+                          label="Cover Image"
+                          placeholder="Enter image URL or upload file..."
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -847,42 +842,23 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
                     )}
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="isActive"
-                    render={({ field }) => (
-                      <FormItem className="flex flex-row items-center justify-between rounded-lg border border-white/20 p-4">
-                        <div className="space-y-0.5">
-                          <FormLabel className="text-base">Active</FormLabel>
-                        </div>
-                        <FormControl>
-                          <Switch
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                          />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="isDirectUpload"
-                    render={({ field }) => (
-                      <FormItem className="flex flex-row items-center justify-between rounded-lg border border-white/20 p-4">
-                        <div className="space-y-0.5">
-                          <FormLabel className="text-base">Direct Upload</FormLabel>
-                        </div>
-                        <FormControl>
-                          <Switch
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                          />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name="isActive"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border border-white/20 p-4">
+                      <div className="space-y-0.5">
+                        <FormLabel className="text-base">Active</FormLabel>
+                      </div>
+                      <FormControl>
+                        <Switch
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
                 <div className="flex justify-end space-x-2">
                   <Button 
                     type="button" 
@@ -1197,9 +1173,13 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
                   name="featuredImage"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Featured Image URL</FormLabel>
                       <FormControl>
-                        <Input {...field} className="bg-white/5 border-white/20" placeholder="https://..." />
+                        <FileUpload
+                          onFileUrl={field.onChange}
+                          currentUrl={field.value}
+                          label="Featured Image"
+                          placeholder="Enter image URL or upload file..."
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

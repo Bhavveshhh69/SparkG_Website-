@@ -9,6 +9,9 @@ export function useScrollAnimation() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('in-view');
+          } else {
+            // Optional: remove the class if you want the animation to re-trigger
+            // entry.target.classList.remove('in-view');
           }
         });
       },
@@ -21,6 +24,11 @@ export function useScrollAnimation() {
     const element = elementRef.current;
     if (element) {
       observer.observe(element);
+    }
+
+    // Check if the element is already in view on initial load
+    if (element && element.getBoundingClientRect().top < window.innerHeight) {
+        element.classList.add('in-view');
     }
 
     return () => {

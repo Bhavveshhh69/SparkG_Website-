@@ -80,7 +80,7 @@ export default function CaseStudies() {
                         <span className="text-[#9B7B0B] font-semibold text-sm">CLIENT SUCCESS</span>
                       </div>
                       
-                      <h3 className="text-2xl font-bold text-white mb-2">{caseStudy.title}</h3>
+                      <h3 className="text-2xl font-bold text-white mb-2 break-words">{caseStudy.title}</h3>
                       <p className="text-gray-300 mb-4">
                         <strong>Client:</strong> {caseStudy.clientName}
                       </p>

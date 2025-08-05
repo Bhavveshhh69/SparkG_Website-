@@ -11,25 +11,18 @@ export default function Footer() {
   const socialLinks = [
     { icon: Linkedin, href: "https://linkedin.com/company/klowt/", label: "LinkedIn" },
     { icon: Instagram, href: "https://www.instagram.com/getklowt", label: "Instagram" },
-    { icon: Music, href: "https://www.tiktok.com/@getklowt", label: "TikTok" },
     { icon: Youtube, href: "https://www.youtube.com/channel/UCcjf0AC8aj-GSv7EYiCP2PA", label: "YouTube" },
     { icon: Pinterest, href: "https://www.pinterest.co.uk/klowtagency", label: "Pinterest" },
   ];
 
   const navigation = {
     main: [
-      { name: "About", href: "/about" },
+      { name: "Home", href: "/" },
+      { name: "Resources", href: "/resources" },
       { name: "Case Studies", href: "/case-studies" },
-      { name: "Podcast", href: "/podcast" },
-      { name: "Careers", href: "/careers" },
-      { name: "Privacy", href: "/privacy" },
+      { name: "About", href: "/about" },
     ],
   };
-
-  const legalLinks = [
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms", href: "/terms" },
-  ];
 
   return (
     <footer className="bg-klowt-blue/30 py-16">
@@ -95,17 +88,7 @@ export default function Footer() {
             <p className="text-klowt-gray text-sm mb-4 lg:mb-0">
               SparkG Media © 2025 | All Rights Reserved
             </p>
-            <div className="flex space-x-6 text-sm">
-              {legalLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-klowt-gray hover:text-white transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
+            <p className="text-klowt-gray text-sm">Developed by Delta 4</p>
           </div>
         </div>
       </div>
