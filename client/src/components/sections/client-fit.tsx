@@ -12,15 +12,15 @@ export default function ClientFit() {
   const titleRef = useScrollAnimation();
   
   return (
-    <section className="py-20 bg-gradient-to-br from-sparkg-black via-gray-900 to-gray-800 relative overflow-hidden">
+    <section className="py-16 sm:py-20 bg-gradient-to-br from-sparkg-black via-gray-900 to-gray-800 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#9B7B0B] rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-96 sm:h-96 bg-[#9B7B0B] rounded-full blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div ref={titleRef as any} className="text-center mb-16 scroll-fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div ref={titleRef as any} className="text-center mb-12 sm:mb-16 scroll-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             <span className="text-white font-bold">
               Are We the
             </span>
@@ -33,22 +33,22 @@ export default function ClientFit() {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="grid gap-6">
+          <div className="grid gap-4 sm:gap-6">
             {fitCriteria.map((criteria, index) => {
               const itemRef = useScrollAnimation();
               return (
                 <div 
                   key={index}
                   ref={itemRef as any}
-                  className="scroll-fade-in flex items-center p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
+                  className="scroll-fade-in flex items-center p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
                   style={{ 
                     animationDelay: `${index * 0.1}s` 
                   }}
                 >
-                  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-[#9B7B0B] to-yellow-500 rounded-full flex items-center justify-center mr-6">
-                    <Check className="w-5 h-5 text-white font-bold" />
+                  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-[#9B7B0B] to-yellow-500 rounded-full flex items-center justify-center mr-4 sm:mr-6">
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white font-bold" />
                   </div>
-                  <p className="text-xl text-gray-200 font-medium">
+                  <p className="text-lg sm:text-xl text-gray-200 font-medium">
                     {criteria}
                   </p>
                 </div>

@@ -34,20 +34,28 @@ const comparisons = [
   }
 ];
 
+const serviceCategories = [
+  "Content Strategy",
+  "Team Composition", 
+  "Content Approach",
+  "Brand Positioning",
+  "Service Model"
+];
+
 export default function CreativeComparison() {
   const titleRef = useScrollAnimation();
   
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-sparkg-black relative overflow-hidden">
+    <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-sparkg-black relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-sparkg-gold rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-red-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-sparkg-gold rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-56 h-56 sm:w-80 sm:h-80 bg-red-500 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div ref={titleRef as any} className="text-center mb-16 scroll-fade-in">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div ref={titleRef as any} className="text-center mb-12 sm:mb-16 scroll-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             <span className="text-white font-bold">
               What Makes Us
             </span>
@@ -57,14 +65,64 @@ export default function CreativeComparison() {
               <span className="relative">Different?</span>
             </span>
           </h2>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
+          <p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto mb-6 sm:mb-8 px-4 sm:px-0">
             <em className="text-[#9B7B0B] not-italic font-semibold">"You're not building for likes. You're building for leverage."</em>
           </p>
         </div>
 
-        {/* Improved Comparison Table */}
+        {/* Mobile-First Comparison Layout */}
         <div className="max-w-7xl mx-auto">
-          <div className="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
+          {/* Mobile: Card-based layout, Desktop: Table layout */}
+          <div className="lg:hidden space-y-6">
+            {comparisons.map((comparison, index) => {
+              const rowRef = useScrollAnimation();
+              return (
+                <div 
+                  key={index}
+                  ref={rowRef as any}
+                  className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden scroll-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="p-4 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-4 text-center">
+                      {serviceCategories[index]}
+                    </h3>
+                    
+                    <div className="space-y-4">
+                      {/* Typical Agency */}
+                      <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <comparison.typicalIcon className="w-4 h-4 text-red-400" />
+                          </div>
+                          <div>
+                            <p className="text-xs sm:text-sm text-red-300 font-medium mb-1">Typical Agencies</p>
+                            <p className="text-red-300 font-semibold text-sm sm:text-base">{comparison.typical}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* SparkG Media */}
+                      <div className="bg-[#9B7B0B]/10 rounded-xl p-4 border border-[#9B7B0B]/20">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-[#9B7B0B]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <comparison.sparkGIcon className="w-4 h-4 text-[#9B7B0B]" />
+                          </div>
+                          <div>
+                            <p className="text-xs sm:text-sm text-[#9B7B0B] font-medium mb-1">SparkG Media</p>
+                            <p className="text-[#9B7B0B] font-semibold text-sm sm:text-base">{comparison.sparkG}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop: Table Layout */}
+          <div className="hidden lg:block bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
             {/* Table Header */}
             <div className="grid grid-cols-3 bg-gradient-to-r from-gray-800 to-gray-900">
               <div className="p-6 text-center">
@@ -93,11 +151,7 @@ export default function CreativeComparison() {
                   {/* Service Category */}
                   <div className="p-6 flex items-center">
                     <div className="text-white font-semibold">
-                      {index === 0 && "Content Strategy"}
-                      {index === 1 && "Team Composition"}
-                      {index === 2 && "Content Approach"}
-                      {index === 3 && "Brand Positioning"}
-                      {index === 4 && "Service Model"}
+                      {serviceCategories[index]}
                     </div>
                   </div>
 
@@ -133,6 +187,16 @@ export default function CreativeComparison() {
                 Stop settling for typical. Start building something extraordinary.
               </p>
             </div>
+          </div>
+
+          {/* Mobile Footer */}
+          <div className="lg:hidden mt-8 bg-gradient-to-r from-[#9B7B0B]/10 to-[#9B7B0B]/5 p-6 sm:p-8 text-center rounded-2xl border border-[#9B7B0B]/20">
+            <p className="text-lg sm:text-xl font-bold text-white mb-2">
+              The Choice is Clear
+            </p>
+            <p className="text-gray-300 text-sm sm:text-base">
+              Stop settling for typical. Start building something extraordinary.
+            </p>
           </div>
         </div>
       </div>
