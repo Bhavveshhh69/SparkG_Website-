@@ -965,10 +965,368 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
 }
 
 function CaseStudyManager({ caseStudies, isLoading }: any) {
+  const [editingCaseStudy, setEditingCaseStudy] = useState<CaseStudy | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [content, setContent] = useState("");
+  const [results, setResults] = useState("");
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
+
+  const createCaseStudyMutation = useMutation({
+    mutationFn: (data: any) => apiRequest("POST", "/api/admin/case-studies", data),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/case-studies"] }),
+  });
+
+  const updateCaseStudyMutation = useMutation({
+    mutationFn: ({ id, data }: { id: string; data: any }) => 
+      apiRequest("PATCH", `/api/admin/case-studies/${id}`, data),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/case-studies"] }),
+  });
+
+  const deleteCaseStudyMutation = useMutation({
+    mutationFn: (id: string) => apiRequest("DELETE", `/api/admin/case-studies/${id}`),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/admin/case-studies"] }),
+  });
+
+  const caseStudySchema = z.object({
+    title: z.string().min(1, "Title is required"),
+    slug: z.string().min(1, "Slug is required"),
+    clientName: z.string().min(1, "Client name is required"),
+    industry: z.string().min(1, "Industry is required"),
+    summary: z.string().min(10, "Summary must be at least 10 characters"),
+    featuredImage: z.string().url().optional().or(z.literal("")),
+    isPublished: z.boolean().default(false),
+  });
+
+  const form = useForm({
+    resolver: zodResolver(caseStudySchema),
+    defaultValues: {
+      title: "",
+      slug: "",
+      clientName: "",
+      industry: "",
+      summary: "",
+      featuredImage: "",
+      isPublished: false,
+    },
+  });
+
+  const onSubmit = (data: any) => {
+    try {
+      const payload = {
+        ...data,
+        content: { html: content },
+        results: results ? JSON.parse(results) : null,
+      };
+
+      if (editingCaseStudy) {
+        updateCaseStudyMutation.mutate({ id: editingCaseStudy.id, data: payload });
+        toast({
+          title: "Success!",
+          description: "Case study updated successfully.",
+        });
+      } else {
+        createCaseStudyMutation.mutate(payload);
+        toast({
+          title: "Success!",
+          description: "Case study created successfully.",
+        });
+      }
+      setIsDialogOpen(false);
+      setEditingCaseStudy(null);
+      form.reset();
+      setContent("");
+      setResults("");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to save case study. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleEdit = (caseStudy: CaseStudy) => {
+    setEditingCaseStudy(caseStudy);
+    form.reset({
+      title: caseStudy.title,
+      slug: caseStudy.slug,
+      clientName: caseStudy.clientName,
+      industry: caseStudy.industry,
+      summary: caseStudy.summary,
+      featuredImage: caseStudy.featuredImage || "",
+      isPublished: caseStudy.isPublished,
+    });
+    setContent(typeof caseStudy.content === 'object' && caseStudy.content !== null ? 
+      (caseStudy.content as any).html || "" : String(caseStudy.content || ""));
+    setResults(caseStudy.results ? JSON.stringify(caseStudy.results, null, 2) : "");
+    setIsDialogOpen(true);
+  };
+
+  const handleDelete = (id: string, title: string) => {
+    if (window.confirm(`Are you sure you want to delete the case study "${title}"?`)) {
+      deleteCaseStudyMutation.mutate(id);
+      toast({
+        title: "Success!",
+        description: "Case study deleted successfully.",
+      });
+    }
+  };
+
+  const handleAdd = () => {
+    setEditingCaseStudy(null);
+    form.reset();
+    setContent("");
+    setResults("");
+    setIsDialogOpen(true);
+  };
+
+  const generateSlug = (title: string) => {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9 -]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .trim();
+  };
+
+  if (isLoading) {
+    return <div className="text-white">Loading case studies...</div>;
+  }
+
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-white">Case Study Manager</h2>
-      <p className="text-gray-300">Case study management coming soon...</p>
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold text-white">Case Study Manager</h2>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <Button onClick={handleAdd} className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90">
+              <Plus className="w-4 h-4 mr-2" />
+              Add Case Study
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="bg-sparkg-dark border-white/20 text-white max-w-4xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>
+                {editingCaseStudy ? "Edit Case Study" : "Add New Case Study"}
+              </DialogTitle>
+            </DialogHeader>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="title"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Title</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            className="bg-white/5 border-white/20"
+                            onChange={(e) => {
+                              field.onChange(e);
+                              form.setValue('slug', generateSlug(e.target.value));
+                            }}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="slug"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Slug (URL)</FormLabel>
+                        <FormControl>
+                          <Input {...field} className="bg-white/5 border-white/20" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="clientName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Client Name</FormLabel>
+                        <FormControl>
+                          <Input {...field} className="bg-white/5 border-white/20" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="industry"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Industry</FormLabel>
+                        <FormControl>
+                          <Input {...field} className="bg-white/5 border-white/20" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <FormField
+                  control={form.control}
+                  name="summary"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Summary</FormLabel>
+                      <FormControl>
+                        <Textarea {...field} className="bg-white/5 border-white/20 min-h-[80px]" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="featuredImage"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Featured Image URL</FormLabel>
+                      <FormControl>
+                        <Input {...field} className="bg-white/5 border-white/20" placeholder="https://..." />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Content (HTML Editor)</label>
+                  <Textarea
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    className="bg-white/5 border-white/20 text-white min-h-[300px] font-mono text-sm"
+                    placeholder="Write your case study content here... You can use HTML tags for formatting."
+                  />
+                  <p className="text-xs text-gray-400">
+                    You can use HTML tags like &lt;h2&gt;, &lt;p&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;img&gt; etc.
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-white">Results (JSON Format)</label>
+                  <Textarea
+                    value={results}
+                    onChange={(e) => setResults(e.target.value)}
+                    className="bg-white/5 border-white/20 text-white min-h-[100px] font-mono text-sm"
+                    placeholder='{"metric1": "300% increase", "metric2": "$2M generated"}'
+                  />
+                  <p className="text-xs text-gray-400">
+                    Enter results as JSON object, e.g., {`{"followers": "15K+", "revenue": "$500K"}`}
+                  </p>
+                </div>
+
+                <FormField
+                  control={form.control}
+                  name="isPublished"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border border-white/20 p-4">
+                      <div className="space-y-0.5">
+                        <FormLabel className="text-base">Published</FormLabel>
+                        <p className="text-sm text-gray-400">Make this case study visible to the public</p>
+                      </div>
+                      <FormControl>
+                        <Switch
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+
+                <div className="flex justify-end space-x-2">
+                  <Button 
+                    type="button" 
+                    variant="outline" 
+                    onClick={() => setIsDialogOpen(false)}
+                    className="border-white/20"
+                  >
+                    Cancel
+                  </Button>
+                  <Button type="submit" className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90">
+                    {editingCaseStudy ? "Update" : "Create"}
+                  </Button>
+                </div>
+              </form>
+            </Form>
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {caseStudies.map((caseStudy: CaseStudy) => (
+          <Card key={caseStudy.id} className="bg-white/5 border-white/10">
+            <CardContent className="p-6">
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex space-x-2">
+                  <Badge variant={caseStudy.isPublished ? "default" : "secondary"}>
+                    {caseStudy.isPublished ? "Published" : "Draft"}
+                  </Badge>
+                  <Badge variant="outline" className="border-[#9B7B0B]/30 text-[#9B7B0B]">
+                    {caseStudy.industry}
+                  </Badge>
+                </div>
+                <div className="flex space-x-2">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleEdit(caseStudy)}
+                    className="border-white/20"
+                  >
+                    <Edit className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleDelete(caseStudy.id, caseStudy.title)}
+                    className="border-red-500/20 text-red-400 hover:bg-red-500/10"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+              
+              {caseStudy.featuredImage && (
+                <div className="mb-4">
+                  <img 
+                    src={caseStudy.featuredImage} 
+                    alt={caseStudy.title}
+                    className="w-full h-32 object-cover rounded-lg"
+                  />
+                </div>
+              )}
+              
+              <h3 className="text-lg font-bold text-white mb-2">{caseStudy.title}</h3>
+              <p className="text-[#9B7B0B] text-sm mb-2">Client: {caseStudy.clientName}</p>
+              <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                {caseStudy.summary}
+              </p>
+              
+              <div className="text-xs text-gray-400">
+                <p>Slug: /{caseStudy.slug}</p>
+                <p>Updated: {new Date(caseStudy.updatedAt).toLocaleDateString()}</p>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
@@ -1044,54 +1402,17 @@ function LeadsManager({ newsletters, workshopRequests, contactForms }: any) {
 function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
   const [heroCtaUrl, setHeroCtaUrl] = useState("");
   const [headerCtaUrl, setHeaderCtaUrl] = useState("");
-  const { toast } = useToast();
 
   // Initialize values
   const heroSetting = settings.find((s: SiteSetting) => s.key === 'hero_cta_url');
   const headerSetting = settings.find((s: SiteSetting) => s.key === 'header_cta_url');
 
-  const isValidUrl = (url: string) => {
-    if (url.startsWith('/')) return true; // Internal path
-    try {
-      new URL(url);
-      return true;
-    } catch {
-      return false;
-    }
-  };
-
   const handleUpdateHeroCta = () => {
-    const url = heroCtaUrl || heroSetting?.value || "/about";
-    if (!isValidUrl(url)) {
-      toast({
-        title: "Invalid URL",
-        description: "Please enter a valid URL (starting with http://, https://, or /)",
-        variant: "destructive",
-      });
-      return;
-    }
-    onUpdate({ key: 'hero_cta_url', value: url });
-    toast({
-      title: "Success!",
-      description: "Hero CTA URL updated successfully.",
-    });
+    onUpdate({ key: 'hero_cta_url', value: heroCtaUrl });
   };
 
   const handleUpdateHeaderCta = () => {
-    const url = headerCtaUrl || headerSetting?.value || "/about";
-    if (!isValidUrl(url)) {
-      toast({
-        title: "Invalid URL",
-        description: "Please enter a valid URL (starting with http://, https://, or /)",
-        variant: "destructive",
-      });
-      return;
-    }
-    onUpdate({ key: 'header_cta_url', value: url });
-    toast({
-      title: "Success!",
-      description: "Header CTA URL updated successfully.",
-    });
+    onUpdate({ key: 'header_cta_url', value: headerCtaUrl });
   };
 
   return (
@@ -1106,15 +1427,12 @@ function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <label className="text-sm text-gray-300">Hero Section CTA URL</label>
-              <p className="text-xs text-gray-400 mb-2">
-                Use internal paths (e.g., /about) or external URLs (e.g., https://calendly.com/your-link)
-              </p>
               <div className="flex space-x-2">
                 <Input
                   value={heroCtaUrl || heroSetting?.value || "/about"}
                   onChange={(e) => setHeroCtaUrl(e.target.value)}
                   className="bg-white/5 border-white/20 text-white"
-                  placeholder="/about or https://calendly.com/your-link"
+                  placeholder="/about"
                 />
                 <Button 
                   onClick={handleUpdateHeroCta}
@@ -1127,15 +1445,12 @@ function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
             
             <div className="space-y-2">
               <label className="text-sm text-gray-300">Header Menu CTA URL</label>
-              <p className="text-xs text-gray-400 mb-2">
-                Use internal paths (e.g., /about) or external URLs (e.g., https://calendly.com/your-link)
-              </p>
               <div className="flex space-x-2">
                 <Input
                   value={headerCtaUrl || headerSetting?.value || "/about"}
                   onChange={(e) => setHeaderCtaUrl(e.target.value)}
                   className="bg-white/5 border-white/20 text-white"
-                  placeholder="/about or https://calendly.com/your-link"
+                  placeholder="/about"
                 />
                 <Button 
                   onClick={handleUpdateHeaderCta}
