@@ -2,11 +2,28 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useQuery } from "@tanstack/react-query";
+import type { SiteSetting } from "@shared/schema";
 
 export default function CTA() {
   const titleRef = useScrollAnimation();
   const transformRef = useScrollAnimation();
   const buttonsRef = useScrollAnimation();
+
+  // Get CTA URL from site settings
+  const { data: siteSettings = [] } = useQuery<SiteSetting[]>({
+    queryKey: ["/api/admin/site-settings"],
+  });
+
+  const heroCtaUrl = siteSettings.find(s => s.key === 'hero_cta_url')?.value || '/about';
+
+  const handleCtaClick = (e: React.MouseEvent) => {
+    // Check if it's an external URL
+    if (heroCtaUrl.startsWith('http://') || heroCtaUrl.startsWith('https://')) {
+      e.preventDefault();
+      window.open(heroCtaUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
   
   return (
     <section className="py-20 bg-gradient-to-br from-sparkg-black via-gray-900 to-sparkg-dark relative overflow-hidden">
@@ -40,7 +57,37 @@ export default function CTA() {
           </p>
           
           <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-6 justify-center items-center scroll-scale-in">
-            <Link href="/about">
+            {heroCtaUrl.startsWith('http://') || heroCtaUrl.startsWith('https://') ? (
+              <a href={heroCtaUrl} target="_blank" rel="noopener noreferrer">
+                <Button 
+                  size="lg"
+                  className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white font-bold px-10 py-4 text-lg rounded-full shadow-2xl hover:shadow-[#9B7B0B]/25 transform hover:scale-105 transition-all duration-300 group border-2 border-[#9B7B0B]"
+                >
+                  Book a Discovery Call
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </a>
+            ) : (
+              <Link href={heroCtaUrl}>
+                <Button 
+                  size="lg"
+                  className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white font-bold px-10 py-4 text-lg rounded-full shadow-2xl hover:shadow-[#9B7B0B]/25 transform hover:scale-105 transition-all duration-300 group border-2 border-[#9B7B0B]"
+                >
+                  Book a Discovery Call
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </Link>
+            )}
+          </div>
+          
+          <div className="mt-8 text-center">
+            <p className="text-[#9B7B0B] font-semibold">⚡ Limited availability for August onboarding</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
               <Button 
                 size="lg"
                 className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white font-bold px-10 py-4 text-lg rounded-full shadow-2xl hover:shadow-[#9B7B0B]/25 transform hover:scale-105 transition-all duration-300 group border-2 border-[#9B7B0B]"

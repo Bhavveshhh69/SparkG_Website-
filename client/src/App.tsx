@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Resources from "@/pages/resources";
+import CaseStudies from "@/pages/case-studies";
 
 import About from "@/pages/about";
 import Admin from "@/pages/admin";
@@ -16,6 +17,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/resources" component={Resources} />
+      <Route path="/case-studies" component={CaseStudies} />
       <Route path="/about" component={About} />
       <Route path="/admin" component={Admin} />
       <Route path="/sparkgadmin" component={SparkGAdmin} />

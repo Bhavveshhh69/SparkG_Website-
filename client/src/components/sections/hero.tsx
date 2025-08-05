@@ -1,11 +1,20 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useQuery } from "@tanstack/react-query";
+import type { SiteSetting } from "@shared/schema";
 
 export default function Hero() {
   const titleRef = useScrollAnimation();
   const subtitleRef = useScrollAnimation();
   const buttonsRef = useScrollAnimation();
+
+  // Get CTA URL from site settings
+  const { data: siteSettings = [] } = useQuery<SiteSetting[]>({
+    queryKey: ["/api/admin/site-settings"],
+  });
+
+  const heroCtaUrl = siteSettings.find(s => s.key === 'hero_cta_url')?.value || '/about';
   
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -35,7 +44,25 @@ export default function Hero() {
             </p>
             
             <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-6 justify-center items-center scroll-scale-in mb-16">
-              <Link href="/about">
+              {heroCtaUrl.startsWith('http://') || heroCtaUrl.startsWith('https://') ? (
+                <a href={heroCtaUrl} target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    size="lg"
+                    className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 transform hover:scale-105 transition-all duration-300 text-white font-bold px-10 py-4 text-lg shadow-2xl hover:shadow-[#9B7B0B]/25 rounded-full border-2 border-[#9B7B0B]"
+                  >
+                    Book Strategy Call
+                  </Button>
+                </a>
+              ) : (
+                <Link href={heroCtaUrl}>
+                  <Button 
+                    size="lg"
+                    className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 transform hover:scale-105 transition-all duration-300 text-white font-bold px-10 py-4 text-lg shadow-2xl hover:shadow-[#9B7B0B]/25 rounded-full border-2 border-[#9B7B0B]"
+                  >
+                    Book Strategy Call
+                  </Button>
+                </Link>
+              )}
                 <Button 
                   size="lg"
                   className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 transform hover:scale-105 transition-all duration-300 text-white font-bold px-10 py-4 text-lg shadow-2xl hover:shadow-[#9B7B0B]/25 rounded-full border-2 border-[#9B7B0B]"

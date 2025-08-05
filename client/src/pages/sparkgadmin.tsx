@@ -663,11 +663,303 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
 }
 
 function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }: any) {
-  // Similar implementation to TestimonialManager
+  const [editingResource, setEditingResource] = useState<Resource | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { toast } = useToast();
+
+  const form = useForm({
+    resolver: zodResolver(resourceSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+      fileUrl: "",
+      downloadUrl: "",
+      fileType: "",
+      fileSize: 0,
+      isActive: true,
+      isDirectUpload: true,
+    },
+  });
+
+  const onSubmit = (data: any) => {
+    try {
+      if (editingResource) {
+        onUpdate({ id: editingResource.id, data });
+        toast({
+          title: "Success!",
+          description: "Resource updated successfully.",
+        });
+      } else {
+        onCreate(data);
+        toast({
+          title: "Success!",
+          description: "Resource created successfully.",
+        });
+      }
+      setIsDialogOpen(false);
+      setEditingResource(null);
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to save resource. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleEdit = (resource: Resource) => {
+    setEditingResource(resource);
+    form.reset({
+      title: resource.title,
+      description: resource.description,
+      fileUrl: resource.fileUrl || "",
+      downloadUrl: resource.downloadUrl || "",
+      fileType: resource.fileType || "",
+      fileSize: resource.fileSize || 0,
+      isActive: resource.isActive,
+      isDirectUpload: resource.isDirectUpload,
+    });
+    setIsDialogOpen(true);
+  };
+
+  const handleDelete = (id: string, title: string) => {
+    if (window.confirm(`Are you sure you want to delete the resource "${title}"?`)) {
+      onDelete(id);
+      toast({
+        title: "Success!",
+        description: "Resource deleted successfully.",
+      });
+    }
+  };
+
+  const handleAdd = () => {
+    setEditingResource(null);
+    form.reset();
+    setIsDialogOpen(true);
+  };
+
+  if (isLoading) {
+    return <div className="text-white">Loading resources...</div>;
+  }
+
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-white">Resource Manager</h2>
-      <p className="text-gray-300">Resource management coming soon...</p>
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold text-white">Resources Manager</h2>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <Button onClick={handleAdd} className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90">
+              <Plus className="w-4 h-4 mr-2" />
+              Add Resource
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="bg-sparkg-dark border-white/20 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>
+                {editingResource ? "Edit Resource" : "Add New Resource"}
+              </DialogTitle>
+            </DialogHeader>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="title"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Title</FormLabel>
+                      <FormControl>
+                        <Input {...field} className="bg-white/5 border-white/20" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Description</FormLabel>
+                      <FormControl>
+                        <Textarea {...field} className="bg-white/5 border-white/20 min-h-[100px]" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="fileUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Cover Image URL</FormLabel>
+                      <FormControl>
+                        <Input {...field} className="bg-white/5 border-white/20" placeholder="https://..." />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="downloadUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Download File URL</FormLabel>
+                      <FormControl>
+                        <Input {...field} className="bg-white/5 border-white/20" placeholder="https://..." />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className="grid grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="fileType"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>File Type</FormLabel>
+                        <FormControl>
+                          <Input {...field} className="bg-white/5 border-white/20" placeholder="PDF, DOCX, etc." />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="fileSize"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>File Size (KB)</FormLabel>
+                        <FormControl>
+                          <Input 
+                            {...field} 
+                            type="number" 
+                            className="bg-white/5 border-white/20"
+                            onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="isActive"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-center justify-between rounded-lg border border-white/20 p-4">
+                        <div className="space-y-0.5">
+                          <FormLabel className="text-base">Active</FormLabel>
+                        </div>
+                        <FormControl>
+                          <Switch
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="isDirectUpload"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-row items-center justify-between rounded-lg border border-white/20 p-4">
+                        <div className="space-y-0.5">
+                          <FormLabel className="text-base">Direct Upload</FormLabel>
+                        </div>
+                        <FormControl>
+                          <Switch
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="flex justify-end space-x-2">
+                  <Button 
+                    type="button" 
+                    variant="outline" 
+                    onClick={() => setIsDialogOpen(false)}
+                    className="border-white/20"
+                  >
+                    Cancel
+                  </Button>
+                  <Button type="submit" className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90">
+                    {editingResource ? "Update" : "Create"}
+                  </Button>
+                </div>
+              </form>
+            </Form>
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {resources.map((resource: Resource) => (
+          <Card key={resource.id} className="bg-white/5 border-white/10">
+            <CardContent className="p-6">
+              <div className="flex justify-between items-start mb-4">
+                <Badge variant={resource.isActive ? "default" : "secondary"}>
+                  {resource.isActive ? "Active" : "Inactive"}
+                </Badge>
+                <div className="flex space-x-2">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleEdit(resource)}
+                    className="border-white/20"
+                  >
+                    <Edit className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleDelete(resource.id, resource.title)}
+                    className="border-red-500/20 text-red-400 hover:bg-red-500/10"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+              
+              {resource.fileUrl && (
+                <div className="mb-4">
+                  <img 
+                    src={resource.fileUrl} 
+                    alt={resource.title}
+                    className="w-full h-32 object-cover rounded-lg"
+                  />
+                </div>
+              )}
+              
+              <h3 className="text-lg font-bold text-white mb-2">{resource.title}</h3>
+              <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                {resource.description}
+              </p>
+              
+              <div className="space-y-2 text-xs text-gray-400">
+                {resource.fileType && (
+                  <p>Type: {resource.fileType}</p>
+                )}
+                {resource.fileSize && (
+                  <p>Size: {resource.fileSize} KB</p>
+                )}
+                {resource.downloadUrl && (
+                  <p className="text-[#9B7B0B]">Download Available</p>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
@@ -752,17 +1044,54 @@ function LeadsManager({ newsletters, workshopRequests, contactForms }: any) {
 function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
   const [heroCtaUrl, setHeroCtaUrl] = useState("");
   const [headerCtaUrl, setHeaderCtaUrl] = useState("");
+  const { toast } = useToast();
 
   // Initialize values
   const heroSetting = settings.find((s: SiteSetting) => s.key === 'hero_cta_url');
   const headerSetting = settings.find((s: SiteSetting) => s.key === 'header_cta_url');
 
+  const isValidUrl = (url: string) => {
+    if (url.startsWith('/')) return true; // Internal path
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   const handleUpdateHeroCta = () => {
-    onUpdate({ key: 'hero_cta_url', value: heroCtaUrl });
+    const url = heroCtaUrl || heroSetting?.value || "/about";
+    if (!isValidUrl(url)) {
+      toast({
+        title: "Invalid URL",
+        description: "Please enter a valid URL (starting with http://, https://, or /)",
+        variant: "destructive",
+      });
+      return;
+    }
+    onUpdate({ key: 'hero_cta_url', value: url });
+    toast({
+      title: "Success!",
+      description: "Hero CTA URL updated successfully.",
+    });
   };
 
   const handleUpdateHeaderCta = () => {
-    onUpdate({ key: 'header_cta_url', value: headerCtaUrl });
+    const url = headerCtaUrl || headerSetting?.value || "/about";
+    if (!isValidUrl(url)) {
+      toast({
+        title: "Invalid URL",
+        description: "Please enter a valid URL (starting with http://, https://, or /)",
+        variant: "destructive",
+      });
+      return;
+    }
+    onUpdate({ key: 'header_cta_url', value: url });
+    toast({
+      title: "Success!",
+      description: "Header CTA URL updated successfully.",
+    });
   };
 
   return (
@@ -777,12 +1106,15 @@ function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <label className="text-sm text-gray-300">Hero Section CTA URL</label>
+              <p className="text-xs text-gray-400 mb-2">
+                Use internal paths (e.g., /about) or external URLs (e.g., https://calendly.com/your-link)
+              </p>
               <div className="flex space-x-2">
                 <Input
                   value={heroCtaUrl || heroSetting?.value || "/about"}
                   onChange={(e) => setHeroCtaUrl(e.target.value)}
                   className="bg-white/5 border-white/20 text-white"
-                  placeholder="/about"
+                  placeholder="/about or https://calendly.com/your-link"
                 />
                 <Button 
                   onClick={handleUpdateHeroCta}
@@ -795,12 +1127,15 @@ function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
             
             <div className="space-y-2">
               <label className="text-sm text-gray-300">Header Menu CTA URL</label>
+              <p className="text-xs text-gray-400 mb-2">
+                Use internal paths (e.g., /about) or external URLs (e.g., https://calendly.com/your-link)
+              </p>
               <div className="flex space-x-2">
                 <Input
                   value={headerCtaUrl || headerSetting?.value || "/about"}
                   onChange={(e) => setHeaderCtaUrl(e.target.value)}
                   className="bg-white/5 border-white/20 text-white"
-                  placeholder="/about"
+                  placeholder="/about or https://calendly.com/your-link"
                 />
                 <Button 
                   onClick={handleUpdateHeaderCta}

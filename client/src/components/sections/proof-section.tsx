@@ -68,7 +68,7 @@ export default function ProofSection() {
 
         <div className="text-center">
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link href="/resources">
+            <Link href="/case-studies">
               <Button 
                 size="lg"
                 className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 transform hover:scale-105 transition-all duration-300 text-white font-bold px-10 py-4 text-lg shadow-2xl hover:shadow-[#9B7B0B]/25 rounded-full border-2 border-[#9B7B0B]"

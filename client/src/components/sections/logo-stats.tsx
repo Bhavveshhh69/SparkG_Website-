@@ -1,13 +1,32 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 
-// Logo components using React Icons
 import { SiSpotify } from "react-icons/si";
 import { SiApplepodcasts } from "react-icons/si";
 
 const logos = [
-  { icon: () => <span className="text-2xl font-bold text-blue-600">Forbes</span>, name: "Forbes", color: "text-blue-600" },
-  { icon: () => <span className="text-2xl font-bold text-green-600">Entrepreneur</span>, name: "Entrepreneur", color: "text-green-600" },
+  { 
+    icon: () => (
+      <div className="flex items-center justify-center">
+        <span className="text-3xl font-bold tracking-wider" style={{ fontFamily: 'serif', color: '#1a73e8' }}>
+          FORBES
+        </span>
+      </div>
+    ), 
+    name: "Forbes", 
+    color: "text-blue-600" 
+  },
+  { 
+    icon: () => (
+      <div className="flex items-center justify-center">
+        <span className="text-2xl font-bold tracking-wide" style={{ fontFamily: 'sans-serif', color: '#e31837' }}>
+          Entrepreneur
+        </span>
+      </div>
+    ), 
+    name: "Entrepreneur", 
+    color: "text-red-600" 
+  },
   { icon: SiSpotify, name: "Spotify", color: "text-green-500" },
   { icon: SiApplepodcasts, name: "Apple Podcasts", color: "text-gray-300" }
 ];
@@ -37,9 +56,9 @@ export default function LogoStats() {
             {logos.map((logo, index) => (
               <div 
                 key={index}
-                className="flex flex-col items-center group hover:scale-110 transition-transform duration-300"
+                className="flex flex-col items-center group hover:scale-110 transition-transform duration-300 min-h-[80px] justify-center"
               >
-                <div className="mb-2">
+                <div className="mb-2 flex items-center justify-center h-12">
                   <logo.icon className={`text-4xl md:text-5xl ${logo.color} group-hover:brightness-125 transition-all duration-300`} />
                 </div>
                 <span className="text-sm text-gray-400 font-medium">{logo.name}</span>

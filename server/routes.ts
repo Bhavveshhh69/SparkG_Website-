@@ -96,6 +96,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Public Resources
+  app.get("/api/resources", async (req, res) => {
+    try {
+      const resources = await storage.getPublicResources();
+      res.json(resources);
+    } catch (error) {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
+  // Public Case Studies
+  app.get("/api/case-studies", async (req, res) => {
+    try {
+      const caseStudies = await storage.getPublishedCaseStudies();
+      res.json(caseStudies);
+    } catch (error) {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
   // Admin Testimonials
   app.get("/api/admin/testimonials", async (req, res) => {
     try {
