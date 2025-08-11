@@ -42,6 +42,93 @@ const serviceCategories = [
   "Service Model"
 ];
 
+// New component for the animated mobile card
+function ComparisonCard({ comparison, service, index }: { comparison: any, service: string, index: number }) {
+  const ref = useScrollAnimation();
+  return (
+    <div 
+      ref={ref as any}
+      key={index}
+      className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden scroll-fade-in"
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      <div className="p-4 sm:p-6">
+        <h3 className="text-lg sm:text-xl font-bold text-white mb-4 text-center">
+          {service}
+        </h3>
+        
+        <div className="space-y-4">
+          {/* Typical Agency */}
+          <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <comparison.typicalIcon className="w-4 h-4 text-red-400" />
+              </div>
+              <div>
+                <p className="text-xs sm:text-sm text-red-300 font-medium mb-1">Typical Agencies</p>
+                <p className="text-red-300 font-semibold text-sm sm:text-base">{comparison.typical}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* SparkG Media */}
+          <div className="bg-[#9B7B0B]/10 rounded-xl p-4 border border-[#9B7B0B]/20">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-[#9B7B0B]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <comparison.sparkGIcon className="w-4 h-4 text-[#9B7B0B]" />
+              </div>
+              <div>
+                <p className="text-xs sm:text-sm text-[#9B7B0B] font-medium mb-1">SparkG Media</p>
+                <p className="text-[#9B7B0B] font-semibold text-sm sm:text-base">{comparison.sparkG}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// New component for the animated table row
+function ComparisonRow({ comparison, service, index }: { comparison: any, service: string, index: number }) {
+  const ref = useScrollAnimation();
+  return (
+    <div 
+      ref={ref as any}
+      key={index}
+      className="grid grid-cols-3 border-t border-white/10 hover:bg-white/5 transition-all duration-300 scroll-fade-in"
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      {/* Service Category */}
+      <div className="p-6 flex items-center">
+        <div className="text-white font-semibold">
+          {service}
+        </div>
+      </div>
+
+      {/* Typical Agency */}
+      <div className="p-6 border-x border-white/10 bg-red-500/5 flex items-center">
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <comparison.typicalIcon className="w-4 h-4 text-red-400" />
+          </div>
+          <p className="text-red-300 font-medium">{comparison.typical}</p>
+        </div>
+      </div>
+
+      {/* SparkG Media */}
+      <div className="p-6 bg-[#9B7B0B]/5 flex items-center">
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 bg-[#9B7B0B]/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <comparison.sparkGIcon className="w-4 h-4 text-[#9B7B0B]" />
+          </div>
+          <p className="text-[#9B7B0B] font-medium">{comparison.sparkG}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function CreativeComparison() {
   const titleRef = useScrollAnimation();
   
@@ -74,51 +161,9 @@ export default function CreativeComparison() {
         <div className="max-w-7xl mx-auto">
           {/* Mobile: Card-based layout, Desktop: Table layout */}
           <div className="lg:hidden space-y-6">
-            {comparisons.map((comparison, index) => {
-              const rowRef = useScrollAnimation();
-              return (
-                <div 
-                  key={index}
-                  ref={rowRef as any}
-                  className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden scroll-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="p-4 sm:p-6">
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-4 text-center">
-                      {serviceCategories[index]}
-                    </h3>
-                    
-                    <div className="space-y-4">
-                      {/* Typical Agency */}
-                      <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                            <comparison.typicalIcon className="w-4 h-4 text-red-400" />
-                          </div>
-                          <div>
-                            <p className="text-xs sm:text-sm text-red-300 font-medium mb-1">Typical Agencies</p>
-                            <p className="text-red-300 font-semibold text-sm sm:text-base">{comparison.typical}</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* SparkG Media */}
-                      <div className="bg-[#9B7B0B]/10 rounded-xl p-4 border border-[#9B7B0B]/20">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-[#9B7B0B]/20 rounded-full flex items-center justify-center flex-shrink-0">
-                            <comparison.sparkGIcon className="w-4 h-4 text-[#9B7B0B]" />
-                          </div>
-                          <div>
-                            <p className="text-xs sm:text-sm text-[#9B7B0B] font-medium mb-1">SparkG Media</p>
-                            <p className="text-[#9B7B0B] font-semibold text-sm sm:text-base">{comparison.sparkG}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {comparisons.map((comparison, index) => (
+              <ComparisonCard key={index} comparison={comparison} service={serviceCategories[index]} index={index} />
+            ))}
           </div>
 
           {/* Desktop: Table Layout */}
@@ -139,44 +184,9 @@ export default function CreativeComparison() {
             </div>
 
             {/* Comparison Rows */}
-            {comparisons.map((comparison, index) => {
-              const rowRef = useScrollAnimation();
-              return (
-                <div 
-                  key={index}
-                  ref={rowRef as any}
-                  className="grid grid-cols-3 border-t border-white/10 hover:bg-white/5 transition-all duration-300 scroll-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {/* Service Category */}
-                  <div className="p-6 flex items-center">
-                    <div className="text-white font-semibold">
-                      {serviceCategories[index]}
-                    </div>
-                  </div>
-
-                  {/* Typical Agency */}
-                  <div className="p-6 border-x border-white/10 bg-red-500/5 flex items-center">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <comparison.typicalIcon className="w-4 h-4 text-red-400" />
-                      </div>
-                      <p className="text-red-300 font-medium">{comparison.typical}</p>
-                    </div>
-                  </div>
-
-                  {/* SparkG Media */}
-                  <div className="p-6 bg-[#9B7B0B]/5 flex items-center">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-[#9B7B0B]/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <comparison.sparkGIcon className="w-4 h-4 text-[#9B7B0B]" />
-                      </div>
-                      <p className="text-[#9B7B0B] font-medium">{comparison.sparkG}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {comparisons.map((comparison, index) => (
+              <ComparisonRow key={index} comparison={comparison} service={serviceCategories[index]} index={index} />
+            ))}
 
             {/* Table Footer */}
             <div className="bg-gradient-to-r from-[#9B7B0B]/10 to-[#9B7B0B]/5 p-8 text-center border-t border-[#9B7B0B]/20">

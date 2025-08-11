@@ -8,6 +8,27 @@ const fitCriteria = [
   "You believe your personal brand is your most valuable asset"
 ];
 
+// New component for the animated item
+function FitCriterion({ criteria, index }: { criteria: string, index: number }) {
+  const ref = useScrollAnimation();
+  return (
+    <div 
+      ref={ref as any}
+      className="scroll-fade-in flex items-center p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
+      style={{ 
+        animationDelay: `${index * 0.1}s` 
+      }}
+    >
+      <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-[#9B7B0B] to-yellow-500 rounded-full flex items-center justify-center mr-4 sm:mr-6">
+        <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white font-bold" />
+      </div>
+      <p className="text-lg sm:text-xl text-gray-200 font-medium">
+        {criteria}
+      </p>
+    </div>
+  );
+}
+
 export default function ClientFit() {
   const titleRef = useScrollAnimation();
   
@@ -34,26 +55,9 @@ export default function ClientFit() {
 
         <div className="max-w-4xl mx-auto">
           <div className="grid gap-4 sm:gap-6">
-            {fitCriteria.map((criteria, index) => {
-              const itemRef = useScrollAnimation();
-              return (
-                <div 
-                  key={index}
-                  ref={itemRef as any}
-                  className="scroll-fade-in flex items-center p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300"
-                  style={{ 
-                    animationDelay: `${index * 0.1}s` 
-                  }}
-                >
-                  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-[#9B7B0B] to-yellow-500 rounded-full flex items-center justify-center mr-4 sm:mr-6">
-                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white font-bold" />
-                  </div>
-                  <p className="text-lg sm:text-xl text-gray-200 font-medium">
-                    {criteria}
-                  </p>
-                </div>
-              );
-            })}
+            {fitCriteria.map((criteria, index) => (
+              <FitCriterion key={index} criteria={criteria} index={index} />
+            ))}
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ export default function TestimonialsGrid() {
 
   // Filter active testimonials
   const activeTestimonials = testimonials.filter(t => t.isActive);
+  const testimonialsToRender = activeTestimonials.length > 0 ? activeTestimonials : testimonials;
 
   if (isLoading) {
     return (
@@ -65,18 +66,16 @@ export default function TestimonialsGrid() {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
-          {activeTestimonials.map((testimonial, index) => {
-            const cardRef = useScrollAnimation();
-            return (
+        {/* Dynamic Testimonials Grid */}
+        {testimonialsToRender.length > 0 ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {testimonialsToRender.map((testimonial, index) => (
               <Card 
                 key={testimonial.id}
-                ref={cardRef as any}
-                className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-[#9B7B0B]/50 transition-all duration-300 group scroll-fade-in"
+                className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-[#9B7B0B]/50 transition-all duration-300 group animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardContent className="p-6 sm:p-8">
+                <CardContent className="p-8">
                   {/* Star Rating */}
                   <div className="flex space-x-1 mb-4 sm:mb-6">
                     {[...Array(5)].map((_, i) => (
@@ -123,9 +122,14 @@ export default function TestimonialsGrid() {
                   </div>
                 </CardContent>
               </Card>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            <p className="text-xl text-gray-400">No testimonials available at the moment.</p>
+            <p className="text-gray-500 mt-2">Check back soon for amazing client stories!</p>
+          </div>
+        )}
 
         {/* Call to Action */}
         <div className="text-center mt-12 sm:mt-16">
