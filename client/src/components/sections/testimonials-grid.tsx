@@ -95,8 +95,13 @@ export default function TestimonialsGrid() {
                   <div className="flex items-center space-x-4">
                     {testimonial.image ? (
                       <img 
-                        src={testimonial.image} 
+                        src={testimonial.image}
                         alt={testimonial.name}
+                        loading="lazy"
+                        decoding="async"
+                        width={56}
+                        height={56}
+                        sizes="(max-width: 640px) 48px, (max-width: 1024px) 56px, 56px"
                         className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-[#9B7B0B]/30"
                       />
                     ) : (

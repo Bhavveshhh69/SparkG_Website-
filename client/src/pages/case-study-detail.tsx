@@ -110,8 +110,11 @@ export default function CaseStudyDetail() {
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto my-8">
                 <img 
-                  src={caseStudy.featuredImage} 
+                  src={caseStudy.featuredImage}
                   alt={caseStudy.title}
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 768px) 100vw, 768px"
                   className="w-full h-auto rounded-lg shadow-2xl"
                 />
               </div>

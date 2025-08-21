@@ -81,10 +81,24 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  // Dynamically load gzip compression only in production if available
+  // Do not fail if the dependency is missing in development
+  void import("compression").then((m) => {
+    const compression = m.default;
+    if (typeof compression === "function") {
+      app.use(compression());
+    }
+  }).catch(() => {
+    // no-op if compression is not installed
+  });
+
+  // Cache static assets aggressively via express.static options
+  app.use(express.static(distPath, { maxAge: "1y", immutable: true }));
 
   // fall through to index.html if the file doesn't exist
   app.use("*", (_req, res) => {
+    // Ensure index.html is not cached so new deployments are picked up
+    res.setHeader("Cache-Control", "no-cache");
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }

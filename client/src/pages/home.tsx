@@ -8,6 +8,7 @@ import CreativeComparison from "@/components/sections/creative-comparison";
 import ClientFit from "@/components/sections/client-fit";
 import CTA from "@/components/sections/cta";
 import Newsletter from "@/components/sections/newsletter-new";
+import SparkXtra from "@/components/sections/spark-xtra";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <Positioning />
         <HowItWorks />
+        <SparkXtra />
         <TestimonialsGrid />
         <CreativeComparison />
         <ClientFit />

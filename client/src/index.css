@@ -41,6 +41,7 @@
 @layer base {
   * {
     @apply border-border;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
@@ -81,6 +82,21 @@
   /* Smooth scrolling for better mobile experience */
   html {
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  img[loading="lazy"] {
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 150px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -351,3 +367,5 @@
     transform: scale(1);
   }
 }
+
+

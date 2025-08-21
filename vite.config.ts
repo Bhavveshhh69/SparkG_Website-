@@ -27,6 +27,18 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    target: "es2018",
+    sourcemap: false,
+    cssMinify: true,
+    assetsInlineLimit: 4096,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "wouter", "@tanstack/react-query"],
+        },
+      },
+    },
   },
   server: {
     fs: {

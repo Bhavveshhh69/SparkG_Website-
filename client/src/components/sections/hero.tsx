@@ -90,6 +90,8 @@ export default function Hero() {
                       <img 
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Forbes_logo.svg/1024px-Forbes_logo.svg.png" 
                         alt="Forbes" 
+                        loading="lazy"
+                        decoding="async"
                         className="h-4 sm:h-6 w-auto filter brightness-0 invert"
                       />
                     </div>
@@ -97,6 +99,8 @@ export default function Hero() {
                       <img 
                         src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Entrepreneur_logo.png" 
                         alt="Entrepreneur" 
+                        loading="lazy"
+                        decoding="async"
                         className="h-4 sm:h-6 w-auto filter brightness-0 invert"
                       />
                     </div>
