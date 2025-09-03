@@ -5,7 +5,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import type { SiteSetting } from "@shared/schema";
-import boltLogo from "@/assets/sparkg-bolt.svg";
+import boltLogo from "@/assets/sparkg-bolt.png";
+import fullLogo from "@/assets/sparkg-logo-with-text.png";
 
 export default function Header() {
   const [location] = useLocation();
@@ -26,14 +27,75 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/20">
-      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center mr-3 sm:mr-4">
-                <img src={boltLogo} alt="SparkG Logo" className="w-full h-full" />
+      {/* Mobile Menu - Absolute Left Corner of Header */}
+      <div className="md:hidden absolute left-2 top-1/2 transform -translate-y-1/2 z-10">
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="p-2 hover:bg-accent"
+              aria-label="Open menu"
+            >
+              <Menu className="h-6 w-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="bg-background border-border w-[280px] sm:w-[320px]">
+            <div className="flex items-center mt-4">
+              <div className="h-12 sm:h-14 flex items-center">
+                <img src={fullLogo} alt="SparkG Media Logo" className="max-h-full w-auto object-contain" />
               </div>
-              <span className="text-foreground font-bold text-lg sm:text-xl">SparkG Media</span>
+            </div>
+            <nav className="flex flex-col space-y-6 mt-8">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`text-lg transition-colors hover:text-primary py-2 ${
+                    location === item.href ? "text-foreground" : "text-muted-foreground"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <div className="flex flex-col space-y-4 pt-6 border-t border-border">
+                {location === "/about" ? (
+                  <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
+                      Book Your Strategy Call
+                    </Button>
+                  </a>
+                ) : (
+                  <Link href={headerCtaUrl} onClick={() => setIsOpen(false)}>
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
+                      Book Your Strategy Call
+                    </Button>
+                  </Link>
+                )}
+              </div>
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
+      
+      <div className="container mx-auto px-0 sm:px-6 py-6 sm:py-8">
+        <div className="flex items-center justify-between relative">
+          {/* Mobile Logo - Center */}
+          <div className="md:hidden absolute left-1/2 transform -translate-x-1/2">
+            <Link href="/" className="flex items-center">
+              <div className="h-10 flex items-center justify-center">
+                <img src={fullLogo} alt="SparkG Media Logo" className="max-h-full w-auto object-contain" />
+              </div>
+            </Link>
+          </div>
+          
+          {/* Desktop Logo and Navigation - Left Side */}
+          <div className="hidden md:flex items-center">
+            <Link href="/" className="flex items-center">
+              <div className="h-12 sm:h-14 md:h-16 flex items-center justify-center">
+                <img src={fullLogo} alt="SparkG Media Logo" className="max-h-full w-auto object-contain" />
+              </div>
             </Link>
             
             {/* Desktop Navigation */}
@@ -52,7 +114,7 @@ export default function Header() {
             </nav>
           </div>
           
-          {/* Desktop CTAs */}
+          {/* Desktop CTAs - Right Side */}
           <div className="hidden lg:flex items-center">
             {location === "/about" ? (
               <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">
@@ -68,55 +130,9 @@ export default function Header() {
               </Link>
             )}
           </div>
-
-          {/* Mobile Menu */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="md:hidden p-2 hover:bg-accent"
-                aria-label="Open menu"
-              >
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-background border-border w-[280px] sm:w-[320px]">
-              <div className="flex items-center mt-4">
-                <img src={boltLogo} alt="SparkG Logo" className="w-8 h-8 mr-3" />
-                <span className="text-foreground font-bold text-xl">SparkG Media</span>
-              </div>
-              <nav className="flex flex-col space-y-6 mt-8">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-lg transition-colors hover:text-primary py-2 ${
-                      location === item.href ? "text-foreground" : "text-muted-foreground"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                <div className="flex flex-col space-y-4 pt-6 border-t border-border">
-                  {location === "/about" ? (
-                    <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
-                      <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
-                        Book Your Strategy Call
-                      </Button>
-                    </a>
-                  ) : (
-                    <Link href={headerCtaUrl} onClick={() => setIsOpen(false)}>
-                      <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
-                        Book Your Strategy Call
-                      </Button>
-                    </Link>
-                  )}
-                </div>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          
+          {/* Mobile Spacer - Right Side to balance centered logo */}
+          <div className="md:hidden w-12"></div>
         </div>
       </div>
     </header>

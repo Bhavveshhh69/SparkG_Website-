@@ -5,7 +5,7 @@ import {
   Music, 
   Youtube
 } from "lucide-react";
-import boltLogo from "@/assets/sparkg-bolt.svg";
+import boltLogo from "@/assets/sparkg-bolt.png";
 
 export default function Footer() {
   const socialLinks = [
@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4 sm:mb-6">
               <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center mr-3 sm:mr-4">
-                <img src={boltLogo} alt="SparkG Logo" className="w-full h-full" />
+                <img src={boltLogo} alt="SparkG Logo" className="max-w-full max-h-full object-contain" />
               </div>
               <span className="text-xl sm:text-2xl font-bold text-foreground">SparkG Media</span>
             </div>
@@ -70,7 +70,7 @@ export default function Footer() {
         <div className="border-t border-border/20 pt-6 sm:pt-8 mt-8 sm:mt-12">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-2">
-              <img src={boltLogo} alt="SparkG Logo" className="w-4 h-4" />
+              <img src={boltLogo} alt="SparkG Logo" className="w-4 h-4 object-contain" />
               <p className="text-muted-foreground text-xs sm:text-sm text-center sm:text-left">
                 SparkG Media © 2025 | All Rights Reserved
               </p>

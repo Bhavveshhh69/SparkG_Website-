@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
 import { Link } from "wouter";
-import boltLogo from "@/assets/sparkg-bolt.svg";
+import boltLogo from "@/assets/sparkg-bolt.png";
 
 export default function NotFound() {
   return (

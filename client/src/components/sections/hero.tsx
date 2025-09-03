@@ -4,8 +4,8 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import { useQuery } from "@tanstack/react-query";
 import type { SiteSetting } from "@shared/schema";
-import boltLogo from "@/assets/sparkg-bolt.svg";
-import fullLogo from "@/assets/sparkg-logo-with-text.svg";
+import boltLogo from "@/assets/sparkg-bolt.png";
+import fullLogo from "@/assets/sparkg-logo-with-text.png";
 
 export default function Hero() {
   const titleRef = useScrollAnimation();
@@ -34,13 +34,13 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-primary/20 rounded-full blur-3xl animate-bounce opacity-30"></div>
       <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-80 sm:h-80 bg-primary/25 rounded-full blur-2xl animate-pulse opacity-30"></div>
       
-      <div className="container mx-auto px-4 sm:px-6 relative z-20">
+      <div className="container mx-auto px-2 sm:px-6 relative z-20">
         <div className="flex flex-col items-center text-center min-h-[80vh] justify-center">
-          <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8 px-2 sm:px-4">
+          <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8 px-1 sm:px-4">
             {/* Logo */}
             <div className="flex justify-center mb-6 sm:mb-8">
               <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center">
-                <img src={boltLogo} alt="SparkG Logo" className="w-full h-full" />
+                <img src={boltLogo} alt="SparkG Logo" className="max-w-full max-h-full object-contain" />
               </div>
             </div>
             
@@ -66,11 +66,11 @@ export default function Hero() {
             </h1>
             
             <div className="max-w-full mx-auto text-center">
-              <p ref={subtitleRef as any} className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-2 sm:mb-3 px-4 sm:px-0 inline-block">We build powerful thought leadership assets for founders, CEOs, and coaches and consultants</p>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-12 px-4 sm:px-0 block">so you become the authority in your space and attract every opportunity that matters.</p>
+              <p ref={subtitleRef as any} className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-2 sm:mb-3 px-1 sm:px-0 inline-block">We build powerful thought leadership assets for founders, CEOs, and coaches and consultants</p>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-12 px-1 sm:px-0 block">so you become the authority in your space and attract every opportunity that matters.</p>
             </div>
             
-            <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center scroll-scale-in mb-8 sm:mb-16 px-4 sm:px-0">
+            <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center scroll-scale-in mb-8 sm:mb-16 px-1 sm:px-0">
               {heroCtaUrl.startsWith('http://') || heroCtaUrl.startsWith('https://') ? (
                 <a href={heroCtaUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                   <Button 
@@ -102,8 +102,8 @@ export default function Hero() {
             </div>
 
             {/* Enhanced Trust Bar */}
-            <div className="max-w-6xl mx-auto text-center px-4 sm:px-0">
-              <div className="bg-card/5 backdrop-blur-md border border-primary/20 rounded-2xl p-4 sm:p-6 md:p-8 mb-8 shadow-2xl">
+            <div className="max-w-6xl mx-auto text-center px-1 sm:px-0">
+              <div className="bg-card/5 backdrop-blur-md border border-primary/20 rounded-2xl p-3 sm:p-6 md:p-8 mb-8 shadow-2xl">
                 <p className="text-foreground text-base sm:text-lg font-semibold mb-6 sm:mb-8">Trusted by 7-figure coaches, funded founders & elite consultants worldwide.</p>
                 
                 {/* Featured on section */}
@@ -112,26 +112,42 @@ export default function Hero() {
                     <span className="text-primary font-bold text-base sm:text-lg">Featured on</span>
                   </div>
                   <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-foreground font-medium">
-                    <div className="px-3 sm:px-4 py-2 bg-primary/10 rounded-full border border-primary/30 flex items-center gap-2 sm:gap-3">
+                    <div className="px-3 sm:px-4 py-2 bg-white rounded-full border border-primary/30 flex items-center gap-2 sm:gap-3">
                       <img 
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Forbes_logo.svg/1024px-Forbes_logo.svg.png" 
                         alt="Forbes" 
                         loading="lazy"
                         decoding="async"
-                        className="h-4 sm:h-6 w-auto filter brightness-0 invert"
+                        className="h-4 sm:h-5 w-auto"
                       />
                     </div>
-                    <div className="px-3 sm:px-4 py-2 bg-primary/10 rounded-full border border-primary/30 flex items-center gap-2 sm:gap-3">
+                    <div className="px-3 sm:px-4 py-2 bg-white rounded-full border border-primary/30 flex items-center gap-2 sm:gap-3">
                       <img 
-                        src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Entrepreneur_logo.png" 
+                        src="https://www.pngkey.com/png/full/123-1233159_entrepreneur-logo-png-transparent-entrepreneur-logo-png.png" 
                         alt="Entrepreneur" 
                         loading="lazy"
                         decoding="async"
-                        className="h-6 sm:h-8 w-auto filter brightness-0 invert"
+                        className="h-4 sm:h-5 w-auto"
                       />
                     </div>
-                    <span className="px-3 sm:px-4 py-2 bg-primary/10 rounded-full border border-primary/30 text-sm sm:text-base">Spotify</span>
-                    <span className="px-3 sm:px-4 py-2 bg-primary/10 rounded-full border border-primary/30 text-sm sm:text-base">Apple Podcasts</span>
+                    <div className="px-3 sm:px-4 py-2 bg-white rounded-full border border-primary/30 flex items-center gap-2 sm:gap-3">
+                      <img 
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Jh6oHK_PEs0lbxXc6IHrufjOplS_63uT8A&s" 
+                        alt="Spotify" 
+                        loading="lazy"
+                        decoding="async"
+                        className="h-4 sm:h-5 w-auto"
+                      />
+                    </div>
+                    <div className="px-3 sm:px-4 py-2 bg-white rounded-full border border-primary/30 flex items-center gap-2 sm:gap-3">
+                      <img 
+                        src="https://vectorseek.com/wp-content/uploads/2023/08/Apple-Podcasts-Logo-Vector.svg-.png" 
+                        alt="Apple Podcasts" 
+                        loading="lazy"
+                        decoding="async"
+                        className="h-4 sm:h-5 w-auto"
+                      />
+                    </div>
                   </div>
                 </div>
 
