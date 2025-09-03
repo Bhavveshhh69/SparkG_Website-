@@ -41,6 +41,7 @@ export default defineConfig({
     },
   },
   server: {
+    port: 10000,
     fs: {
       strict: true,
       deny: ["**/.*"],
