@@ -25,7 +25,7 @@ export default function Hero() {
   const heroCtaUrl = siteSettings.find(s => s.key === 'hero_cta_url')?.value || '/about';
   
   return (
-    <section className="relative min-h-screen flex items-center pt-16 sm:pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-24 sm:pt-28 md:pt-32 overflow-hidden">
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-background to-background/90"></div>
       <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-primary/10 animate-pulse"></div>

@@ -71,7 +71,7 @@ export default function Header() {
         </Sheet>
       </div>
       
-      <div className="container mx-auto px-0 sm:px-6 py-6 sm:py-8">
+      <div className="container mx-auto px-0 sm:px-6 py-4 sm:py-5">
         <div className="flex items-center justify-between relative">
           {/* Mobile Logo - Center */}
           <div className="md:hidden absolute left-1/2 transform -translate-x-1/2">
@@ -91,7 +91,7 @@ export default function Header() {
             </Link>
             
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-6 lg:space-x-8 ml-6 lg:ml-8">
+            <nav className="hidden md:flex space-x-6 lg:space-x-8 ml-8 lg:ml-12">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
