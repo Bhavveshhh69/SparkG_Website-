@@ -57,27 +57,15 @@ export default function CTA() {
           </p>
           
           <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center scroll-scale-in px-4 sm:px-0">
-            {heroCtaUrl.startsWith('http://') || heroCtaUrl.startsWith('https://') ? (
-              <a href={heroCtaUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                <Button 
-                  size="lg"
-                  className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300 group border-2 border-primary"
-                >
-                  Book a Discovery Call
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
-              </a>
-            ) : (
-              <Link href={heroCtaUrl} className="w-full sm:w-auto">
-                <Button 
-                  size="lg"
-                  className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300 group border-2 border-primary"
-                >
-                  Book a Discovery Call
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
-              </Link>
-            )}
+            <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <Button 
+                size="lg"
+                className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300 group border-2 border-primary"
+              >
+                Book Strategy Call
+                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </a>
           </div>
           
         </div>

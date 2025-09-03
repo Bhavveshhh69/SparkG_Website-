@@ -132,12 +132,12 @@ export default function CaseStudies() {
                     <p className="text-xl text-muted-foreground mb-8">
                       We're currently documenting our most impressive client transformations. Check back soon to see how we've helped businesses generate millions in opportunities through strategic personal branding.
                     </p>
-                    <Link href={headerCtaUrl}>
+                    <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">
                       <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                        Book Your Strategy Call
+                        Book Strategy Call
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
-                    </Link>
+                    </a>
                   </div>
                 </div>
             )}
@@ -153,15 +153,15 @@ export default function CaseStudies() {
             <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
               Join the ranks of successful entrepreneurs and professionals who've transformed their personal brands into powerful business assets.
             </p>
-            <Link href={headerCtaUrl}>
+            <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">
               <Button 
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-12 py-4 text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300"
               >
-                Book Your Strategy Call
+                Book Strategy Call
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-            </Link>
+            </a>
           </div>
         </section>
       </main>

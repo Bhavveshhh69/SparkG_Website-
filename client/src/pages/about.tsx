@@ -190,7 +190,7 @@ export default function About() {
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-12 py-4 text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300"
               >
-                Book Your Strategy Call
+                Book Strategy Call
               </Button>
             </a>
             <p className="text-primary font-semibold mt-6">⚡ Limited availability for August onboarding</p>

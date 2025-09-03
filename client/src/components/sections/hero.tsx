@@ -46,7 +46,7 @@ export default function Hero() {
             
             <h1 ref={titleRef as any} className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 sm:mb-8">
               <div className="hidden sm:block">
-                <span className="text-foreground inline-block">
+                <span className="text-foreground whitespace-nowrap">
                   <strong>You Don't Need More Content.</strong>
                 </span>
                 <span className="text-primary relative ml-2">
@@ -55,7 +55,7 @@ export default function Hero() {
                 </span>
               </div>
               <div className="block sm:hidden">
-                <span className="text-foreground block mb-2">
+                <span className="text-foreground whitespace-nowrap mb-2">
                   <strong>You Don't Need More Content.</strong>
                 </span>
                 <span className="text-primary relative block">
@@ -71,25 +71,14 @@ export default function Hero() {
             </div>
             
             <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center scroll-scale-in mb-8 sm:mb-16 px-1 sm:px-0">
-              {heroCtaUrl.startsWith('http://') || heroCtaUrl.startsWith('https://') ? (
-                <a href={heroCtaUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                  <Button 
-                    size="lg"
-                    className="w-full sm:w-auto bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300 text-primary-foreground font-bold px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-primary/25 rounded-full border-2 border-primary"
-                  >
-                    Book Strategy Call
-                  </Button>
-                </a>
-              ) : (
-                <Link href={heroCtaUrl} className="w-full sm:w-auto">
-                  <Button 
-                    size="lg"
-                    className="w-full sm:w-auto bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300 text-primary-foreground font-bold px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-primary/25 rounded-full border-2 border-primary"
-                  >
-                    Book Strategy Call
-                  </Button>
-                </Link>
-              )}
+              <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button 
+                  size="lg"
+                  className="w-full sm:w-auto bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300 text-primary-foreground font-bold px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg shadow-2xl hover:shadow-primary/25 rounded-full border-2 border-primary"
+                >
+                  Book Strategy Call
+                </Button>
+              </a>
               <Link href="/resources" className="w-full sm:w-auto">
                 <Button 
                   variant="outline" 

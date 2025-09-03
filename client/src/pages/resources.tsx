@@ -155,11 +155,11 @@ export default function Resources() {
             <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-4 sm:px-0">
               Get in touch with our team for personalized guidance and ongoing support to accelerate your personal brand growth.
             </p>
-            <Link href={headerCtaUrl}>
+            <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4">
-                Book Your Strategy Call
+                Book Strategy Call
               </Button>
-            </Link>
+            </a>
           </div>
         </section>
       </main>

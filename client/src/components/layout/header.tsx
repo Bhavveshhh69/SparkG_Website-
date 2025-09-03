@@ -60,19 +60,11 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex flex-col space-y-4 pt-6 border-t border-border">
-                {location === "/about" ? (
-                  <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
-                      Book Your Strategy Call
-                    </Button>
-                  </a>
-                ) : (
-                  <Link href={headerCtaUrl} onClick={() => setIsOpen(false)}>
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
-                      Book Your Strategy Call
-                    </Button>
-                  </Link>
-                )}
+                <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
+                    Book Strategy Call
+                  </Button>
+                </a>
               </div>
             </nav>
           </SheetContent>
@@ -116,19 +108,11 @@ export default function Header() {
           
           {/* Desktop CTAs - Right Side */}
           <div className="hidden lg:flex items-center">
-            {location === "/about" ? (
-              <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-4 py-2">
-                  Book Your Strategy Call
-                </Button>
-              </a>
-            ) : (
-              <Link href={headerCtaUrl}>
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-4 py-2">
-                  Book Your Strategy Call
-                </Button>
-              </Link>
-            )}
+            <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-4 py-2">
+                Book Strategy Call
+              </Button>
+            </a>
           </div>
           
           {/* Mobile Spacer - Right Side to balance centered logo */}

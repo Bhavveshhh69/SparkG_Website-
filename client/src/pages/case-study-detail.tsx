@@ -184,14 +184,14 @@ export default function CaseStudyDetail() {
             <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
               Let's discuss how we can transform your personal brand and generate similar success for your business.
             </p>
-            <Link href="/about">
+            <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">
               <Button 
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-12 py-4 text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300"
               >
-                Book Your Discovery Call
+                Book Strategy Call
               </Button>
-            </Link>
+            </a>
           </div>
         </section>
       </main>
