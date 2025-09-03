@@ -62,7 +62,7 @@ export default function WorkshopModal({ isOpen, onClose }: WorkshopModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-klowt-dark border-klowt-border text-white max-w-md">
+      <DialogContent className="bg-background border-border text-foreground max-w-md">
         <DialogHeader>
           <div className="flex justify-between items-center">
             <DialogTitle className="text-2xl font-bold">Book a Workshop</DialogTitle>
@@ -70,7 +70,7 @@ export default function WorkshopModal({ isOpen, onClose }: WorkshopModalProps) {
               variant="ghost"
               size="icon"
               onClick={onClose}
-              className="text-klowt-gray hover:text-white"
+              className="text-muted-foreground hover:text-foreground"
             >
               <X className="h-5 w-5" />
             </Button>
@@ -83,7 +83,7 @@ export default function WorkshopModal({ isOpen, onClose }: WorkshopModalProps) {
             placeholder="Company Name"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
-            className="bg-white/10 border-white/20 text-white placeholder-klowt-gray focus:border-klowt-pink"
+            className="bg-white/10 border-white/20 text-white placeholder-muted-foreground focus:border-primary"
             disabled={workshopMutation.isPending}
           />
           <Input
@@ -91,19 +91,19 @@ export default function WorkshopModal({ isOpen, onClose }: WorkshopModalProps) {
             placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="bg-white/10 border-white/20 text-white placeholder-klowt-gray focus:border-klowt-pink"
+            className="bg-white/10 border-white/20 text-white placeholder-muted-foreground focus:border-primary"
             disabled={workshopMutation.isPending}
           />
           <Textarea
             placeholder="Tell us about your workshop needs"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="bg-white/10 border-white/20 text-white placeholder-klowt-gray focus:border-klowt-pink h-24 resize-none"
+            className="bg-white/10 border-white/20 text-white placeholder-muted-foreground focus:border-primary h-24 resize-none"
             disabled={workshopMutation.isPending}
           />
           <Button
             type="submit"
-            className="w-full bg-klowt-pink hover:bg-klowt-pink/90"
+            className="w-full bg-primary hover:bg-primary/90"
             disabled={workshopMutation.isPending}
           >
             {workshopMutation.isPending ? "SUBMITTING..." : "SUBMIT REQUEST"}

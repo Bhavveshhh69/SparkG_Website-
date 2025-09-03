@@ -3,23 +3,23 @@ import { Button } from "@/components/ui/button";
 
 export default function CommunitySection() {
   return (
-    <section className="py-20 bg-klowt-blue/20">
+    <section className="py-20 bg-primary/20">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-5xl font-bold mb-6">
+            <h2 className="text-5xl font-bold mb-6 text-foreground">
               THE COMMUNITY
             </h2>
-            <h3 className="text-3xl text-klowt-gray mb-8">
-              get the clarity, consistency and content to grow <em className="text-klowt-pink not-italic">faster and strategically</em>.
+            <h3 className="text-3xl text-muted-foreground mb-8">
+              get the clarity, consistency and content to grow <em className="text-primary not-italic">faster and strategically</em>.
             </h3>
-            <p className="text-klowt-gray mb-8">
+            <p className="text-muted-foreground mb-8">
               Learn from the world's leading top voice on personal branding and join the most supportive community of founders, freelancers, and professionals who are building a predictable income stream simply by being themselves.
             </p>
             <Link href="/community">
               <Button 
                 size="lg"
-                className="bg-klowt-pink hover:bg-klowt-pink/90 transform hover:scale-105 transition-all"
+                className="bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all text-primary-foreground"
               >
                 GET STARTED →
               </Button>

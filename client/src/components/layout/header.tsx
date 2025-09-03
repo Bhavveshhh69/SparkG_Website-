@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import type { SiteSetting } from "@shared/schema";
+import boltLogo from "@/assets/sparkg-bolt.svg";
 
 export default function Header() {
   const [location] = useLocation();
@@ -24,15 +25,15 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-sparkg-dark/95 backdrop-blur-sm border-b border-sparkg-border/20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/20">
       <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-sparkg-gold rounded-sm flex items-center justify-center mr-3 sm:mr-4">
-                <span className="text-white font-bold text-base sm:text-lg">S</span>
+              <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center mr-3 sm:mr-4">
+                <img src={boltLogo} alt="SparkG Logo" className="w-full h-full" />
               </div>
-              <span className="text-white font-bold text-lg sm:text-xl">SparkG Media</span>
+              <span className="text-foreground font-bold text-lg sm:text-xl">SparkG Media</span>
             </Link>
             
             {/* Desktop Navigation */}
@@ -41,8 +42,8 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`transition-colors hover:text-sparkg-gold text-sm lg:text-base ${
-                    location === item.href ? "text-white" : "text-sparkg-gray"
+                  className={`transition-colors hover:text-primary text-sm lg:text-base ${
+                    location === item.href ? "text-foreground" : "text-muted-foreground"
                   }`}
                 >
                   {item.name}
@@ -52,12 +53,20 @@ export default function Header() {
           </div>
           
           {/* Desktop CTAs */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <Link href={headerCtaUrl}>
-              <Button className="bg-sparkg-gold hover:bg-sparkg-gold/90 text-black text-sm px-4 py-2">
-                Book Your Strategy Call
-              </Button>
-            </Link>
+          <div className="hidden lg:flex items-center">
+            {location === "/about" ? (
+              <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-4 py-2">
+                  Book Your Strategy Call
+                </Button>
+              </a>
+            ) : (
+              <Link href={headerCtaUrl}>
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-4 py-2">
+                  Book Your Strategy Call
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu */}
@@ -66,32 +75,44 @@ export default function Header() {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="md:hidden p-2 hover:bg-white/10"
+                className="md:hidden p-2 hover:bg-accent"
                 aria-label="Open menu"
               >
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-sparkg-dark border-sparkg-border w-[280px] sm:w-[320px]">
+            <SheetContent side="right" className="bg-background border-border w-[280px] sm:w-[320px]">
+              <div className="flex items-center mt-4">
+                <img src={boltLogo} alt="SparkG Logo" className="w-8 h-8 mr-3" />
+                <span className="text-foreground font-bold text-xl">SparkG Media</span>
+              </div>
               <nav className="flex flex-col space-y-6 mt-8">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`text-lg transition-colors hover:text-sparkg-gold py-2 ${
-                      location === item.href ? "text-white" : "text-sparkg-gray"
+                    className={`text-lg transition-colors hover:text-primary py-2 ${
+                      location === item.href ? "text-foreground" : "text-muted-foreground"
                     }`}
                   >
                     {item.name}
                   </Link>
                 ))}
-                <div className="flex flex-col space-y-4 pt-6 border-t border-white/10">
-                  <Link href={headerCtaUrl} onClick={() => setIsOpen(false)}>
-                    <Button className="w-full bg-sparkg-gold hover:bg-sparkg-gold/90 text-black py-3">
-                      Book Your Strategy Call
-                    </Button>
-                  </Link>  
+                <div className="flex flex-col space-y-4 pt-6 border-t border-border">
+                  {location === "/about" ? (
+                    <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+                      <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
+                        Book Your Strategy Call
+                      </Button>
+                    </a>
+                  ) : (
+                    <Link href={headerCtaUrl} onClick={() => setIsOpen(false)}>
+                      <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
+                        Book Your Strategy Call
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </nav>
             </SheetContent>

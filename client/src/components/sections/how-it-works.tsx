@@ -28,13 +28,13 @@ function HowItWorksStep({ step, index }: { step: any, index: number }) {
         // Mobile: left aligned, Desktop: center
         'absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2'
       } -translate-y-1/2 top-8 z-20`}>
-        <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center shadow-2xl border-4 border-sparkg-black`}>
-          <span className="text-white font-bold text-lg sm:text-xl">{step.number}</span>
+        <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center shadow-2xl border-4 border-background`}>
+          <span className="text-primary-foreground font-bold text-lg sm:text-xl">{step.number}</span>
         </div>
       </div>
 
       <Card 
-        className={`bg-white/5 backdrop-blur-sm border-white/10 hover:border-[#9B7B0B]/50 transition-all duration-500 hover:scale-105 group relative overflow-hidden ${
+        className={`bg-card/5 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-500 hover:scale-105 group relative overflow-hidden ${
           // Mobile: margin for number circle, Desktop: responsive margins
           'ml-20 sm:ml-24 md:ml-0'
         } ${
@@ -58,11 +58,11 @@ function HowItWorksStep({ step, index }: { step: any, index: number }) {
             // Mobile: left aligned, Desktop: responsive alignment
             'mb-4 sm:mb-6 md:' + (isEven ? 'ml-auto' : 'mr-auto')
           } rounded-2xl bg-gradient-to-r ${step.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-            <step.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+            <step.icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary-foreground" />
           </div>
           
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">{step.title}</h3>
-          <p className="text-gray-200 leading-relaxed text-sm sm:text-base">{step.description}</p>
+          <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">{step.title}</h3>
+          <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{step.description}</p>
         </CardContent>
       </Card>
     </div>
@@ -76,43 +76,43 @@ export default function HowItWorks() {
     {
       number: "1",
       title: "Magnetic Positioning",
-      description: "We identify what makes you powerful — and turn it into a market-dominating positioning.",
+      description: "We identify what makes you powerful and turn it into a market-dominating positioning.",
       icon: Target,
-      color: "from-emerald-500 to-teal-600"
+      color: "from-accent to-primary"
     },
     {
       number: "2", 
       title: "Premium Content Engine",
       description: "You show up. We do the rest. Includes short-form video, long-form repurposing, podcast invites, PR placements, and more.",
       icon: Zap,
-      color: "from-blue-500 to-purple-600"
+      color: "from-primary to-secondary"
     },
     {
       number: "3",
       title: "Legacy System Activation", 
-      description: "Your brand becomes a magnet for speaking gigs, followers, sales, media features — all driven by your unique digital presence.",
+      description: "Your brand becomes a magnet for speaking gigs, followers, sales, media features all driven by your unique digital presence.",
       icon: TrendingUp,
-      color: "from-[#9B7B0B] to-[#B8941A]"
+      color: "from-primary to-accent"
     }
   ];
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-sparkg-dark via-gray-900 to-sparkg-black relative overflow-hidden">
+    <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-background via-background/90 to-card/80 relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-20 right-10 w-48 h-48 sm:w-72 sm:h-72 bg-[#9B7B0B]/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-10 w-56 h-56 sm:w-80 sm:h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-10 w-48 h-48 sm:w-72 sm:h-72 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute bottom-20 left-10 w-56 h-56 sm:w-80 sm:h-80 bg-secondary/10 rounded-full blur-3xl opacity-30"></div>
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div ref={titleRef as any} className="text-center mb-16 sm:mb-20 scroll-fade-in">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
-            <span className="text-white">Done-For-You, But Built </span>
-            <span className="text-[#9B7B0B] relative font-extrabold">
-              <span className="absolute inset-0 bg-[#9B7B0B]/10 blur-lg rounded-lg"></span>
+            <span className="text-foreground">Done-For-You, But Built </span>
+            <span className="text-primary relative font-extrabold">
+              <span className="absolute inset-0 bg-primary/10 blur-lg rounded-lg"></span>
               <span className="relative">For You.</span>
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto px-4 sm:px-0">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0">
             Our 3-Step Framework transforms you from invisible to iconic
           </p>
         </div>
@@ -125,7 +125,7 @@ export default function HowItWorks() {
               <svg className="w-full h-full" viewBox="0 0 4 800" fill="none">
                 <path 
                   d="M2 0 L2 200 Q2 220 22 220 Q42 220 42 240 Q42 260 22 260 L2 260 L2 400 Q2 420 22 420 Q42 420 42 440 Q42 460 22 460 L2 460 L2 600 Q2 620 22 620 Q42 620 42 640 Q42 660 22 660 L2 660 L2 800" 
-                  stroke="#9B7B0B" 
+                  stroke="var(--primary)" 
                   strokeWidth="2" 
                   strokeDasharray="8,8"
                   opacity="0.6"

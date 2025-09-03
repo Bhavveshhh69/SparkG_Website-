@@ -18,7 +18,7 @@ export default function CaseStudyDetail() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-sparkg-dark">
+      <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-20">
           <div className="container mx-auto px-6 py-20 text-center">
@@ -32,13 +32,13 @@ export default function CaseStudyDetail() {
 
   if (error || !caseStudy) {
     return (
-      <div className="min-h-screen bg-sparkg-dark">
+      <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-20">
           <div className="container mx-auto px-6 py-20 text-center">
             <div className="text-white text-xl">Case study not found</div>
             <Link href="/case-studies">
-              <Button className="mt-4 bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white">
+              <Button className="mt-4 bg-primary hover:bg-primary/90 text-primary-foreground">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Case Studies
               </Button>
@@ -51,13 +51,13 @@ export default function CaseStudyDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-sparkg-dark">
+    <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-12 bg-gradient-to-br from-sparkg-dark via-gray-900 to-sparkg-black relative overflow-hidden">
+        <section className="py-12 bg-gradient-to-br from-background via-muted to-card relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#9B7B0B] rounded-full blur-3xl"></div>
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
           </div>
           
           <div className="container mx-auto px-6 relative z-10">
@@ -73,10 +73,10 @@ export default function CaseStudyDetail() {
             
             <div className="max-w-4xl">
               <div className="flex items-center space-x-4 mb-6">
-                <Badge className="bg-[#9B7B0B] text-white">
+                <Badge className="bg-primary text-primary-foreground">
                   {caseStudy.industry}
                 </Badge>
-                <div className="flex items-center text-gray-300 text-sm">
+                <div className="flex items-center text-muted-foreground text-sm">
                   <Calendar className="w-4 h-4 mr-1" />
                   {new Date(caseStudy.createdAt).toLocaleDateString('en-US', { 
                     year: 'numeric', 
@@ -86,18 +86,18 @@ export default function CaseStudyDetail() {
                 </div>
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-foreground leading-tight">
                 {caseStudy.title}
               </h1>
               
               <div className="flex items-center space-x-2 mb-6">
-                <Building className="w-5 h-5 text-[#9B7B0B]" />
-                <span className="text-xl text-gray-200">
+                <Building className="w-5 h-5 text-primary" />
+                <span className="text-xl text-muted-foreground">
                   <strong>Client:</strong> {caseStudy.clientName}
                 </span>
               </div>
               
-              <p className="text-xl text-gray-200 leading-relaxed">
+              <p className="text-xl text-muted-foreground leading-relaxed">
                 {caseStudy.summary}
               </p>
             </div>
@@ -127,18 +127,18 @@ export default function CaseStudyDetail() {
           <section className="py-16">
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto">
-                <div className="bg-[#9B7B0B]/10 rounded-lg border border-[#9B7B0B]/20 p-8">
+                <div className="bg-primary/10 rounded-lg border border-primary/20 p-8">
                   <div className="flex items-center space-x-2 mb-6">
-                    <TrendingUp className="w-6 h-6 text-[#9B7B0B]" />
-                    <h2 className="text-2xl font-bold text-[#9B7B0B]">Key Results</h2>
+                    <TrendingUp className="w-6 h-6 text-primary" />
+                    <h2 className="text-2xl font-bold text-primary">Key Results</h2>
                   </div>
-                  <div className="text-white">
+                  <div className="text-foreground">
                     {typeof caseStudy.results === 'object' && caseStudy.results !== null ? (
                       <div className="grid md:grid-cols-2 gap-6">
                         {Object.entries(caseStudy.results as Record<string, any>).map(([key, value]) => (
                           <div key={key} className="text-center p-4 bg-white/5 rounded-lg">
-                            <div className="text-3xl font-bold text-[#9B7B0B] mb-2">{String(value)}</div>
-                            <div className="text-gray-300 font-medium">{key}</div>
+                            <div className="text-3xl font-bold text-primary mb-2">{String(value)}</div>
+                            <div className="text-muted-foreground font-medium">{key}</div>
                           </div>
                         ))}
                       </div>
@@ -157,13 +157,13 @@ export default function CaseStudyDetail() {
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center space-x-2 mb-8">
-                <Target className="w-6 h-6 text-[#9B7B0B]" />
-                <h2 className="text-3xl font-bold text-white">The Full Story</h2>
+                <Target className="w-6 h-6 text-primary" />
+                <h2 className="text-3xl font-bold text-foreground">The Full Story</h2>
               </div>
               
               <div className="prose prose-lg prose-invert max-w-none">
                 <div 
-                  className="text-gray-200 leading-relaxed"
+                  className="text-muted-foreground leading-relaxed"
                   dangerouslySetInnerHTML={{ 
                     __html: typeof caseStudy.content === 'object' && caseStudy.content !== null 
                       ? (caseStudy.content as any).html || '' 
@@ -176,18 +176,18 @@ export default function CaseStudyDetail() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-[#9B7B0B]/10 via-sparkg-black to-gray-900">
+        <section className="py-20 bg-gradient-to-br from-primary/10 via-card to-muted">
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Ready for Similar Results?
             </h2>
-            <p className="text-xl text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
               Let's discuss how we can transform your personal brand and generate similar success for your business.
             </p>
             <Link href="/about">
               <Button 
                 size="lg"
-                className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90 text-white font-bold px-12 py-4 text-lg rounded-full shadow-2xl hover:shadow-[#9B7B0B]/25 transform hover:scale-105 transition-all duration-300"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-12 py-4 text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300"
               >
                 Book Your Discovery Call
               </Button>

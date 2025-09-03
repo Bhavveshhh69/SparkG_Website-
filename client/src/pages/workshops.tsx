@@ -95,24 +95,24 @@ export default function Workshops() {
   ];
 
   return (
-    <div className="min-h-screen bg-klowt-dark">
+    <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-klowt-dark via-klowt-blue/90 to-klowt-dark">
+        <section className="py-20 bg-gradient-to-r from-background via-primary/90 to-background">
           <div className="container mx-auto px-6 text-center">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               CORPORATE WORKSHOPS
             </h1>
-            <p className="text-2xl text-klowt-gray mb-8 max-w-3xl mx-auto">
-              turn your team into your most <em className="text-klowt-pink not-italic">powerful</em> brand asset.
+            <p className="text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              turn your team into your most <em className="text-primary not-italic">powerful</em> brand asset.
             </p>
-            <p className="text-lg text-klowt-gray max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               We work with ambitious founders, execs, and leadership teams to turn personal brands into powerful growth engines.
             </p>
             <Button 
               size="lg" 
-              className="bg-klowt-pink hover:bg-klowt-pink/90"
+              className="bg-primary hover:bg-primary/90"
               onClick={() => setIsModalOpen(true)}
             >
               BOOK A WORKSHOP →
@@ -128,18 +128,18 @@ export default function Workshops() {
             </h2>
             <div className="grid lg:grid-cols-3 gap-8">
               {workshopTypes.map((workshop, index) => (
-                <Card key={index} className="bg-klowt-blue/30 border-klowt-border/20 hover:border-klowt-pink/30 transition-colors">
+                <Card key={index} className="bg-card border-border hover:border-primary/30 transition-colors">
                   <CardContent className="p-8">
-                    <workshop.icon className="w-12 h-12 text-klowt-pink mb-4" />
-                    <h3 className="text-xl font-bold mb-2 text-white">{workshop.title}</h3>
-                    <div className="text-klowt-gray text-sm mb-4">
+                    <workshop.icon className="w-12 h-12 text-primary mb-4" />
+                    <h3 className="text-xl font-bold mb-2 text-foreground">{workshop.title}</h3>
+                    <div className="text-muted-foreground text-sm mb-4">
                       <p>{workshop.duration} • {workshop.participants}</p>
                     </div>
-                    <p className="text-klowt-gray mb-6">{workshop.description}</p>
+                    <p className="text-muted-foreground mb-6">{workshop.description}</p>
                     <ul className="space-y-2">
                       {workshop.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="text-klowt-gray text-sm flex items-center">
-                          <div className="w-2 h-2 bg-klowt-pink rounded-full mr-3 flex-shrink-0"></div>
+                        <li key={featureIndex} className="text-muted-foreground text-sm flex items-center">
+                          <div className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></div>
                           {feature}
                         </li>
                       ))}
@@ -152,7 +152,7 @@ export default function Workshops() {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-20 bg-klowt-blue/20">
+        <section className="py-20 bg-muted">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-16">
               Why Invest in Team Personal Branding?
@@ -160,10 +160,10 @@ export default function Workshops() {
             <div className="grid lg:grid-cols-2 gap-12">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start space-x-4">
-                  <Award className="w-8 h-8 text-klowt-pink flex-shrink-0 mt-1" />
+                  <Award className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-bold mb-2 text-white">{benefit.title}</h3>
-                    <p className="text-klowt-gray">{benefit.description}</p>
+                    <h3 className="text-xl font-bold mb-2 text-foreground">{benefit.title}</h3>
+                    <p className="text-muted-foreground">{benefit.description}</p>
                   </div>
                 </div>
               ))}
@@ -201,11 +201,11 @@ export default function Workshops() {
                 }
               ].map((process, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-klowt-pink rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold text-lg">{process.step}</span>
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-primary-foreground font-bold text-lg">{process.step}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">{process.title}</h3>
-                  <p className="text-klowt-gray">{process.description}</p>
+                  <h3 className="text-xl font-bold mb-2 text-foreground">{process.title}</h3>
+                  <p className="text-muted-foreground">{process.description}</p>
                 </div>
               ))}
             </div>
@@ -213,25 +213,25 @@ export default function Workshops() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-20 bg-klowt-blue/20">
+        <section className="py-20 bg-muted">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-16">
               What Our Clients Say
             </h2>
             <div className="grid lg:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
-                <Card key={index} className="bg-klowt-blue/30 border-klowt-border/20">
+                <Card key={index} className="bg-card border-border">
                   <CardContent className="p-8">
                     <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-klowt-pink rounded-full flex items-center justify-center mr-4">
-                        <span className="text-white font-bold">{testimonial.logo}</span>
+                      <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
+                        <span className="text-primary-foreground font-bold">{testimonial.logo}</span>
                       </div>
-                      <span className="text-white font-semibold">{testimonial.company}</span>
+                      <span className="text-foreground font-semibold">{testimonial.company}</span>
                     </div>
-                    <p className="text-klowt-gray mb-6 italic">"{testimonial.quote}"</p>
+                    <p className="text-muted-foreground mb-6 italic">"{testimonial.quote}"</p>
                     <div>
-                      <p className="font-semibold text-white">{testimonial.author}</p>
-                      <p className="text-klowt-gray text-sm">{testimonial.title}</p>
+                      <p className="font-semibold text-foreground">{testimonial.author}</p>
+                      <p className="text-muted-foreground text-sm">{testimonial.title}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -241,18 +241,18 @@ export default function Workshops() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-klowt-pink/20 to-purple-500/20">
+        <section className="py-20 bg-gradient-to-r from-primary/20 to-purple-500/20">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold mb-6">
               Ready to Empower Your Team?
             </h2>
-            <p className="text-lg text-klowt-gray mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Book a discovery call to discuss how we can help your team build powerful personal brands that drive business results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="bg-klowt-pink hover:bg-klowt-pink/90"
+                className="bg-primary hover:bg-primary/90"
                 onClick={() => setIsModalOpen(true)}
               >
                 BOOK A WORKSHOP
@@ -260,7 +260,7 @@ export default function Workshops() {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-white/30 text-white hover:bg-white/10"
+                className="border-border text-foreground hover:bg-muted"
                 onClick={() => setIsModalOpen(true)}
               >
                 SCHEDULE DISCOVERY CALL

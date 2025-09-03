@@ -28,11 +28,11 @@ export default function Resources() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-klowt-dark">
+      <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-16 sm:pt-20">
           <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
-            <div className="text-white text-lg sm:text-xl">Loading resources...</div>
+            <div className="text-foreground text-lg sm:text-xl">Loading resources...</div>
           </div>
         </main>
         <Footer />
@@ -41,19 +41,19 @@ export default function Resources() {
   }
 
   return (
-    <div className="min-h-screen bg-klowt-dark">
+    <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-16 sm:pt-20">
         {/* Hero Section */}
-        <section className="py-16 sm:py-20 bg-gradient-to-r from-klowt-dark via-klowt-blue/90 to-klowt-dark">
+        <section className="py-16 sm:py-20 bg-gradient-to-r from-background via-primary/90 to-background">
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
               THE RESOURCES
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-3xl mx-auto">
-              <em className="text-sparkg-gold not-italic">DIY</em> your personal brand growth with our most-loved tools, templates, and playbooks.
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto">
+              <em className="text-primary not-italic">DIY</em> your personal brand growth with our most-loved tools, templates, and playbooks.
             </p>
-            <p className="text-base sm:text-lg text-gray-200 max-w-2xl mx-auto px-4 sm:px-0">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
               Everything you need to build a personal brand that gets noticed, gets paid, and gets results.
             </p>
           </div>
@@ -65,21 +65,21 @@ export default function Resources() {
             {activeResources.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {activeResources.map((resource) => (
-                  <Card key={resource.id} className="bg-klowt-blue/30 border-klowt-border/20 overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
+                  <Card key={resource.id} className="bg-card border-border overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
                     {resource.fileUrl && (
                       <div className="h-40 sm:h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${resource.fileUrl}')` }}>
                         <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-                          <span className="bg-sparkg-gold text-white px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium">
+                          <span className="bg-primary text-primary-foreground px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium">
                             {resource.fileType || "RESOURCE"}
                           </span>
                         </div>
                       </div>
                     )}
                     <CardContent className="p-4 sm:p-6">
-                      <CardTitle className="text-lg sm:text-xl font-bold mb-2 text-white">{resource.title}</CardTitle>
-                      <p className="text-klowt-gray mb-4 sm:mb-6 text-sm sm:text-base">{resource.description}</p>
+                      <CardTitle className="text-lg sm:text-xl font-bold mb-2 text-foreground">{resource.title}</CardTitle>
+                      <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">{resource.description}</p>
                       <Button 
-                        className="w-full bg-sparkg-gold hover:bg-sparkg-gold/90 text-black font-medium text-sm sm:text-base"
+                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-sm sm:text-base"
                         onClick={() => handleDownload(resource)}
                         disabled={!resource.downloadUrl}
                       >
@@ -91,8 +91,6 @@ export default function Resources() {
               </div>
             ) : (
               <div className="text-center py-12 sm:py-16">
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">No Resources Available</h3>
-                <p className="text-gray-300 text-sm sm:text-base px-4 sm:px-0">Check back soon for amazing resources to help build your personal brand!</p>
               </div>
             )}
           </div>
@@ -123,19 +121,19 @@ export default function Resources() {
                     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
                   }
                 ].map((resource, index) => (
-                  <Card key={index} className="bg-klowt-blue/30 border-klowt-border/20 overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
+                  <Card key={index} className="bg-card border-border overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
                     <div className="h-40 sm:h-48 bg-cover bg-center relative" style={{ backgroundImage: `url('${resource.image}')` }}>
                       <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-                        <span className="bg-sparkg-gold text-white px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium">
+                        <span className="bg-primary text-primary-foreground px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium">
                           {resource.type}
                         </span>
                       </div>
                     </div>
                     <CardContent className="p-4 sm:p-6">
-                      <CardTitle className="text-lg sm:text-xl font-bold mb-2 text-white">{resource.title}</CardTitle>
-                      <p className="text-klowt-gray mb-4 sm:mb-6 text-sm sm:text-base">{resource.description}</p>
+                      <CardTitle className="text-lg sm:text-xl font-bold mb-2 text-foreground">{resource.title}</CardTitle>
+                      <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">{resource.description}</p>
                       <Button 
-                        className="w-full bg-sparkg-gold hover:bg-sparkg-gold/90 text-black font-medium text-sm sm:text-base"
+                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-sm sm:text-base"
                         disabled
                       >
                         COMING SOON
@@ -149,16 +147,16 @@ export default function Resources() {
         )}
 
         {/* CTA Section */}
-        <section className="py-16 sm:py-20 bg-klowt-blue/20">
+        <section className="py-16 sm:py-20 bg-muted">
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
-              Need More <em className="text-klowt-pink not-italic">Support</em>?
+              Need More <em className="text-primary not-italic">Support</em>?
             </h2>
-            <p className="text-base sm:text-lg text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 sm:px-0">
+            <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-4 sm:px-0">
               Get in touch with our team for personalized guidance and ongoing support to accelerate your personal brand growth.
             </p>
             <Link href={headerCtaUrl}>
-              <Button size="lg" className="bg-sparkg-gold hover:bg-sparkg-gold/90 text-black font-medium text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4">
                 Book Your Strategy Call
               </Button>
             </Link>

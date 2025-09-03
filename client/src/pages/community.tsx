@@ -92,22 +92,22 @@ export default function Community() {
   ];
 
   return (
-    <div className="min-h-screen bg-klowt-dark">
+    <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-r from-klowt-dark via-klowt-blue/90 to-klowt-dark">
+        <section className="py-20 bg-gradient-to-r from-background via-primary/90 to-background">
           <div className="container mx-auto px-6 text-center">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
               THE COMMUNITY
             </h1>
-            <p className="text-2xl text-klowt-gray mb-8 max-w-3xl mx-auto">
-              get the clarity, consistency and content to grow <em className="text-klowt-pink not-italic">faster and strategically</em>.
+            <p className="text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              get the clarity, consistency and content to grow <em className="text-primary not-italic">faster and strategically</em>.
             </p>
-            <p className="text-lg text-klowt-gray max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Learn from the world's leading experts on personal branding and join the most supportive community of founders, freelancers, and professionals.
             </p>
-            <Button size="lg" className="bg-klowt-pink hover:bg-klowt-pink/90">
+            <Button size="lg" className="bg-primary hover:bg-primary/90">
               JOIN THE COMMUNITY →
             </Button>
           </div>
@@ -121,11 +121,11 @@ export default function Community() {
             </h2>
             <div className="grid lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
-                <Card key={index} className="bg-klowt-blue/30 border-klowt-border/20 hover:border-klowt-pink/30 transition-colors">
+                <Card key={index} className="bg-card border-border hover:border-primary/30 transition-colors">
                   <CardContent className="p-8 text-center">
-                    <feature.icon className="w-12 h-12 text-klowt-pink mx-auto mb-4" />
-                    <h3 className="text-xl font-bold mb-4 text-white">{feature.title}</h3>
-                    <p className="text-klowt-gray">{feature.description}</p>
+                    <feature.icon className="w-12 h-12 text-primary mx-auto mb-4" />
+                    <h3 className="text-xl font-bold mb-4 text-foreground">{feature.title}</h3>
+                    <p className="text-muted-foreground">{feature.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -134,38 +134,38 @@ export default function Community() {
         </section>
 
         {/* Pricing Section */}
-        <section className="py-20 bg-klowt-blue/20">
+        <section className="py-20 bg-muted">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-16">
               Choose Your Plan
             </h2>
             <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {pricingPlans.map((plan, index) => (
-                <Card key={index} className={`bg-klowt-blue/30 border-klowt-border/20 relative ${plan.popular ? 'border-klowt-pink' : ''}`}>
+                <Card key={index} className={`bg-card border-border relative ${plan.popular ? 'border-primary' : ''}`}>
                   {plan.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-klowt-pink text-white px-4 py-2 rounded-full text-sm font-medium">
+                      <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium">
                         MOST POPULAR
                       </span>
                     </div>
                   )}
                   <CardContent className="p-8">
                     <div className="text-center mb-8">
-                      <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                      <div className="text-4xl font-bold text-klowt-pink mb-2">
-                        {plan.price}<span className="text-lg text-klowt-gray">{plan.period}</span>
+                      <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
+                      <div className="text-4xl font-bold text-primary mb-2">
+                        {plan.price}<span className="text-lg text-muted-foreground">{plan.period}</span>
                       </div>
                     </div>
                     <ul className="space-y-4 mb-8">
                       {plan.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-center">
                           <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                          <span className="text-klowt-gray">{feature}</span>
+                          <span className="text-muted-foreground">{feature}</span>
                         </li>
                       ))}
                     </ul>
                     <Button 
-                      className={`w-full ${plan.popular ? 'bg-klowt-pink hover:bg-klowt-pink/90' : 'border-white/30 text-white hover:bg-white/10'}`}
+                      className={`w-full ${plan.popular ? 'bg-primary hover:bg-primary/90' : 'border-border text-foreground hover:bg-muted'}`}
                       variant={plan.popular ? 'default' : 'outline'}
                     >
                       GET STARTED
@@ -185,9 +185,9 @@ export default function Community() {
             </h2>
             <div className="grid lg:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
-                <Card key={index} className="bg-klowt-blue/30 border-klowt-border/20">
+                <Card key={index} className="bg-card border-border">
                   <CardContent className="p-8">
-                    <p className="text-klowt-gray mb-6 italic">"{testimonial.quote}"</p>
+                    <p className="text-muted-foreground mb-6 italic">"{testimonial.quote}"</p>
                     <div className="flex items-center">
                       <img 
                         src={testimonial.avatar} 
@@ -195,8 +195,8 @@ export default function Community() {
                         className="w-12 h-12 rounded-full mr-4"
                       />
                       <div>
-                        <p className="font-semibold text-white">{testimonial.name}</p>
-                        <p className="text-klowt-gray text-sm">{testimonial.title}, {testimonial.company}</p>
+                        <p className="font-semibold text-foreground">{testimonial.name}</p>
+                        <p className="text-muted-foreground text-sm">{testimonial.title}, {testimonial.company}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -207,15 +207,15 @@ export default function Community() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-klowt-pink/20 to-purple-500/20">
+        <section className="py-20 bg-gradient-to-r from-primary/20 to-purple-500/20">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold mb-6">
               Ready to Transform Your Personal Brand?
             </h2>
-            <p className="text-lg text-klowt-gray mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join thousands of successful entrepreneurs and professionals who are building profitable personal brands.
             </p>
-            <Button size="lg" className="bg-klowt-pink hover:bg-klowt-pink/90">
+            <Button size="lg" className="bg-primary hover:bg-primary/90">
               START YOUR JOURNEY TODAY →
             </Button>
           </div>

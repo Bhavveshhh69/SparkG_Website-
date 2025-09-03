@@ -116,23 +116,23 @@ export default function Admin() {
 
   if (newslettersLoading || workshopsLoading || contactsLoading) {
     return (
-      <div className="min-h-screen bg-sparkg-dark flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-white text-xl">Loading admin dashboard...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-sparkg-dark">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-white mb-2">SparkG Media Admin Dashboard</h1>
-            <p className="text-sparkg-gray">Manage your platform and track engagement</p>
+            <p className="text-muted-foreground">Manage your platform and track engagement</p>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-sparkg-gold rounded-sm flex items-center justify-center">
+            <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
               <span className="text-white font-bold text-lg">S</span>
             </div>
             <span className="text-white font-semibold">Admin Panel</span>
@@ -142,14 +142,14 @@ export default function Admin() {
         {/* Stats Overview */}
         <div className="grid lg:grid-cols-4 gap-6 mb-8">
           {stats.map((stat, index) => (
-            <Card key={index} className="bg-sparkg-black/30 border-sparkg-border/20">
+            <Card key={index} className="bg-card/30 border-border/20">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sparkg-gray text-sm font-medium">{stat.title}</p>
+                    <p className="text-muted-foreground text-sm font-medium">{stat.title}</p>
                     <p className="text-3xl font-bold text-white">{stat.value}</p>
                   </div>
-                  <stat.icon className="w-8 h-8 text-sparkg-gold" />
+                  <stat.icon className="w-8 h-8 text-primary" />
                 </div>
                 <p className="text-green-500 text-xs mt-2">{stat.change}</p>
               </CardContent>
@@ -159,17 +159,17 @@ export default function Admin() {
 
         {/* Main Content */}
         <Tabs value={selectedTab} onValueChange={setSelectedTab} className="space-y-6">
-          <TabsList className="bg-sparkg-black/30 border-sparkg-border/20">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-sparkg-gold">
+          <TabsList className="bg-card/30 border-border/20">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-primary">
               Overview
             </TabsTrigger>
-            <TabsTrigger value="newsletters" className="data-[state=active]:bg-sparkg-gold">
+            <TabsTrigger value="newsletters" className="data-[state=active]:bg-primary">
               Newsletter Subscribers
             </TabsTrigger>
-            <TabsTrigger value="workshops" className="data-[state=active]:bg-sparkg-gold">
+            <TabsTrigger value="workshops" className="data-[state=active]:bg-primary">
               Workshop Requests
             </TabsTrigger>
-            <TabsTrigger value="contacts" className="data-[state=active]:bg-sparkg-gold">
+            <TabsTrigger value="contacts" className="data-[state=active]:bg-primary">
               Contact Forms
             </TabsTrigger>
           </TabsList>
@@ -177,7 +177,7 @@ export default function Admin() {
           <TabsContent value="overview" className="space-y-6">
             <div className="grid lg:grid-cols-2 gap-6">
               {/* Recent Newsletter Signups */}
-              <Card className="bg-sparkg-black/30 border-sparkg-border/20">
+              <Card className="bg-card/30 border-border/20">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center">
                     <Mail className="w-5 h-5 mr-2" />
@@ -187,12 +187,12 @@ export default function Admin() {
                 <CardContent>
                   <div className="space-y-3">
                     {newsletters.slice(0, 5).map((newsletter) => (
-                      <div key={newsletter.id} className="flex items-center justify-between p-3 bg-sparkg-dark/50 rounded-lg">
+                      <div key={newsletter.id} className="flex items-center justify-between p-3 bg-background/50 rounded-lg">
                         <div>
                           <p className="text-white font-medium">{newsletter.name}</p>
-                          <p className="text-sparkg-gray text-sm">{newsletter.email}</p>
+                          <p className="text-muted-foreground text-sm">{newsletter.email}</p>
                         </div>
-                        <Badge variant="secondary" className="bg-green-500/20 text-green-400">
+                        <Badge variant="secondary" className="bg-primary/20 text-primary">
                           {formatDate(newsletter.createdAt)}
                         </Badge>
                       </div>
@@ -202,7 +202,7 @@ export default function Admin() {
               </Card>
 
               {/* Recent Workshop Requests */}
-              <Card className="bg-sparkg-black/30 border-sparkg-border/20">
+              <Card className="bg-card/30 border-border/20">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center">
                     <Building className="w-5 h-5 mr-2" />
@@ -212,12 +212,12 @@ export default function Admin() {
                 <CardContent>
                   <div className="space-y-3">
                     {workshopRequests.slice(0, 5).map((request) => (
-                      <div key={request.id} className="flex items-center justify-between p-3 bg-sparkg-dark/50 rounded-lg">
+                      <div key={request.id} className="flex items-center justify-between p-3 bg-background/50 rounded-lg">
                         <div>
                           <p className="text-white font-medium">{request.companyName}</p>
-                          <p className="text-sparkg-gray text-sm">{request.email}</p>
+                          <p className="text-muted-foreground text-sm">{request.email}</p>
                         </div>
-                        <Badge variant="secondary" className="bg-sparkg-gold/20 text-sparkg-gold">
+                        <Badge variant="secondary" className="bg-primary/20 text-primary">
                           {formatDate(request.createdAt)}
                         </Badge>
                       </div>
@@ -229,13 +229,13 @@ export default function Admin() {
           </TabsContent>
 
           <TabsContent value="newsletters">
-            <Card className="bg-sparkg-black/30 border-sparkg-border/20">
+            <Card className="bg-card/30 border-border/20">
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="text-white">Newsletter Subscribers ({newsletters.length})</CardTitle>
                 <Button 
                   onClick={exportNewsletters}
                   disabled={newsletters.length === 0}
-                  className="bg-sparkg-gold hover:bg-sparkg-gold/90"
+                  className="bg-primary hover:bg-primary/90"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Export CSV
@@ -244,25 +244,25 @@ export default function Admin() {
               <CardContent>
                 <div className="space-y-3">
                   {newsletters.map((newsletter) => (
-                    <div key={newsletter.id} className="flex items-center justify-between p-4 bg-sparkg-dark/50 rounded-lg">
+                    <div key={newsletter.id} className="flex items-center justify-between p-4 bg-background/50 rounded-lg">
                       <div className="flex items-center space-x-4">
-                        <Users className="w-8 h-8 text-sparkg-gold" />
+                        <Users className="w-8 h-8 text-primary" />
                         <div>
                           <p className="text-white font-medium">{newsletter.name}</p>
-                          <p className="text-sparkg-gray">{newsletter.email}</p>
+                          <p className="text-muted-foreground">{newsletter.email}</p>
                         </div>
                       </div>
                       <div className="text-right">
-                        <Badge variant="secondary" className="bg-green-500/20 text-green-400">
+                        <Badge variant="secondary" className="bg-primary/20 text-primary">
                           Subscribed
                         </Badge>
-                        <p className="text-sparkg-gray text-sm mt-1">{formatDate(newsletter.createdAt)}</p>
+                        <p className="text-muted-foreground text-sm mt-1">{formatDate(newsletter.createdAt)}</p>
                       </div>
                     </div>
                   ))}
                   {newsletters.length === 0 && (
                     <div className="text-center py-8">
-                      <p className="text-sparkg-gray">No newsletter subscribers yet</p>
+                      <p className="text-muted-foreground">No newsletter subscribers yet</p>
                     </div>
                   )}
                 </div>
@@ -271,13 +271,13 @@ export default function Admin() {
           </TabsContent>
 
           <TabsContent value="workshops">
-            <Card className="bg-sparkg-black/30 border-sparkg-border/20">
+            <Card className="bg-card/30 border-border/20">
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="text-white">Workshop Requests ({workshopRequests.length})</CardTitle>
                 <Button 
                   onClick={exportWorkshops}
                   disabled={workshopRequests.length === 0}
-                  className="bg-sparkg-gold hover:bg-sparkg-gold/90"
+                  className="bg-primary hover:bg-primary/90"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Export CSV
@@ -286,24 +286,24 @@ export default function Admin() {
               <CardContent>
                 <div className="space-y-4">
                   {workshopRequests.map((request) => (
-                    <div key={request.id} className="p-4 bg-sparkg-dark/50 rounded-lg">
+                    <div key={request.id} className="p-4 bg-background/50 rounded-lg">
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center space-x-3">
-                          <Building className="w-8 h-8 text-sparkg-gold" />
+                          <Building className="w-8 h-8 text-primary" />
                           <div>
                             <p className="text-white font-medium">{request.companyName}</p>
-                            <p className="text-sparkg-gray">{request.email}</p>
+                            <p className="text-muted-foreground">{request.email}</p>
                           </div>
                         </div>
-                        <Badge variant="secondary" className="bg-sparkg-gold/20 text-sparkg-gold">
+                        <Badge variant="secondary" className="bg-primary/20 text-primary">
                           {formatDate(request.createdAt)}
                         </Badge>
                       </div>
                       <div className="ml-11">
-                        <p className="text-sparkg-gray text-sm mb-3">
+                        <p className="text-muted-foreground text-sm mb-3">
                           <strong>Message:</strong>
                         </p>
-                        <p className="text-white bg-sparkg-black/20 p-3 rounded text-sm">
+                        <p className="text-foreground bg-card/20 p-3 rounded text-sm">
                           {request.message}
                         </p>
                       </div>
@@ -311,7 +311,7 @@ export default function Admin() {
                   ))}
                   {workshopRequests.length === 0 && (
                     <div className="text-center py-8">
-                      <p className="text-sparkg-gray">No workshop requests yet</p>
+                      <p className="text-muted-foreground">No workshop requests yet</p>
                     </div>
                   )}
                 </div>
@@ -320,13 +320,13 @@ export default function Admin() {
           </TabsContent>
 
           <TabsContent value="contacts">
-            <Card className="bg-sparkg-black/30 border-sparkg-border/20">
+            <Card className="bg-card/30 border-border/20">
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="text-white">Contact Forms ({contactForms.length})</CardTitle>
                 <Button 
                   onClick={exportContacts}
                   disabled={contactForms.length === 0}
-                  className="bg-sparkg-gold hover:bg-sparkg-gold/90"
+                  className="bg-primary hover:bg-primary/90"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Export CSV
@@ -335,22 +335,22 @@ export default function Admin() {
               <CardContent>
                 <div className="space-y-4">
                   {contactForms.map((contact) => (
-                    <div key={contact.id} className="p-4 bg-sparkg-dark/50 rounded-lg">
+                    <div key={contact.id} className="p-4 bg-background/50 rounded-lg">
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center space-x-3">
-                          <MessageSquare className="w-8 h-8 text-sparkg-gold" />
+                          <MessageSquare className="w-8 h-8 text-primary" />
                           <div>
                             <p className="text-white font-medium">{contact.name}</p>
-                            <p className="text-sparkg-gray">{contact.email}</p>
-                            <p className="text-sparkg-gold text-sm">{contact.subject}</p>
+                            <p className="text-muted-foreground">{contact.email}</p>
+                            <p className="text-primary text-sm">{contact.subject}</p>
                           </div>
                         </div>
-                        <Badge variant="secondary" className="bg-blue-500/20 text-blue-400">
+                        <Badge variant="secondary" className="bg-primary/20 text-primary">
                           {formatDate(contact.createdAt)}
                         </Badge>
                       </div>
                       <div className="ml-11">
-                        <p className="text-white bg-sparkg-black/20 p-3 rounded text-sm">
+                        <p className="text-white bg-card/20 p-3 rounded text-sm">
                           {contact.message}
                         </p>
                       </div>
@@ -358,7 +358,7 @@ export default function Admin() {
                   ))}
                   {contactForms.length === 0 && (
                     <div className="text-center py-8">
-                      <p className="text-sparkg-gray">No contact forms yet</p>
+                      <p className="text-muted-foreground">No contact forms yet</p>
                     </div>
                   )}
                 </div>

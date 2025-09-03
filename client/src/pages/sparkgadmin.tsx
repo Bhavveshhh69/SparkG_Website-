@@ -153,25 +153,25 @@ export default function SparkGAdmin() {
   const headerCtaUrl = siteSettings.find(s => s.key === 'header_cta_url')?.value || '/about';
 
   return (
-    <div className="min-h-screen bg-sparkg-dark p-6">
+    <div className="min-h-screen bg-background p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">SparkG Media Dashboard</h1>
-          <p className="text-gray-300">Powerful control center for your premium thought leadership agency</p>
+          <h1 className="text-4xl font-bold text-foreground mb-2">SparkG Media Dashboard</h1>
+          <p className="text-muted-foreground">Powerful control center for your premium thought leadership agency</p>
         </div>
 
         {/* Overview Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="bg-gradient-to-br from-[#9B7B0B]/20 to-yellow-500/10 border-[#9B7B0B]/30">
+          <Card className="bg-gradient-to-br from-primary/20 to-yellow-500/10 border-primary/30">
             <CardContent className="p-6">
               <div className="flex items-center space-x-4">
-                <div className="p-3 bg-[#9B7B0B]/20 rounded-lg">
-                  <Users className="w-6 h-6 text-[#9B7B0B]" />
+                <div className="p-3 bg-primary/20 rounded-lg">
+                  <Users className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-white">{totalEngagement}</p>
-                  <p className="text-gray-300 text-sm">Total Leads</p>
+                  <p className="text-2xl font-bold text-foreground">{totalEngagement}</p>
+                  <p className="text-muted-foreground text-sm">Total Leads</p>
                 </div>
               </div>
             </CardContent>
@@ -184,8 +184,8 @@ export default function SparkGAdmin() {
                   <Star className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-white">{activeTestimonials}</p>
-                  <p className="text-gray-300 text-sm">Active Testimonials</p>
+                  <p className="text-2xl font-bold text-foreground">{activeTestimonials}</p>
+                  <p className="text-muted-foreground text-sm">Active Testimonials</p>
                 </div>
               </div>
             </CardContent>
@@ -198,8 +198,8 @@ export default function SparkGAdmin() {
                   <FileText className="w-6 h-6 text-green-500" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-white">{activeResources}</p>
-                  <p className="text-gray-300 text-sm">Active Resources</p>
+                  <p className="text-2xl font-bold text-foreground">{activeResources}</p>
+                  <p className="text-muted-foreground text-sm">Active Resources</p>
                 </div>
               </div>
             </CardContent>
@@ -212,8 +212,8 @@ export default function SparkGAdmin() {
                   <BookOpen className="w-6 h-6 text-purple-500" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-white">{publishedCaseStudies}</p>
-                  <p className="text-gray-300 text-sm">Published Case Studies</p>
+                  <p className="text-2xl font-bold text-foreground">{publishedCaseStudies}</p>
+                  <p className="text-muted-foreground text-sm">Published Case Studies</p>
                 </div>
               </div>
             </CardContent>
@@ -222,28 +222,28 @@ export default function SparkGAdmin() {
 
         {/* Main Tabs */}
         <Tabs value={selectedTab} onValueChange={setSelectedTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6 bg-white/5 border border-white/10">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-[#9B7B0B]">
+          <TabsList className="grid w-full grid-cols-6 bg-card border border-border">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-primary">
               <BarChart3 className="w-4 h-4 mr-2" />
               Overview
             </TabsTrigger>
-            <TabsTrigger value="testimonials" className="data-[state=active]:bg-[#9B7B0B]">
+            <TabsTrigger value="testimonials" className="data-[state=active]:bg-primary">
               <MessageSquare className="w-4 h-4 mr-2" />
               Testimonials
             </TabsTrigger>
-            <TabsTrigger value="resources" className="data-[state=active]:bg-[#9B7B0B]">
+            <TabsTrigger value="resources" className="data-[state=active]:bg-primary">
               <FileText className="w-4 h-4 mr-2" />
               Resources
             </TabsTrigger>
-            <TabsTrigger value="case-studies" className="data-[state=active]:bg-[#9B7B0B]">
+            <TabsTrigger value="case-studies" className="data-[state=active]:bg-primary">
               <BookOpen className="w-4 h-4 mr-2" />
               Case Studies
             </TabsTrigger>
-            <TabsTrigger value="leads" className="data-[state=active]:bg-[#9B7B0B]">
+            <TabsTrigger value="leads" className="data-[state=active]:bg-primary">
               <Users className="w-4 h-4 mr-2" />
               Leads
             </TabsTrigger>
-            <TabsTrigger value="settings" className="data-[state=active]:bg-[#9B7B0B]">
+            <TabsTrigger value="settings" className="data-[state=active]:bg-primary">
               <Settings className="w-4 h-4 mr-2" />
               Settings
             </TabsTrigger>
@@ -252,66 +252,66 @@ export default function SparkGAdmin() {
           {/* Overview Tab */}
           <TabsContent value="overview" className="space-y-6">
             <div className="grid lg:grid-cols-2 gap-6">
-              <Card className="bg-white/5 border-white/10">
+              <Card className="bg-card border-border">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center">
-                    <TrendingUp className="w-5 h-5 mr-2 text-[#9B7B0B]" />
+                  <CardTitle className="text-foreground flex items-center">
+                    <TrendingUp className="w-5 h-5 mr-2 text-primary" />
                     Recent Activity
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
-                    <span className="text-gray-300">Newsletter Subscribers</span>
+                  <div className="flex items-center justify-between p-3 bg-card/50 rounded-lg">
+                    <span className="text-muted-foreground">Newsletter Subscribers</span>
                     <Badge variant="secondary">{newsletters.length}</Badge>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
-                    <span className="text-gray-300">Workshop Requests</span>
+                  <div className="flex items-center justify-between p-3 bg-card/50 rounded-lg">
+                    <span className="text-muted-foreground">Workshop Requests</span>
                     <Badge variant="secondary">{workshopRequests.length}</Badge>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
-                    <span className="text-gray-300">Contact Forms</span>
+                  <div className="flex items-center justify-between p-3 bg-card/50 rounded-lg">
+                    <span className="text-muted-foreground">Contact Forms</span>
                     <Badge variant="secondary">{contactForms.length}</Badge>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/5 border-white/10">
+              <Card className="bg-card border-border">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center">
-                    <Settings className="w-5 h-5 mr-2 text-[#9B7B0B]" />
+                  <CardTitle className="text-foreground flex items-center">
+                    <Settings className="w-5 h-5 mr-2 text-primary" />
                     Quick Settings
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <label className="text-sm text-gray-300">Hero CTA URL</label>
+                    <label className="text-sm text-muted-foreground">Hero CTA URL</label>
                     <div className="flex space-x-2">
                       <Input 
                         value={heroCtaUrl} 
-                        className="bg-white/5 border-white/20 text-white"
+                        className="bg-card border-border text-foreground"
                         readOnly
                       />
                       <Button 
                         size="sm" 
                         onClick={() => setSelectedTab("settings")}
-                        className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90"
+                        className="bg-primary hover:bg-primary/90"
                       >
                         Edit
                       </Button>
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm text-gray-300">Header CTA URL</label>
+                    <label className="text-sm text-muted-foreground">Header CTA URL</label>
                     <div className="flex space-x-2">
                       <Input 
                         value={headerCtaUrl} 
-                        className="bg-white/5 border-white/20 text-white"
+                        className="bg-card border-border text-foreground"
                         readOnly
                       />
                       <Button 
                         size="sm" 
                         onClick={() => setSelectedTab("settings")}
-                        className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90"
+                        className="bg-primary hover:bg-primary/90"
                       >
                         Edit
                       </Button>
@@ -460,12 +460,12 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
         <h2 className="text-2xl font-bold text-white">Testimonials Manager</h2>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button onClick={handleAdd} className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90">
+            <Button onClick={handleAdd} className="bg-primary hover:bg-primary/90">
               <Plus className="w-4 h-4 mr-2" />
               Add Testimonial
             </Button>
           </DialogTrigger>
-          <DialogContent className="bg-sparkg-dark border-white/20 text-white max-w-2xl">
+          <DialogContent className="bg-background border-border text-foreground max-w-2xl">
             <DialogHeader>
               <DialogTitle>
                 {editingTestimonial ? "Edit Testimonial" : "Add New Testimonial"}
@@ -586,7 +586,7 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
                   >
                     Cancel
                   </Button>
-                  <Button type="submit" className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90">
+                  <Button type="submit" className="bg-primary hover:bg-primary/90">
                     {editingTestimonial ? "Update" : "Create"}
                   </Button>
                 </div>
@@ -626,7 +626,7 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
               
               <div className="flex mb-4">
                 {[...Array(testimonial.rating || 5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#9B7B0B] text-[#9B7B0B]" />
+                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                 ))}
               </div>
               
@@ -644,7 +644,7 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
                 )}
                 <div>
                   <p className="text-white font-semibold text-sm">{testimonial.name}</p>
-                  <p className="text-[#9B7B0B] text-xs">{testimonial.title} at {testimonial.company}</p>
+                  <p className="text-primary text-xs">{testimonial.title} at {testimonial.company}</p>
                 </div>
               </div>
             </CardContent>
@@ -740,12 +740,12 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
         <h2 className="text-2xl font-bold text-white">Resources Manager</h2>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button onClick={handleAdd} className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90">
+            <Button onClick={handleAdd} className="bg-primary hover:bg-primary/90">
               <Plus className="w-4 h-4 mr-2" />
               Add Resource
             </Button>
           </DialogTrigger>
-          <DialogContent className="bg-sparkg-dark border-white/20 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="bg-background border-border text-foreground max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>
                 {editingResource ? "Edit Resource" : "Add New Resource"}
@@ -868,7 +868,7 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
                   >
                     Cancel
                   </Button>
-                  <Button type="submit" className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90">
+                  <Button type="submit" className="bg-primary hover:bg-primary/90">
                     {editingResource ? "Update" : "Create"}
                   </Button>
                 </div>
@@ -929,7 +929,7 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
                   <p>Size: {resource.fileSize} KB</p>
                 )}
                 {resource.downloadUrl && (
-                  <p className="text-[#9B7B0B]">Download Available</p>
+                  <p className="text-primary">Download Available</p>
                 )}
               </div>
             </CardContent>
@@ -1076,12 +1076,12 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
         <h2 className="text-2xl font-bold text-white">Case Study Manager</h2>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button onClick={handleAdd} className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90">
+            <Button onClick={handleAdd} className="bg-primary hover:bg-primary/90">
               <Plus className="w-4 h-4 mr-2" />
               Add Case Study
             </Button>
           </DialogTrigger>
-          <DialogContent className="bg-sparkg-dark border-white/20 text-white max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="bg-background border-border text-foreground max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>
                 {editingCaseStudy ? "Edit Case Study" : "Add New Case Study"}
@@ -1240,7 +1240,7 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
                   >
                     Cancel
                   </Button>
-                  <Button type="submit" className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90">
+                  <Button type="submit" className="bg-primary hover:bg-primary/90">
                     {editingCaseStudy ? "Update" : "Create"}
                   </Button>
                 </div>
@@ -1259,7 +1259,7 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
                   <Badge variant={caseStudy.isPublished ? "default" : "secondary"}>
                     {caseStudy.isPublished ? "Published" : "Draft"}
                   </Badge>
-                  <Badge variant="outline" className="border-[#9B7B0B]/30 text-[#9B7B0B]">
+                  <Badge variant="outline" className="border-primary/30 text-primary">
                     {caseStudy.industry}
                   </Badge>
                 </div>
@@ -1294,7 +1294,7 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
               )}
               
               <h3 className="text-lg font-bold text-white mb-2">{caseStudy.title}</h3>
-              <p className="text-[#9B7B0B] text-sm mb-2">Client: {caseStudy.clientName}</p>
+              <p className="text-primary text-sm mb-2">Client: {caseStudy.clientName}</p>
               <p className="text-gray-300 text-sm mb-4 line-clamp-3">
                 {caseStudy.summary}
               </p>
@@ -1416,7 +1416,7 @@ function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
                 />
                 <Button 
                   onClick={handleUpdateHeroCta}
-                  className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90"
+                  className="bg-primary hover:bg-primary/90"
                 >
                   Update
                 </Button>
@@ -1434,7 +1434,7 @@ function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
                 />
                 <Button 
                   onClick={handleUpdateHeaderCta}
-                  className="bg-[#9B7B0B] hover:bg-[#9B7B0B]/90"
+                  className="bg-primary hover:bg-primary/90"
                 >
                   Update
                 </Button>
@@ -1452,7 +1452,7 @@ function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
               {settings.map((setting: SiteSetting) => (
                 <div key={setting.id} className="flex justify-between items-center p-3 bg-white/5 rounded">
                   <span className="text-gray-300 text-sm">{setting.key}</span>
-                  <code className="text-[#9B7B0B] text-sm bg-white/10 px-2 py-1 rounded">
+                  <code className="text-primary text-sm bg-white/10 px-2 py-1 rounded">
                     {setting.value}
                   </code>
                 </div>

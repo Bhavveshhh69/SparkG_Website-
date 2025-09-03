@@ -28,23 +28,23 @@ export default function EventsCarousel() {
   ];
 
   return (
-    <section className="py-20 bg-klowt-dark">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-16">EVENT REPLAYS</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 text-foreground">EVENT REPLAYS</h2>
         
         <div className="overflow-hidden">
           <div className="flex space-x-6 animate-scroll">
             {/* Original events */}
             {events.map((event, index) => (
-              <div key={index} className="flex-shrink-0 w-80 bg-klowt-blue/30 rounded-2xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
+              <div key={index} className="flex-shrink-0 w-80 bg-primary/30 rounded-2xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
                 <div 
                   className="h-48 bg-cover bg-center" 
                   style={{ backgroundImage: `url('${event.image}')` }}
                 />
                 <div className="p-6">
-                  <h3 className="text-lg font-bold mb-2">{event.title}</h3>
-                  <p className="text-klowt-gray text-sm mb-4">Hosted by {event.host}</p>
-                  <button className="text-klowt-pink font-medium hover:underline">
+                  <h3 className="text-lg font-bold mb-2 text-foreground">{event.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">Hosted by {event.host}</p>
+                  <button className="text-primary font-medium hover:underline">
                     WATCH THE REPLAY →
                   </button>
                 </div>
@@ -52,15 +52,15 @@ export default function EventsCarousel() {
             ))}
             {/* Duplicate for infinite scroll */}
             {events.map((event, index) => (
-              <div key={`duplicate-${index}`} className="flex-shrink-0 w-80 bg-klowt-blue/30 rounded-2xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
+              <div key={`duplicate-${index}`} className="flex-shrink-0 w-80 bg-primary/30 rounded-2xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300">
                 <div 
                   className="h-48 bg-cover bg-center" 
                   style={{ backgroundImage: `url('${event.image}')` }}
                 />
                 <div className="p-6">
-                  <h3 className="text-lg font-bold mb-2">{event.title}</h3>
-                  <p className="text-klowt-gray text-sm mb-4">Hosted by {event.host}</p>
-                  <button className="text-klowt-pink font-medium hover:underline">
+                  <h3 className="text-lg font-bold mb-2 text-foreground">{event.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">Hosted by {event.host}</p>
+                  <button className="text-primary font-medium hover:underline">
                     WATCH THE REPLAY →
                   </button>
                 </div>
