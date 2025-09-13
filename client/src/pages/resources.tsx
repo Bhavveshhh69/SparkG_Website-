@@ -28,11 +28,11 @@ export default function Resources() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-[100dvh] bg-background">
         <Header />
-        <main className="pt-16 sm:pt-20">
-          <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
-            <div className="text-foreground text-lg sm:text-xl">Loading resources...</div>
+        <main className="pt-16 sm:pt-20 center-all">
+          <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 center-content">
+            <div className="text-foreground text-lg sm:text-xl center-text">Loading resources...</div>
           </div>
         </main>
         <Footer />
@@ -41,26 +41,26 @@ export default function Resources() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-[100dvh] bg-background">
       <Header />
       <main className="pt-16 sm:pt-20">
         {/* Hero Section */}
-        <section className="py-16 sm:py-20 bg-gradient-to-r from-background via-primary/90 to-background">
-          <div className="container mx-auto px-4 sm:px-6 text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
+        <section className="py-12 sm:py-16 bg-gradient-to-r from-background via-primary/90 to-background center-all">
+          <div className="container mx-auto px-4 sm:px-6 center-content">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 center-text">
               THE RESOURCES
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl center-block">
               <em className="text-primary not-italic">DIY</em> your personal brand growth with our most-loved tools, templates, and playbooks.
             </p>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl center-block px-4 sm:px-0">
               Everything you need to build a personal brand that gets noticed, gets paid, and gets results.
             </p>
           </div>
         </section>
 
         {/* Resources Grid */}
-        <section className="py-16 sm:py-20">
+        <section className="py-8 sm:py-10">
           <div className="container mx-auto px-4 sm:px-6">
             {activeResources.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -90,15 +90,14 @@ export default function Resources() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 sm:py-16">
-              </div>
+              <></>
             )}
           </div>
         </section>
 
         {/* Fallback Resources Grid - Show if no database resources */}
         {activeResources.length === 0 && (
-          <section className="py-16 sm:py-20">
+          <section className="py-8 sm:py-10">
             <div className="container mx-auto px-4 sm:px-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {[
@@ -147,12 +146,12 @@ export default function Resources() {
         )}
 
         {/* CTA Section */}
-        <section className="py-16 sm:py-20 bg-muted">
-          <div className="container mx-auto px-4 sm:px-6 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
+        <section className="py-12 sm:py-16 bg-muted center-all">
+          <div className="container mx-auto px-4 sm:px-6 center-content">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 center-text">
               Need More <em className="text-primary not-italic">Support</em>?
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-4 sm:px-0">
+            <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl center-block px-4 sm:px-0">
               Get in touch with our team for personalized guidance and ongoing support to accelerate your personal brand growth.
             </p>
             <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">

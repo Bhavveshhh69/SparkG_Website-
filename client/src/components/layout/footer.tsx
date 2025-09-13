@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4 sm:mb-6">
               <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center mr-3 sm:mr-4">
-                <img src={boltLogo} alt="SparkG Logo" className="max-w-full max-h-full object-contain" />
+                <img src={boltLogo} alt="SparkG Logo" className="w-full h-full object-contain" />
               </div>
               <span className="text-xl sm:text-2xl font-bold text-foreground">SparkG Media</span>
             </div>
@@ -42,20 +42,22 @@ export default function Footer() {
           </div>
           
           <div className="md:col-span-2 lg:col-span-2">
-            <h4 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-foreground">Links</h4>
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              <ul className="space-y-2 sm:space-y-3">
-                {navigation.main.map((item) => (
-                  <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      className="text-muted-foreground hover:text-foreground transition-colors text-sm sm:text-base"
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <div>
+                <h4 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-foreground">Links</h4>
+                <ul className="space-y-2 sm:space-y-3">
+                  {navigation.main.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="text-muted-foreground hover:text-foreground transition-colors text-sm sm:text-base"
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <div>
                 <h5 className="text-xs sm:text-sm font-semibold text-muted-foreground mb-2 sm:mb-3">Socials</h5>
                 <ul className="space-y-1 sm:space-y-2">

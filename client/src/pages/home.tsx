@@ -12,18 +12,17 @@ import SparkXtra from "@/components/sections/spark-xtra";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background dark:bg-black">
+    <div className="min-h-[100dvh] bg-background dark:bg-black">
       <Header />
-      <main>
+      <main className="pt-16 sm:pt-20">
         <Hero />
         <Positioning />
         <HowItWorks />
-        <SparkXtra />
         <TestimonialsGrid />
         <CreativeComparison />
         <ClientFit />
-        <CTA />
         <Newsletter />
+        <SparkXtra />
       </main>
       <Footer />
     </div>

@@ -50,7 +50,7 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-[100dvh] bg-background">
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
@@ -164,7 +164,7 @@ export default function About() {
               {services.map((service, index) => (
                 <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-primary/50 transition-all duration-300 group">
                   <CardContent className="p-8 text-center">
-                    <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-r from-primary to-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-r from-sparkg-gold to-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <service.icon className="w-10 h-10 text-primary-foreground" />
                     </div>
                     <h3 className="text-2xl font-bold text-foreground mb-4">{service.title}</h3>

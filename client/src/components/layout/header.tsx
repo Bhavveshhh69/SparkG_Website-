@@ -40,7 +40,7 @@ export default function Header() {
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-background border-border w-[280px] sm:w-[320px]">
+          <SheetContent side="right" className="bg-background border-border w-[280px] sm:w-[320px] mobile-landscape-sheet mobile-portrait-sheet mobile-landscape-menu">
             <div className="flex items-center mt-4">
               <div className="h-12 sm:h-14 flex items-center">
                 <img src={fullLogo} alt="SparkG Media Logo" className="max-h-full w-auto object-contain" />
@@ -71,7 +71,7 @@ export default function Header() {
         </Sheet>
       </div>
       
-      <div className="container mx-auto px-0 sm:px-6 py-4 sm:py-5">
+      <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-5">
         <div className="flex items-center justify-between relative">
           {/* Mobile Logo - Center */}
           <div className="md:hidden absolute left-1/2 transform -translate-x-1/2">
@@ -107,7 +107,7 @@ export default function Header() {
           </div>
           
           {/* Desktop CTAs - Right Side */}
-          <div className="hidden lg:flex items-center">
+          <div className="hidden md:flex items-center">
             <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-4 py-2">
                 Book Strategy Call

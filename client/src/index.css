@@ -9,7 +9,7 @@
   --card-foreground: oklch(0.2686 0 0);
   --popover: oklch(1.0000 0 0);
   --popover-foreground: oklch(0.2686 0 0);
-  --primary: oklch(0.7686 0.1647 70.0804);
+  --primary: #A38308;
   --primary-foreground: oklch(0 0 0);
   --secondary: oklch(0.9670 0.0029 264.5419);
   --secondary-foreground: oklch(0.4461 0.0263 256.8018);
@@ -21,20 +21,20 @@
   --destructive-foreground: oklch(1.0000 0 0);
   --border: oklch(0.9276 0.0058 264.5313);
   --input: oklch(0.9276 0.0058 264.5313);
-  --ring: oklch(0.7686 0.1647 70.0804);
-  --chart-1: oklch(0.7686 0.1647 70.0804);
+  --ring: #A38308;
+  --chart-1: #A38308;
   --chart-2: oklch(0.6658 0.1574 58.3183);
   --chart-3: oklch(0.5553 0.1455 48.9975);
   --chart-4: oklch(0.4732 0.1247 46.2007);
   --chart-5: oklch(0.4137 0.1054 45.9038);
   --sidebar: oklch(0.9846 0.0017 247.8389);
   --sidebar-foreground: oklch(0.2686 0 0);
-  --sidebar-primary: oklch(0.7686 0.1647 70.0804);
+  --sidebar-primary: #A38308;
   --sidebar-primary-foreground: oklch(1.0000 0 0);
   --sidebar-accent: oklch(0.9869 0.0214 95.2774);
   --sidebar-accent-foreground: oklch(0.4732 0.1247 46.2007);
   --sidebar-border: oklch(0.9276 0.0058 264.5313);
-  --sidebar-ring: oklch(0.7686 0.1647 70.0804);
+  --sidebar-ring: #A38308;
   --font-sans: Inter, sans-serif;
   --font-serif: Source Serif 4, serif;
   --font-mono: Chivo Mono, ui-monospace, monospace;
@@ -51,14 +51,14 @@
   --spacing: 0.25rem;
   
   /* SparkG legacy colors */
-  --sparkg-gold: oklch(0.7686 0.1647 70.0804);
+  --sparkg-gold: #A38308;
   --sparkg-black: oklch(0.2046 0 0);
   --sparkg-dark: oklch(0.2686 0 0);
   --sparkg-gray: oklch(0.5510 0.0234 264.3637);
   --sparkg-white: oklch(1.0000 0 0);
   
   /* Klowt legacy colors */
-  --klowt-pink: oklch(0.7686 0.1647 70.0804);
+  --klowt-pink: #A38308;
   --klowt-blue: oklch(0.4732 0.1247 46.2007);
   --klowt-gray: oklch(0.5510 0.0234 264.3637);
   --klowt-dark: oklch(0.2046 0 0);
@@ -72,7 +72,7 @@
   --card-foreground: oklch(0.9219 0 0);
   --popover: oklch(0.2686 0 0);
   --popover-foreground: oklch(0.9219 0 0);
-  --primary: oklch(0.7686 0.1647 70.0804);
+  --primary: #A38308;
   --primary-foreground: oklch(0 0 0);
   --secondary: oklch(0.2686 0 0);
   --secondary-foreground: oklch(0.9219 0 0);
@@ -84,7 +84,7 @@
   --destructive-foreground: oklch(1.0000 0 0);
   --border: oklch(0.3715 0 0);
   --input: oklch(0.3715 0 0);
-  --ring: oklch(0.7686 0.1647 70.0804);
+  --ring: #A38308;
   --chart-1: oklch(0.8369 0.1644 84.4286);
   --chart-2: oklch(0.6658 0.1574 58.3183);
   --chart-3: oklch(0.4732 0.1247 46.2007);
@@ -92,12 +92,12 @@
   --chart-5: oklch(0.4732 0.1247 46.2007);
   --sidebar: oklch(0.1684 0 0);
   --sidebar-foreground: oklch(0.9219 0 0);
-  --sidebar-primary: oklch(0.7686 0.1647 70.0804);
+  --sidebar-primary: #A38308;
   --sidebar-primary-foreground: oklch(1.0000 0 0);
   --sidebar-accent: oklch(0.4732 0.1247 46.2007);
   --sidebar-accent-foreground: oklch(0.9243 0.1151 95.7459);
   --sidebar-border: oklch(0.3715 0 0);
-  --sidebar-ring: oklch(0.7686 0.1647 70.0804);
+  --sidebar-ring: #A38308;
   --font-sans: Inter, sans-serif;
   --font-serif: Source Serif 4, serif;
   --font-mono: Chivo Mono, ui-monospace, monospace;
@@ -176,6 +176,46 @@ body {
   letter-spacing: var(--tracking-normal);
 }
 
+/* Global center alignment styles */
+body, html {
+  text-align: center;
+}
+
+/* Center common text elements */
+p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption {
+  text-align: center;
+}
+
+/* Center common container elements */
+.container, .max-w-4xl, .max-w-6xl, .max-w-7xl, .max-w-full, .max-w-3xl {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Flex container centering */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-center-all {
+  text-align: center !important;
+}
+
+.items-center-all {
+  align-items: center !important;
+}
+
+.justify-center-all {
+  justify-content: center !important;
+}
+
+.mx-auto-all {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -189,6 +229,8 @@ body {
     /* Improve text rendering on mobile */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Center all text by default */
+    text-align: center;
   }
 
   /* Improve touch targets on mobile */
@@ -219,6 +261,14 @@ body {
   html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    /* Use dynamic viewport units for better mobile support */
+    height: 100dvh;
+  }
+  
+  body {
+    /* Use dynamic viewport units for better mobile support */
+    min-height: 100dvh;
+    height: 100dvh;
   }
 
   img[loading="lazy"] {
@@ -233,6 +283,11 @@ body {
       transition-duration: 0.001ms !important;
       scroll-behavior: auto !important;
     }
+  }
+
+  /* Global centering for common elements */
+  p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption {
+    text-align: center;
   }
 }
 
@@ -259,6 +314,30 @@ body {
   
   .text-sparkg-gray {
     color: var(--sparkg-gray);
+  }
+
+  /* Text alignment utilities */
+  .text-center-all {
+    text-align: center !important;
+  }
+  
+  .items-center-all {
+    align-items: center !important;
+  }
+  
+  .justify-center-all {
+    justify-content: center !important;
+  }
+  
+  .flex-center {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .mx-auto-all {
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   /* Mobile-first responsive utilities */
@@ -320,6 +399,36 @@ body {
 
   .mobile-gap-lg {
     @apply gap-6 sm:gap-8;
+  }
+
+  /* Center alignment utilities */
+  .center-all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .center-text {
+    text-align: center;
+  }
+
+  .center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .center-block {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .center-content {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Animations */
@@ -442,6 +551,120 @@ body {
     
     .scroll-slide-right {
       transform: translateX(50px);
+    }
+    
+    /* Fix for mobile overflow issues */
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Ensure proper spacing on mobile */
+    .py-16 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    
+    .py-20 {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+    
+    .mb-16 {
+      margin-bottom: 2rem;
+    }
+    
+    .mb-20 {
+      margin-bottom: 2.5rem;
+    }
+    
+    /* Fix for mobile viewport height issues */
+    .min-h-screen {
+      min-height: 100dvh;
+    }
+  }
+  
+  /* Orientation-specific fixes for mobile devices */
+  @media screen and (max-width: 768px) and (orientation: landscape) {
+    .min-h-screen {
+      min-height: 100dvh;
+    }
+    
+    .hero-section {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    
+    .mobile-landscape-py {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    
+    .mobile-landscape-mb {
+      margin-bottom: 1rem;
+    }
+    
+    /* Adjust font sizes for landscape orientation */
+    .mobile-landscape-text-xs {
+      font-size: 0.75rem;
+      line-height: 1rem;
+    }
+    
+    .mobile-landscape-text-sm {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+    
+    .mobile-landscape-text-base {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+    
+    .mobile-landscape-text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+    
+    .mobile-landscape-text-xl {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+    
+    .mobile-landscape-text-2xl {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+    
+    .mobile-landscape-text-3xl {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+    
+    /* Mobile menu adjustments for landscape */
+    .mobile-landscape-menu {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    .mobile-landscape-sheet {
+      width: 80vw;
+    }
+  }
+  
+  @media screen and (max-width: 768px) and (orientation: portrait) {
+    .hero-section {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    
+    /* Ensure proper height for portrait mode */
+    .mobile-portrait-min-h {
+      min-height: 85vh;
+    }
+    
+    /* Mobile menu adjustments for portrait */
+    .mobile-portrait-sheet {
+      width: 70vw;
     }
   }
 }

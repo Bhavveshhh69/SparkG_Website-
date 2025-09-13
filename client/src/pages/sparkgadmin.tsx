@@ -152,8 +152,16 @@ export default function SparkGAdmin() {
   const heroCtaUrl = siteSettings.find(s => s.key === 'hero_cta_url')?.value || '/about';
   const headerCtaUrl = siteSettings.find(s => s.key === 'header_cta_url')?.value || '/about';
 
+  if (isLoading) {
+    return (
+      <div className="min-h-[100dvh] bg-background flex items-center justify-center">
+        <div className="text-white text-xl">Loading admin dashboard...</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-[100dvh] bg-background p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

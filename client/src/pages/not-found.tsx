@@ -5,7 +5,7 @@ import boltLogo from "@/assets/sparkg-bolt.png";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-background">
+    <div className="min-h-[100dvh] w-full flex items-center justify-center bg-background">
       <Card className="w-full max-w-md mx-4">
         <CardContent className="pt-6">
           <div className="flex items-center justify-center mb-6">

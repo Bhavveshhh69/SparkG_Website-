@@ -78,21 +78,21 @@ export default function HowItWorks() {
       title: "Magnetic Positioning",
       description: "We identify what makes you powerful and turn it into a market-dominating positioning.",
       icon: Target,
-      color: "from-accent to-primary"
+      color: "from-sparkg-gold to-primary"
     },
     {
       number: "2", 
       title: "Premium Content Engine",
       description: "You show up. We do the rest. Includes short-form video, long-form repurposing, podcast invites, PR placements, and more.",
       icon: Zap,
-      color: "from-primary to-secondary"
+      color: "from-primary to-sparkg-gold"
     },
     {
       number: "3",
       title: "Legacy System Activation", 
       description: "Your brand becomes a magnet for speaking gigs, followers, sales, media features all driven by your unique digital presence.",
       icon: TrendingUp,
-      color: "from-primary to-accent"
+      color: "from-sparkg-gold to-accent"
     }
   ];
 
@@ -104,15 +104,15 @@ export default function HowItWorks() {
       </div>
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div ref={titleRef as any} className="text-center mb-16 sm:mb-20 scroll-fade-in">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
+        <div ref={titleRef as any} className="text-center mb-16 sm:mb-20 scroll-fade-in center-content">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 center-text">
             <span className="text-foreground">Done-For-You, But Built </span>
             <span className="text-primary relative font-extrabold">
               <span className="absolute inset-0 bg-primary/10 blur-lg rounded-lg"></span>
               <span className="relative">For You.</span>
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl center-block px-4 sm:px-0">
             Our 3-Step Framework transforms you from invisible to iconic
           </p>
         </div>

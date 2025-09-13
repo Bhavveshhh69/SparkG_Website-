@@ -9,13 +9,13 @@ export default function SocialProof() {
       quote: "SparkG Media transformed our digital presence completely. Our engagement rates increased by 400% in just 3 months.",
       author: "Sarah Johnson",
       title: "CEO, TechStart",
-      avatar: "bg-gradient-to-br from-primary to-secondary"
+      avatar: "bg-gradient-to-br from-sparkg-gold to-primary"
     },
     {
       quote: "The strategic content approach they provided helped us close our biggest deals. ROI was immediate and substantial.",
       author: "Michael Chen",
       title: "Founder, Growth Dynamics",
-      avatar: "bg-gradient-to-br from-accent to-primary"
+      avatar: "bg-gradient-to-br from-accent to-sparkg-gold"
     }
   ];
 
@@ -30,7 +30,7 @@ export default function SocialProof() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div ref={titleRef as any} className="scroll-slide-left">
             <h2 className="text-4xl md:text-6xl font-bold mb-8">
-              Trusted by <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">10,000+</span> 
+              Trusted by <span className="bg-gradient-to-r from-sparkg-gold to-primary bg-clip-text text-transparent">10,000+</span> 
               <br />
               <span className="text-foreground">Business Leaders</span>
             </h2>

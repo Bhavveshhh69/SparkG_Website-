@@ -24,7 +24,7 @@ export default function CaseStudies() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-[100dvh] bg-background">
         <Header />
         <main className="pt-20">
           <div className="container mx-auto px-6 py-20 text-center">
@@ -37,7 +37,7 @@ export default function CaseStudies() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-[100dvh] bg-background">
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
@@ -94,7 +94,7 @@ export default function CaseStudies() {
                         {caseStudy.summary}
                       </p>
                       
-                      {caseStudy.results && (
+                      {caseStudy.results && typeof caseStudy.results === 'object' && (
                         <div className="mb-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
                           <div className="flex items-center space-x-2 mb-2">
                             <TrendingUp className="w-4 h-4 text-primary" />
@@ -108,7 +108,7 @@ export default function CaseStudies() {
                                 ))}
                               </ul>
                             ) : (
-                              <p>{String(caseStudy.results)}</p>
+                              <p>{String(caseStudy.results || '')}</p>
                             )}
                           </div>
                         </div>

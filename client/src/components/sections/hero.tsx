@@ -25,7 +25,7 @@ export default function Hero() {
   const heroCtaUrl = siteSettings.find(s => s.key === 'hero_cta_url')?.value || '/about';
   
   return (
-    <section className="relative min-h-screen flex items-center pt-24 sm:pt-28 md:pt-32 overflow-hidden">
+    <section className="relative flex items-center pt-24 sm:pt-28 md:pt-32 overflow-hidden hero-section min-h-[100dvh]">
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-background to-background/90"></div>
       <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-primary/10 animate-pulse"></div>
@@ -34,15 +34,10 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-primary/20 rounded-full blur-3xl animate-bounce opacity-30"></div>
       <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-80 sm:h-80 bg-primary/25 rounded-full blur-2xl animate-pulse opacity-30"></div>
       
-      <div className="container mx-auto px-2 sm:px-6 relative z-20">
-        <div className="flex flex-col items-center text-center min-h-[80vh] justify-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-20">
+        <div className="flex flex-col items-center text-center min-h-[100dvh] justify-center mobile-portrait-min-h">
           <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8 px-1 sm:px-4">
             {/* Logo */}
-            <div className="flex justify-center mb-6 sm:mb-8">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center">
-                <img src={boltLogo} alt="SparkG Logo" className="max-w-full max-h-full object-contain" />
-              </div>
-            </div>
             
             <h1 ref={titleRef as any} className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 sm:mb-8">
               <div className="hidden sm:block">
@@ -55,10 +50,10 @@ export default function Hero() {
                 </span>
               </div>
               <div className="block sm:hidden">
-                <span className="text-foreground whitespace-nowrap mb-2">
+                <span className="text-foreground whitespace-nowrap mb-2 block mobile-landscape-text-xl">
                   <strong>You Don't Need More Content.</strong>
                 </span>
-                <span className="text-primary relative block">
+                <span className="text-primary relative block mobile-landscape-text-2xl">
                   <span className="absolute inset-0 bg-primary/10 blur-lg rounded-lg"></span>
                   <span className="relative font-extrabold">You Need a Personal Brand That Makes You Unignorable.</span>
                 </span>
@@ -66,8 +61,8 @@ export default function Hero() {
             </h1>
             
             <div className="max-w-full mx-auto text-center">
-              <p ref={subtitleRef as any} className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-2 sm:mb-3 px-1 sm:px-0 inline-block">We build powerful thought leadership assets for founders, CEOs, and coaches and consultants</p>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-12 px-1 sm:px-0 block">so you become the authority in your space and attract every opportunity that matters.</p>
+              <p ref={subtitleRef as any} className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-2 sm:mb-3 px-1 sm:px-0 inline-block mobile-landscape-text-lg">We build powerful thought leadership assets for founders, CEOs, and coaches and consultants</p>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-12 px-1 sm:px-0 block mobile-landscape-text-lg">so you become the authority in your space and attract every opportunity that matters.</p>
             </div>
             
             <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center scroll-scale-in mb-8 sm:mb-16 px-1 sm:px-0">

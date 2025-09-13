@@ -20,21 +20,21 @@ export default function Positioning() {
             </span>
           </h2>
           
-          <div ref={contentRef as any} className="space-y-6 sm:space-y-8 text-lg sm:text-xl md:text-2xl leading-relaxed scroll-fade-in px-4 sm:px-0">
-            <p className="text-muted-foreground">
+          <div ref={contentRef as any} className="space-y-6 sm:space-y-8 text-lg sm:text-xl md:text-2xl leading-relaxed scroll-fade-in px-4 sm:px-0 center-content">
+            <p className="text-muted-foreground center-text">
               At SparkG Media, we don't <em className="text-primary not-italic">"do content."</em>
             </p>
             
-            <p className="text-foreground font-semibold">
+            <p className="text-foreground font-semibold center-text">
               We build your digital legacy a magnetic brand system that positions you as a media personality in your industry.
             </p>
             
-            <p className="text-foreground">
+            <p className="text-foreground center-text">
               <strong className="text-primary">Done-for-you. End-to-end.</strong> From strategy to execution.
             </p>
             
-            <div className="mt-8 sm:mt-12 p-6 sm:p-8 bg-card/30 backdrop-blur-sm rounded-2xl border border-primary/20">
-              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
+            <div className="mt-8 sm:mt-12 p-6 sm:p-8 bg-card/30 backdrop-blur-sm rounded-2xl border border-primary/20 center-all">
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground center-text">
                 While others post to stay active<br className="hidden sm:block" />
                 <span className="text-primary">we position you to stay iconic.</span>
               </p>

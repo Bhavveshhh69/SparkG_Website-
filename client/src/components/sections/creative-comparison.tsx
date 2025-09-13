@@ -169,7 +169,7 @@ export default function CreativeComparison() {
           {/* Desktop: Table Layout */}
           <div className="hidden lg:block bg-card/5 backdrop-blur-sm rounded-3xl border border-border overflow-hidden">
             {/* Table Header */}
-            <div className="grid grid-cols-3 bg-gradient-to-r from-muted to-card">
+            <div className="grid grid-cols-3 bg-gradient-to-r from-sparkg-gold/20 to-card">
               <div className="p-6 text-center">
                 <h3 className="text-lg font-semibold text-muted-foreground">Service Area</h3>
               </div>
@@ -189,7 +189,7 @@ export default function CreativeComparison() {
             ))}
 
             {/* Table Footer */}
-            <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-8 text-center border-t border-primary/20">
+            <div className="bg-gradient-to-r from-sparkg-gold/20 to-primary/5 p-8 text-center border-t border-primary/20">
               <p className="text-xl font-bold text-foreground mb-2">
                 The Choice is Clear
               </p>
@@ -200,7 +200,7 @@ export default function CreativeComparison() {
           </div>
 
           {/* Mobile Footer */}
-          <div className="lg:hidden mt-8 bg-gradient-to-r from-primary/10 to-primary/5 p-6 sm:p-8 text-center rounded-2xl border border-primary/20">
+          <div className="lg:hidden mt-8 bg-gradient-to-r from-sparkg-gold/20 to-primary/5 p-6 sm:p-8 text-center rounded-2xl border border-primary/20">
             <p className="text-lg sm:text-xl font-bold text-foreground mb-2">
               The Choice is Clear
             </p>

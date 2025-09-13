@@ -91,8 +91,36 @@ export default function Community() {
     }
   ];
 
+  if (isLoading) {
+    return (
+      <div className="min-h-[100dvh] bg-background">
+        <Header />
+        <main className="pt-20">
+          <div className="container mx-auto px-6 py-20 text-center">
+            <div className="text-white text-xl">Loading community...</div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-[100dvh] bg-background">
+        <Header />
+        <main className="pt-20">
+          <div className="container mx-auto px-6 py-20 text-center">
+            <div className="text-white text-xl">Error loading community data</div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-[100dvh] bg-background">
       <Header />
       <main className="pt-20">
         {/* Hero Section */}

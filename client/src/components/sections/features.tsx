@@ -8,35 +8,35 @@ const comparisons = [
     sparkG: "Legacy System",
     description: "We don't just plan posts—we build systems that create lasting impact and thought leadership positioning.",
     icon: Target,
-    color: "from-primary to-secondary"
+    color: "from-sparkg-gold to-primary"
   },
   {
     typical: "Editors & VAs",
     sparkG: "Strategists, Creators, Execs",
     description: "Work with senior-level professionals who understand business strategy, not just content creation.",
     icon: Users,
-    color: "from-accent to-primary"
+    color: "from-accent to-sparkg-gold"
   },
   {
     typical: "'Post and Hope'",
     sparkG: "Outcome-Driven Brand Assets",
     description: "Every piece of content is strategically designed to generate specific business outcomes and opportunities.",
     icon: TrendingUp,
-    color: "from-primary to-destructive"
+    color: "from-sparkg-gold to-destructive"
   },
   {
     typical: "Generic Promos",
     sparkG: "Thought Leadership Positioning",
     description: "Position yourself as the authority in your space through premium content that elevates your expertise.",
     icon: Award,
-    color: "from-secondary to-accent"
+    color: "from-secondary to-sparkg-gold"
   },
   {
     typical: "DIY Stress",
     sparkG: "Done-For-You, High-Touch",
     description: "Focus on running your business while we handle the complex work of building your digital legacy.",
     icon: Zap,
-    color: "from-accent to-primary"
+    color: "from-accent to-sparkg-gold"
   }
 ];
 

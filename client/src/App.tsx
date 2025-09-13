@@ -14,8 +14,11 @@ import ComponentsShowcase from "@/pages/components-showcase";
 import About from "@/pages/about";
 import Admin from "@/pages/admin";
 import SparkGAdmin from "@/pages/sparkgadmin";
+import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 
 function Router() {
+  useScrollToTop();
+  
   return (
     <Switch>
       <Route path="/" component={Home} />

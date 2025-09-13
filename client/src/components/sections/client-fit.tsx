@@ -19,7 +19,7 @@ function FitCriterion({ criteria, index }: { criteria: string, index: number }) 
         animationDelay: `${index * 0.1}s` 
       }}
     >
-      <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mr-4 sm:mr-6">
+      <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-sparkg-gold to-primary rounded-full flex items-center justify-center mr-4 sm:mr-6">
         <Check className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground font-bold" />
       </div>
       <p className="text-lg sm:text-xl text-muted-foreground font-medium">

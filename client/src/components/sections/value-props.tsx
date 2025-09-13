@@ -11,7 +11,7 @@ export default function ValueProps() {
       description: "Develop compelling content strategies that engage your audience and drive conversions across all digital platforms.",
       cta: "Explore Services",
       link: "/resources",
-      gradient: "from-primary to-secondary"
+      gradient: "from-sparkg-gold to-primary"
     },
     {
       number: "02", 
@@ -19,7 +19,7 @@ export default function ValueProps() {
       description: "Build a distinctive brand identity that resonates with your target market and stands out from competitors.",
       cta: "Learn More",
       link: "/about",
-      gradient: "from-accent to-primary"
+      gradient: "from-accent to-sparkg-gold"
     },
     {
       number: "03",
@@ -27,7 +27,7 @@ export default function ValueProps() {
       description: "Implement data-driven marketing campaigns that maximize ROI and accelerate your business growth.",
       cta: "Get Started",
       link: "/about",
-      gradient: "from-primary to-destructive"
+      gradient: "from-sparkg-gold to-destructive"
     }
   ];
 
@@ -41,7 +41,7 @@ export default function ValueProps() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div ref={titleRef as any} className="text-center mb-16 scroll-fade-in">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Turn Your <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Vision</span>
+            Turn Your <span className="bg-gradient-to-r from-sparkg-gold to-primary bg-clip-text text-transparent">Vision</span>
             <br />
             <span className="text-foreground">Into Digital Reality</span>
           </h2>

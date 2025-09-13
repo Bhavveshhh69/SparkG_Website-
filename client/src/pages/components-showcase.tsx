@@ -133,14 +133,34 @@ export default function ComponentsShowcase() {
   const [progress, setProgress] = React.useState(13)
   const [isCollapsibleOpen, setIsCollapsibleOpen] = React.useState(false)
   const [otpValue, setOtpValue] = React.useState("")
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     const timer = setTimeout(() => setProgress(66), 500)
     return () => clearTimeout(timer)
   }, [])
 
+  React.useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-[100dvh] bg-background">
+        <Header />
+        <main className="pt-20">
+          <div className="container mx-auto px-6 py-20 text-center">
+            <div className="text-white text-xl">Loading components showcase...</div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-background p-8">
+    <div className="min-h-[100dvh] bg-background p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">

@@ -18,7 +18,7 @@ export default function CaseStudyDetail() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-[100dvh] bg-background">
         <Header />
         <main className="pt-20">
           <div className="container mx-auto px-6 py-20 text-center">
@@ -32,7 +32,7 @@ export default function CaseStudyDetail() {
 
   if (error || !caseStudy) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-[100dvh] bg-background">
         <Header />
         <main className="pt-20">
           <div className="container mx-auto px-6 py-20 text-center">
@@ -51,7 +51,7 @@ export default function CaseStudyDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-[100dvh] bg-background">
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
@@ -123,7 +123,7 @@ export default function CaseStudyDetail() {
         )}
 
         {/* Results Section */}
-        {caseStudy.results && (
+        {caseStudy.results && typeof caseStudy.results === 'object' && (
           <section className="py-16">
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto">
@@ -137,13 +137,13 @@ export default function CaseStudyDetail() {
                       <div className="grid md:grid-cols-2 gap-6">
                         {Object.entries(caseStudy.results as Record<string, any>).map(([key, value]) => (
                           <div key={key} className="text-center p-4 bg-white/5 rounded-lg">
-                            <div className="text-3xl font-bold text-primary mb-2">{String(value)}</div>
+                            <div className="text-3xl font-bold text-primary mb-2">{String(value || '')}</div>
                             <div className="text-muted-foreground font-medium">{key}</div>
                           </div>
                         ))}
                       </div>
                     ) : (
-                      <p className="text-lg">{String(caseStudy.results)}</p>
+                      <p className="text-lg">{String(caseStudy.results || '')}</p>
                     )}
                   </div>
                 </div>

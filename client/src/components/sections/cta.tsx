@@ -35,9 +35,9 @@ export default function CTA() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center animate-slideUp">
+        <div className="max-w-4xl mx-auto text-center animate-slideUp center-all">
           <div className="flex justify-center mb-4 sm:mb-6">
-            <div className="p-3 sm:p-4 bg-gradient-to-r from-primary to-secondary rounded-full">
+            <div className="p-3 sm:p-4 bg-gradient-to-r from-sparkg-gold to-primary rounded-full">
               <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground" />
             </div>
           </div>
@@ -52,15 +52,15 @@ export default function CTA() {
             <span className="text-foreground">That Builds Everything Else?</span>
           </h2>
           
-          <p className="text-lg sm:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
+          <p className="text-lg sm:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-2xl center-block leading-relaxed px-4 sm:px-0">
             We work with a select group of high-performing leaders each quarter. Let's see if we're a fit.
           </p>
           
-          <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center scroll-scale-in px-4 sm:px-0">
-            <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+          <div ref={buttonsRef as any} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center scroll-scale-in px-4 sm:px-0 center-flex">
+            <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto center-flex">
               <Button 
                 size="lg"
-                className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300 group border-2 border-primary"
+                className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300 group border-2 border-primary center-text"
               >
                 Book Strategy Call
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />

@@ -88,7 +88,7 @@ export default function Newsletter() {
               <Button
                 type="submit"
                 size="lg"
-                className="bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-primary-foreground font-semibold transform hover:scale-105 transition-all duration-300 rounded-lg h-12 px-8 shadow-2xl hover:shadow-primary/25"
+                className="bg-gradient-to-r from-sparkg-gold to-primary hover:from-primary hover:to-sparkg-gold text-primary-foreground font-semibold transform hover:scale-105 transition-all duration-300 rounded-lg h-12 px-8 shadow-2xl hover:shadow-primary/25"
                 disabled={newsletterMutation.isPending}
               >
                 {newsletterMutation.isPending ? "SUBSCRIBING..." : "GET FREE WEEKLY TIPS"}
