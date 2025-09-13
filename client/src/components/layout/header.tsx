@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { SiteSetting } from "@shared/schema";
 import boltLogo from "@/assets/sparkg-bolt.png";
 import fullLogo from "@/assets/sparkg-logo-with-text.png";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Header() {
   const [location] = useLocation();
@@ -60,6 +61,10 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex flex-col space-y-4 pt-6 border-t border-border">
+                <div className="flex items-center justify-between">
+                  <span className="text-muted-foreground">Theme</span>
+                  <ModeToggle />
+                </div>
                 <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
                   <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3">
                     Book Strategy Call
@@ -107,7 +112,8 @@ export default function Header() {
           </div>
           
           {/* Desktop CTAs - Right Side */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center space-x-4">
+            <ModeToggle />
             <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer">
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-4 py-2">
                 Book Strategy Call
