@@ -289,6 +289,13 @@ p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption {
   p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption {
     text-align: center;
   }
+  
+  /* Text wrapping utilities */
+  p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption, button {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
 }
 
 @layer utilities {
@@ -346,59 +353,59 @@ p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption {
   }
 
   .mobile-text-xs {
-    @apply text-xs sm:text-sm;
+    @apply text-xs sm:text-xs;
   }
 
   .mobile-text-sm {
-    @apply text-sm sm:text-base;
+    @apply text-sm sm:text-sm;
   }
 
   .mobile-text-base {
-    @apply text-base sm:text-lg;
+    @apply text-base sm:text-base;
   }
 
   .mobile-text-lg {
-    @apply text-lg sm:text-xl;
+    @apply text-lg sm:text-lg;
   }
 
   .mobile-text-xl {
-    @apply text-xl sm:text-2xl;
+    @apply text-xl sm:text-xl;
   }
 
   .mobile-text-2xl {
-    @apply text-2xl sm:text-3xl;
+    @apply text-2xl sm:text-2xl;
   }
 
   .mobile-text-3xl {
-    @apply text-3xl sm:text-4xl md:text-5xl;
+    @apply text-3xl sm:text-3xl md:text-4xl;
   }
 
   .mobile-text-4xl {
-    @apply text-4xl sm:text-5xl md:text-6xl;
+    @apply text-4xl sm:text-4xl md:text-5xl;
   }
 
   .mobile-spacing-sm {
-    @apply p-4 sm:p-6;
+    @apply p-4 sm:p-5;
   }
 
   .mobile-spacing-md {
-    @apply p-6 sm:p-8;
+    @apply p-5 sm:p-6;
   }
 
   .mobile-spacing-lg {
-    @apply p-8 sm:p-12;
+    @apply p-6 sm:p-8;
   }
 
   .mobile-gap-sm {
-    @apply gap-3 sm:gap-4;
+    @apply gap-2 sm:gap-3;
   }
 
   .mobile-gap-md {
-    @apply gap-4 sm:gap-6;
+    @apply gap-3 sm:gap-4;
   }
 
   .mobile-gap-lg {
-    @apply gap-6 sm:gap-8;
+    @apply gap-4 sm:gap-5;
   }
 
   /* Center alignment utilities */
@@ -429,6 +436,38 @@ p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* Touch target utility for better mobile UX */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Text wrapping utilities */
+  .text-wrap {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  .text-nowrap {
+    white-space: nowrap;
+  }
+
+  .text-break {
+    word-break: break-all;
+  }
+
+  /* Spacing utilities for less congested layouts */
+  .spacing-relaxed {
+    @apply space-y-6 sm:space-y-8 md:space-y-10;
+  }
+
+  .spacing-loose {
+    @apply space-y-8 sm:space-y-10 md:space-y-12;
   }
 
   /* Animations */
@@ -582,6 +621,53 @@ p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption {
     .min-h-screen {
       min-height: 100dvh;
     }
+    
+    /* Prevent overflow on mobile hero sections */
+    .hero-section {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    
+    /* Text wrapping improvements for mobile */
+    p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption, button {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+    
+    /* Less congested spacing on mobile */
+    .mobile-relaxed {
+      line-height: 1.7;
+    }
+    
+    .mobile-loose {
+      line-height: 1.8;
+    }
+    
+    /* Additional spacing utilities for mobile */
+    .mobile-pt-8 {
+      padding-top: 2rem;
+    }
+    
+    .mobile-pb-8 {
+      padding-bottom: 2rem;
+    }
+    
+    .mobile-mb-6 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .mobile-mb-8 {
+      margin-bottom: 2rem;
+    }
+    
+    .mobile-space-y-6 > * + * {
+      margin-top: 1.5rem;
+    }
+    
+    .mobile-space-y-8 > * + * {
+      margin-top: 2rem;
+    }
   }
   
   /* Orientation-specific fixes for mobile devices */
@@ -591,53 +677,53 @@ p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption {
     }
     
     .hero-section {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
     }
     
     .mobile-landscape-py {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
     }
     
     .mobile-landscape-mb {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     
     /* Adjust font sizes for landscape orientation */
     .mobile-landscape-text-xs {
-      font-size: 0.75rem;
-      line-height: 1rem;
+      font-size: 0.8rem;
+      line-height: 1.25rem;
     }
     
     .mobile-landscape-text-sm {
-      font-size: 0.875rem;
-      line-height: 1.25rem;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
     }
     
     .mobile-landscape-text-base {
       font-size: 1rem;
-      line-height: 1.5rem;
+      line-height: 1.6rem;
     }
     
     .mobile-landscape-text-lg {
-      font-size: 1.125rem;
-      line-height: 1.75rem;
+      font-size: 1.15rem;
+      line-height: 1.8rem;
     }
     
     .mobile-landscape-text-xl {
-      font-size: 1.25rem;
-      line-height: 1.75rem;
-    }
-    
-    .mobile-landscape-text-2xl {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       line-height: 2rem;
     }
     
+    .mobile-landscape-text-2xl {
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+    }
+    
     .mobile-landscape-text-3xl {
-      font-size: 1.875rem;
-      line-height: 2.25rem;
+      font-size: 2rem;
+      line-height: 2.5rem;
     }
     
     /* Mobile menu adjustments for landscape */
@@ -665,6 +751,11 @@ p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, label, caption {
     /* Mobile menu adjustments for portrait */
     .mobile-portrait-sheet {
       width: 70vw;
+    }
+    
+    /* Additional spacing for portrait mode */
+    .mobile-portrait-space-y-8 > * + * {
+      margin-top: 2rem;
     }
   }
 }

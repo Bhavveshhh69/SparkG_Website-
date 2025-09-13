@@ -4,39 +4,70 @@ interface UseCounterAnimationProps {
   end: number;
   duration?: number;
   startOnView?: boolean;
+  startOnScroll?: boolean;
 }
 
-export function useCounterAnimation({ end, duration = 2000, startOnView = true }: UseCounterAnimationProps) {
+export function useCounterAnimation({ 
+  end, 
+  duration = 2000, 
+  startOnView = true,
+  startOnScroll = false
+}: UseCounterAnimationProps) {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!startOnView) {
+    // If startOnScroll is true, we'll use the scroll-based approach
+    if (startOnScroll) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+            startAnimation();
+          }
+        },
+        { threshold: 0.1 }
+      );
+
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+
+      return () => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+      };
+    }
+    // If startOnView is false, start immediately
+    else if (!startOnView) {
       startAnimation();
       return;
     }
+    // Otherwise, use the original behavior
+    else {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+            startAnimation();
+          }
+        },
+        { threshold: 0.1 }
+      );
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-          startAnimation();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
       if (ref.current) {
-        observer.unobserve(ref.current);
+        observer.observe(ref.current);
       }
-    };
-  }, [startOnView, isVisible]);
+
+      return () => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+      };
+    }
+  }, [startOnView, startOnScroll, isVisible]);
 
   const startAnimation = () => {
     const startTime = Date.now();

@@ -22,10 +22,13 @@ uniform vec3 uColor;
 uniform float uAmplitude;
 uniform float uDistance;
 uniform vec2 uMouse;
+uniform bool uIsMobile;
 
 #define PI 3.1415926538
 
-const int u_line_count = 40;
+// Adjust line count based on device
+const int u_line_count_desktop = 40;
+const int u_line_count_mobile = 20;
 const float u_line_width = 7.0;
 const float u_line_blur = 10.0;
 
@@ -60,8 +63,10 @@ float lineFn(vec2 st, float width, float perc, float offset, vec2 mouse, float t
 
     float amplitude_normal = smoothstep(split_point, 0.7, st.x);
     float amplitude_strength = 0.5;
+    // Reduce amplitude on mobile for performance
     float finalAmplitude = amplitude_normal * amplitude_strength
-                           * amplitude * (1.0 + (mouse.y - 0.5) * 0.2);
+                           * amplitude * (uIsMobile ? 0.5 : 1.0) 
+                           * (1.0 + (mouse.y - 0.5) * 0.2);
 
     float time_scaled = time / 10.0 + (mouse.x - 0.5) * 1.0;
     float blur = smoothstep(split_point, split_point + 0.05, st.x) * perc;
@@ -95,10 +100,16 @@ float lineFn(vec2 st, float width, float perc, float offset, vec2 mouse, float t
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 uv = fragCoord / iResolution.xy;
+    
+    // Determine line count based on device
+    int lineCount = uIsMobile ? u_line_count_mobile : u_line_count_desktop;
 
     float line_strength = 1.0;
-    for (int i = 0; i < u_line_count; i++) {
-        float p = float(i) / float(u_line_count);
+    for (int i = 0; i < u_line_count_desktop; i++) {
+        // Break loop if we've reached our desired line count
+        if (i >= lineCount) break;
+        
+        float p = float(i) / float(lineCount);
         line_strength *= (1.0 - lineFn(
             uv,
             u_line_width * pixel(1.0, iResolution.xy) * (1.0 - p),
@@ -128,6 +139,9 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
     if (!containerRef.current) return;
     const container = containerRef.current;
 
+    // Detect mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
     const renderer = new Renderer({ alpha: true });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
@@ -147,7 +161,8 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
         uColor: { value: new Color(...color) },
         uAmplitude: { value: amplitude },
         uDistance: { value: distance },
-        uMouse: { value: new Float32Array([0.5, 0.5]) }
+        uMouse: { value: new Float32Array([0.5, 0.5]) },
+        uIsMobile: { value: isMobile }
       }
     });
 
@@ -175,13 +190,13 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
     function handleMouseLeave() {
       targetMouse = [0.5, 0.5];
     }
-    if (enableMouseInteraction) {
+    if (enableMouseInteraction && !isMobile) {
       container.addEventListener('mousemove', handleMouseMove);
       container.addEventListener('mouseleave', handleMouseLeave);
     }
 
     function update(t: number) {
-      if (enableMouseInteraction) {
+      if (enableMouseInteraction && !isMobile) {
         const smoothing = 0.05;
         currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0]);
         currentMouse[1] += smoothing * (targetMouse[1] - currentMouse[1]);
@@ -202,7 +217,7 @@ const Threads = ({ color = [1, 1, 1], amplitude = 1, distance = 0, enableMouseIn
       if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
       window.removeEventListener('resize', resize);
 
-      if (enableMouseInteraction) {
+      if (enableMouseInteraction && !isMobile) {
         container.removeEventListener('mousemove', handleMouseMove);
         container.removeEventListener('mouseleave', handleMouseLeave);
       }
