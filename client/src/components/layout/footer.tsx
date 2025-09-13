@@ -24,7 +24,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-primary/30 py-12 sm:py-16">
+    <footer className="bg-primary/10 dark:bg-primary/30 py-12 sm:py-16">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           <div className="lg:col-span-2">
@@ -35,7 +35,7 @@ export default function Footer() {
               <span className="text-xl sm:text-2xl font-bold text-foreground">SparkG Media</span>
             </div>
             
-            <p className="text-muted-foreground mb-6 sm:mb-8 max-w-md leading-relaxed text-sm sm:text-base">
+            <p className="text-foreground dark:text-muted-foreground mb-6 sm:mb-8 max-w-md leading-relaxed text-sm sm:text-base">
               SparkG Media is a premium thought leadership agency helping CEOs, coaches, and founders build iconic personal brands that generate trust, growth, and legacy.
             </p>
             
@@ -50,7 +50,7 @@ export default function Footer() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className="text-muted-foreground hover:text-foreground transition-colors text-sm sm:text-base"
+                        className="text-foreground dark:text-muted-foreground hover:text-primary transition-colors text-sm sm:text-base"
                       >
                         {item.name}
                       </Link>
@@ -59,10 +59,10 @@ export default function Footer() {
                 </ul>
               </div>
               <div>
-                <h5 className="text-xs sm:text-sm font-semibold text-muted-foreground mb-2 sm:mb-3">Socials</h5>
+                <h5 className="text-xs sm:text-sm font-semibold text-foreground dark:text-muted-foreground mb-2 sm:mb-3">Socials</h5>
                 <ul className="space-y-1 sm:space-y-2">
-                  <li><a href="https://www.linkedin.com/company/sparkg-media" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-sm">LinkedIn</a></li>
-                  <li><a href="https://www.instagram.com/sparkgmedia/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-sm">Instagram</a></li>
+                  <li><a href="https://www.linkedin.com/company/sparkg-media" target="_blank" rel="noopener noreferrer" className="text-foreground dark:text-muted-foreground hover:text-primary transition-colors text-sm">LinkedIn</a></li>
+                  <li><a href="https://www.instagram.com/sparkgmedia/" target="_blank" rel="noopener noreferrer" className="text-foreground dark:text-muted-foreground hover:text-primary transition-colors text-sm">Instagram</a></li>
                 </ul>
               </div>
             </div>
@@ -73,11 +73,11 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-2">
               <img src={boltLogo} alt="SparkG Logo" className="w-4 h-4 object-contain" />
-              <p className="text-muted-foreground text-xs sm:text-sm text-center sm:text-left">
+              <p className="text-foreground dark:text-muted-foreground text-xs sm:text-sm text-center sm:text-left">
                 SparkG Media © 2025 | All Rights Reserved
               </p>
             </div>
-            <p className="text-muted-foreground text-xs sm:text-sm">Developed by Delta 4</p>
+            <p className="text-foreground dark:text-muted-foreground text-xs sm:text-sm">Developed by Delta 4</p>
           </div>
         </div>
       </div>

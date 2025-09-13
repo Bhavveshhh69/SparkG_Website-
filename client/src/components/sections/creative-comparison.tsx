@@ -65,8 +65,8 @@ function ComparisonCard({ comparison, service, index }: { comparison: any, servi
                 <comparison.typicalIcon className="w-4 h-4 text-destructive" />
               </div>
               <div>
-                <p className="text-xs sm:text-sm text-destructive-foreground font-medium mb-1">Typical Agencies</p>
-                <p className="text-destructive-foreground font-semibold text-sm sm:text-base">{comparison.typical}</p>
+                <p className="text-xs sm:text-sm text-foreground font-medium mb-1">Typical Agencies</p>
+                <p className="text-foreground font-semibold text-sm sm:text-base">{comparison.typical}</p>
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ function ComparisonRow({ comparison, service, index }: { comparison: any, servic
           <div className="w-8 h-8 bg-destructive/20 rounded-full flex items-center justify-center flex-shrink-0">
             <comparison.typicalIcon className="w-4 h-4 text-destructive" />
           </div>
-          <p className="text-destructive-foreground font-medium">{comparison.typical}</p>
+          <p className="text-foreground font-medium">{comparison.typical}</p>
         </div>
       </div>
 

@@ -67,10 +67,10 @@ export default function Hero() {
                 </span>
               </div>
               <div className="block sm:hidden">
-                <span className="text-foreground block text-lg xs:text-xl">
+                <span className="text-foreground block text-lg xs:text-xl sm:text-2xl">
                   <strong>You Don't Need More Content.</strong>
                 </span>
-                <span className="text-primary relative block mt-3 text-lg xs:text-xl">
+                <span className="text-primary relative block mt-3 text-lg xs:text-xl sm:text-2xl">
                   <span className="absolute inset-0 bg-primary/10 blur-lg rounded-lg"></span>
                   <span className="relative font-extrabold">You Need a Personal Brand That Makes You Unignorable.</span>
                 </span>
@@ -78,8 +78,8 @@ export default function Hero() {
             </h1>
             
             <div className="max-w-full mx-auto text-center">
-              <p ref={subtitleRef as any} className="mobile-text-sm md:text-lg lg:text-xl text-muted-foreground mb-4 sm:mb-5 md:mb-6 px-2 sm:px-4 block whitespace-normal break-words mobile-relaxed">We build powerful thought leadership assets for founders, CEOs, and coaches and consultants</p>
-              <p className="mobile-text-sm md:text-lg lg:text-xl text-muted-foreground mb-5 sm:mb-7 md:mb-9 px-2 sm:px-4 block whitespace-normal break-words mobile-relaxed">so you become the authority in your space and attract every opportunity that matters.</p>
+              <p ref={subtitleRef as any} className="mobile-text-sm md:text-lg lg:text-xl text-foreground dark:text-muted-foreground mb-4 sm:mb-5 md:mb-6 px-2 sm:px-4 block whitespace-normal break-words mobile-relaxed">We build powerful thought leadership assets for founders, CEOs, and coaches and consultants</p>
+              <p className="mobile-text-sm md:text-lg lg:text-xl text-foreground dark:text-muted-foreground mb-5 sm:mb-7 md:mb-9 px-2 sm:px-4 block whitespace-normal break-words mobile-relaxed">so you become the authority in your space and attract every opportunity that matters.</p>
             </div>
             
             <div ref={buttonsRef as any} className="flex flex-col xs:flex-row gap-4 sm:gap-5 md:gap-6 justify-center items-center scroll-scale-in mb-8 sm:mb-10 md:mb-12 px-2 sm:px-4 w-full">
@@ -105,7 +105,7 @@ export default function Hero() {
             {/* Enhanced Trust Bar */}
             <div className="max-w-6xl mx-auto text-center px-2 sm:px-4">
               <div className="bg-card/5 backdrop-blur-md border border-primary/20 rounded-2xl p-5 sm:p-6 md:p-7 mb-5 sm:mb-7 md:mb-9 shadow-xl">
-                <p className="mobile-text-sm sm:text-base md:text-lg font-semibold mb-5 sm:mb-6 md:mb-7 px-2 whitespace-normal break-words mobile-relaxed">Trusted by 7-figure coaches, funded founders & elite consultants worldwide.</p>
+                <p className="mobile-text-sm sm:text-base md:text-lg font-semibold text-foreground dark:text-muted-foreground mb-5 sm:mb-6 md:mb-7 px-2 whitespace-normal break-words mobile-relaxed">Trusted by 7-figure coaches, funded founders & elite consultants worldwide.</p>
                 
                 {/* Featured on section */}
                 <div className="mb-5 sm:mb-6 md:mb-7">

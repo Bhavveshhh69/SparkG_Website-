@@ -30,7 +30,7 @@ export default function Resources() {
     return (
       <div className="min-h-[100dvh] bg-background">
         <Header />
-        <main className="pt-16 sm:pt-20 center-all">
+        <main className="pt-20 sm:pt-24 center-all">
           <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 center-content">
             <div className="text-foreground text-lg sm:text-xl center-text">Loading resources...</div>
           </div>
@@ -43,7 +43,7 @@ export default function Resources() {
   return (
     <div className="min-h-[100dvh] bg-background">
       <Header />
-      <main className="pt-16 sm:pt-20">
+      <main className="pt-20 sm:pt-24">
         {/* Hero Section */}
         <section className="py-12 sm:py-16 bg-gradient-to-r from-background via-primary/90 to-background center-all">
           <div className="container mx-auto px-4 sm:px-6 center-content">

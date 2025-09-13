@@ -52,7 +52,7 @@ export default function About() {
   return (
     <div className="min-h-[100dvh] bg-background">
       <Header />
-      <main className="pt-20">
+      <main className="pt-20 sm:pt-24">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-background via-muted to-card relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">

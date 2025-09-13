@@ -147,8 +147,10 @@ export default function TestimonialsGrid() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="hidden sm:flex" />
-              <CarouselNext className="hidden sm:flex" />
+              <div className="flex justify-center mt-8 sm:mt-12 md:mt-16 gap-4">
+                <CarouselPrevious className="static transform-none h-12 w-12 rounded-full border-2 border-primary bg-background text-primary hover:bg-primary hover:text-background sm:h-14 sm:w-14 flex items-center justify-center shadow-lg" />
+                <CarouselNext className="static transform-none h-12 w-12 rounded-full border-2 border-primary bg-background text-primary hover:bg-primary hover:text-background sm:h-14 sm:w-14 flex items-center justify-center shadow-lg" />
+              </div>
             </Carousel>
           </div>
         ) : (

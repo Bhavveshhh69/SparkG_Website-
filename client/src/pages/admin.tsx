@@ -256,7 +256,7 @@ export default function Admin() {
   if (newslettersLoading || workshopsLoading || contactsLoading) {
     return (
       <div className="min-h-[100dvh] bg-background flex items-center justify-center">
-        <div className="text-white text-xl">Loading admin dashboard...</div>
+        <div className="text-foreground text-xl">Loading admin dashboard...</div>
       </div>
     );
   }
@@ -267,14 +267,14 @@ export default function Admin() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">SparkG Media Admin Dashboard</h1>
+            <h1 className="text-3xl font-bold text-foreground mb-2">SparkG Media Admin Dashboard</h1>
             <p className="text-muted-foreground">Manage your platform and track engagement</p>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
-              <span className="text-white font-bold text-lg">S</span>
+              <span className="text-primary-foreground font-bold text-lg">S</span>
             </div>
-            <span className="text-white font-semibold">Admin Panel</span>
+            <span className="text-foreground font-semibold">Admin Panel</span>
           </div>
         </div>
 
@@ -286,7 +286,7 @@ export default function Admin() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-muted-foreground text-sm font-medium">{stat.title}</p>
-                    <p className="text-3xl font-bold text-white">{stat.value}</p>
+                    <p className="text-3xl font-bold text-foreground">{stat.value}</p>
                   </div>
                   <stat.icon className="w-8 h-8 text-primary" />
                 </div>
@@ -324,7 +324,7 @@ export default function Admin() {
               {/* Recent Newsletter Signups */}
               <Card className="bg-card/30 border-border/20">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center">
+                  <CardTitle className="text-foreground flex items-center">
                     <Mail className="w-5 h-5 mr-2" />
                     Recent Newsletter Signups
                   </CardTitle>
@@ -334,7 +334,7 @@ export default function Admin() {
                     {newsletters.slice(0, 5).map((newsletter) => (
                       <div key={newsletter.id} className="flex items-center justify-between p-3 bg-background/50 rounded-lg">
                         <div>
-                          <p className="text-white font-medium">{newsletter.name}</p>
+                          <p className="text-foreground font-medium">{newsletter.name}</p>
                           <p className="text-muted-foreground text-sm">{newsletter.email}</p>
                         </div>
                         <Badge variant="secondary" className="bg-primary/20 text-primary">
@@ -349,7 +349,7 @@ export default function Admin() {
               {/* Recent Workshop Requests */}
               <Card className="bg-card/30 border-border/20">
                 <CardHeader>
-                  <CardTitle className="text-white flex items-center">
+                  <CardTitle className="text-foreground flex items-center">
                     <Building className="w-5 h-5 mr-2" />
                     Recent Workshop Requests
                   </CardTitle>
@@ -359,7 +359,7 @@ export default function Admin() {
                     {workshopRequests.slice(0, 5).map((request) => (
                       <div key={request.id} className="flex items-center justify-between p-3 bg-background/50 rounded-lg">
                         <div>
-                          <p className="text-white font-medium">{request.companyName}</p>
+                          <p className="text-foreground font-medium">{request.companyName}</p>
                           <p className="text-muted-foreground text-sm">{request.email}</p>
                         </div>
                         <Badge variant="secondary" className="bg-primary/20 text-primary">
@@ -398,7 +398,7 @@ export default function Admin() {
           <TabsContent value="newsletters">
             <Card className="bg-card/30 border-border/20">
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-white">Newsletter Subscribers ({newsletters.length})</CardTitle>
+                <CardTitle className="text-foreground">Newsletter Subscribers ({newsletters.length})</CardTitle>
                 <Button 
                   onClick={exportNewsletters}
                   disabled={newsletters.length === 0}
@@ -415,7 +415,7 @@ export default function Admin() {
                       <div className="flex items-center space-x-4">
                         <Users className="w-8 h-8 text-primary" />
                         <div>
-                          <p className="text-white font-medium">{newsletter.name}</p>
+                          <p className="text-foreground font-medium">{newsletter.name}</p>
                           <p className="text-muted-foreground">{newsletter.email}</p>
                         </div>
                       </div>
@@ -440,7 +440,7 @@ export default function Admin() {
           <TabsContent value="workshops">
             <Card className="bg-card/30 border-border/20">
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-white">Workshop Requests ({workshopRequests.length})</CardTitle>
+                <CardTitle className="text-foreground">Workshop Requests ({workshopRequests.length})</CardTitle>
                 <Button 
                   onClick={exportWorkshops}
                   disabled={workshopRequests.length === 0}
@@ -458,7 +458,7 @@ export default function Admin() {
                         <div className="flex items-center space-x-3">
                           <Building className="w-8 h-8 text-primary" />
                           <div>
-                            <p className="text-white font-medium">{request.companyName}</p>
+                            <p className="text-foreground font-medium">{request.companyName}</p>
                             <p className="text-muted-foreground">{request.email}</p>
                           </div>
                         </div>
@@ -489,7 +489,7 @@ export default function Admin() {
           <TabsContent value="contacts">
             <Card className="bg-card/30 border-border/20">
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle className="text-white">Contact Forms ({contactForms.length})</CardTitle>
+                <CardTitle className="text-foreground">Contact Forms ({contactForms.length})</CardTitle>
                 <Button 
                   onClick={exportContacts}
                   disabled={contactForms.length === 0}
@@ -507,7 +507,7 @@ export default function Admin() {
                         <div className="flex items-center space-x-3">
                           <MessageSquare className="w-8 h-8 text-primary" />
                           <div>
-                            <p className="text-white font-medium">{contact.name}</p>
+                            <p className="text-foreground font-medium">{contact.name}</p>
                             <p className="text-muted-foreground">{contact.email}</p>
                             <p className="text-primary text-sm">{contact.subject}</p>
                           </div>
@@ -517,7 +517,7 @@ export default function Admin() {
                         </Badge>
                       </div>
                       <div className="ml-11">
-                        <p className="text-white bg-card/20 p-3 rounded text-sm">
+                        <p className="text-foreground bg-card/20 p-3 rounded text-sm">
                           {contact.message}
                         </p>
                       </div>
@@ -579,13 +579,13 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
   };
 
   if (isLoading) {
-    return <div className="text-white">Loading testimonials...</div>;
+    return <div className="text-foreground">Loading testimonials...</div>;
   }
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-white">Testimonials Manager</h2>
+        <h2 className="text-2xl font-bold text-foreground">Testimonials Manager</h2>
         <Button onClick={handleAdd} className="bg-primary hover:bg-primary/90">
           <Plus className="w-4 h-4 mr-2" />
           Add Testimonial
@@ -594,7 +594,7 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {testimonials.map((testimonial: Testimonial) => (
-          <Card key={testimonial.id} className="bg-white/5 border-white/10">
+          <Card key={testimonial.id} className="bg-card/30 border-border/20">
             <CardContent className="p-6">
               <div className="flex justify-between items-start mb-4">
                 <Badge variant={testimonial.isActive ? "default" : "secondary"}>
@@ -605,7 +605,7 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
                     size="sm"
                     variant="outline"
                     onClick={() => handleEdit(testimonial)}
-                    className="border-white/20"
+                    className="border-border"
                   >
                     <Edit className="w-4 h-4" />
                   </Button>
@@ -626,7 +626,7 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
                 ))}
               </div>
               
-              <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+              <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
                 "{testimonial.content}"
               </p>
               
@@ -639,7 +639,7 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
                   />
                 )}
                 <div>
-                  <p className="text-white font-semibold text-sm">{testimonial.name}</p>
+                  <p className="text-foreground font-semibold text-sm">{testimonial.name}</p>
                   <p className="text-primary text-xs">{testimonial.title} at {testimonial.company}</p>
                 </div>
               </div>
@@ -654,13 +654,13 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
           <div className="bg-background border border-border rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-xl font-bold text-foreground">
                   {editingTestimonial ? "Edit Testimonial" : "Add Testimonial"}
                 </h3>
                 <Button 
                   variant="ghost" 
                   onClick={() => setIsDialogOpen(false)}
-                  className="text-muted-foreground hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   ✕
                 </Button>
@@ -720,13 +720,13 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
   };
 
   if (isLoading) {
-    return <div className="text-white">Loading resources...</div>;
+    return <div className="text-foreground">Loading resources...</div>;
   }
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-white">Resources Manager</h2>
+        <h2 className="text-2xl font-bold text-foreground">Resources Manager</h2>
         <Button onClick={handleAdd} className="bg-primary hover:bg-primary/90">
           <Plus className="w-4 h-4 mr-2" />
           Add Resource
@@ -735,7 +735,7 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {resources.map((resource: Resource) => (
-          <Card key={resource.id} className="bg-white/5 border-white/10">
+          <Card key={resource.id} className="bg-card/30 border-border/20">
             <CardContent className="p-6">
               <div className="flex justify-between items-start mb-4">
                 <Badge variant={resource.isActive ? "default" : "secondary"}>
@@ -746,7 +746,7 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
                     size="sm"
                     variant="outline"
                     onClick={() => handleEdit(resource)}
-                    className="border-white/20"
+                    className="border-border"
                   >
                     <Edit className="w-4 h-4" />
                   </Button>
@@ -771,12 +771,12 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
                 </div>
               )}
               
-              <h3 className="text-lg font-bold text-white mb-2">{resource.title}</h3>
-              <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+              <h3 className="text-lg font-bold text-foreground mb-2">{resource.title}</h3>
+              <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
                 {resource.description}
               </p>
               
-              <div className="space-y-2 text-xs text-gray-400">
+              <div className="space-y-2 text-xs text-muted-foreground">
                 {resource.fileType && (
                   <p>Type: {resource.fileType}</p>
                 )}
@@ -798,13 +798,13 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
           <div className="bg-background border border-border rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-xl font-bold text-foreground">
                   {editingResource ? "Edit Resource" : "Add Resource"}
                 </h3>
                 <Button 
                   variant="ghost" 
                   onClick={() => setIsDialogOpen(false)}
-                  className="text-muted-foreground hover:text-white"
+                  className="text-muted-foreground hover:text-foreground"
                 >
                   ✕
                 </Button>
@@ -853,67 +853,67 @@ function TestimonialForm({ testimonial, onSave, onCancel }: any) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-white mb-1">Name</label>
+        <label className="block text-sm font-medium text-foreground mb-1">Name</label>
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+          className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
           required
         />
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-white mb-1">Title</label>
+        <label className="block text-sm font-medium text-foreground mb-1">Title</label>
         <input
           type="text"
           name="title"
           value={formData.title}
           onChange={handleChange}
-          className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+          className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
           required
         />
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-white mb-1">Company</label>
+        <label className="block text-sm font-medium text-foreground mb-1">Company</label>
         <input
           type="text"
           name="company"
           value={formData.company}
           onChange={handleChange}
-          className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+          className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
           required
         />
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-white mb-1">Content</label>
+        <label className="block text-sm font-medium text-foreground mb-1">Content</label>
         <textarea
           name="content"
           value={formData.content}
           onChange={handleChange}
           rows={4}
-          className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+          className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
           required
         />
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-white mb-1">Image URL (Optional)</label>
+        <label className="block text-sm font-medium text-foreground mb-1">Image URL (Optional)</label>
         <input
           type="text"
           name="image"
           value={formData.image}
           onChange={handleChange}
-          className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+          className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
           placeholder="https://..."
         />
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-white mb-1">Rating (1-5)</label>
+        <label className="block text-sm font-medium text-foreground mb-1">Rating (1-5)</label>
         <input
           type="number"
           name="rating"
@@ -921,7 +921,7 @@ function TestimonialForm({ testimonial, onSave, onCancel }: any) {
           max="5"
           value={formData.rating}
           onChange={handleChange}
-          className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+          className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
         />
       </div>
       
@@ -933,7 +933,7 @@ function TestimonialForm({ testimonial, onSave, onCancel }: any) {
           onChange={handleChange}
           className="mr-2"
         />
-        <label className="text-sm font-medium text-white">Active</label>
+        <label className="text-sm font-medium text-foreground">Active</label>
       </div>
       
       <div className="flex justify-end space-x-2 pt-4">
@@ -941,7 +941,7 @@ function TestimonialForm({ testimonial, onSave, onCancel }: any) {
           type="button" 
           variant="outline" 
           onClick={onCancel}
-          className="border-white/20"
+          className="border-border"
         >
           Cancel
         </Button>
@@ -983,74 +983,75 @@ function ResourceForm({ resource, onSave, onCancel }: any) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-white mb-1">Title</label>
+        <label className="block text-sm font-medium text-foreground mb-1">Title</label>
         <input
           type="text"
           name="title"
           value={formData.title}
           onChange={handleChange}
-          className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+          className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
           required
         />
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-white mb-1">Description</label>
+        <label className="block text-sm font-medium text-foreground mb-1">Description</label>
         <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
           rows={3}
-          className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+          className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
           required
         />
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-white mb-1">Cover Image URL</label>
+        <label className="block text-sm font-medium text-foreground mb-1">File URL</label>
         <input
           type="text"
           name="fileUrl"
           value={formData.fileUrl}
           onChange={handleChange}
-          className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+          className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
           placeholder="https://..."
         />
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-white mb-1">Download URL</label>
+        <label className="block text-sm font-medium text-foreground mb-1">Download URL</label>
         <input
           type="text"
           name="downloadUrl"
           value={formData.downloadUrl}
           onChange={handleChange}
-          className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+          className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
           placeholder="https://..."
         />
       </div>
       
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-white mb-1">File Type</label>
+          <label className="block text-sm font-medium text-foreground mb-1">File Type</label>
           <input
             type="text"
             name="fileType"
             value={formData.fileType}
             onChange={handleChange}
-            className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
-            placeholder="PDF, DOCX, etc."
+            className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
+            placeholder="PDF, Video, etc."
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-white mb-1">File Size (KB)</label>
+          <label className="block text-sm font-medium text-foreground mb-1">File Size (KB)</label>
           <input
             type="number"
             name="fileSize"
-            value={formData.fileSize}
+            value={formData.fileSize || ""}
             onChange={handleChange}
-            className="w-full bg-white/5 border border-white/20 rounded px-3 py-2 text-white"
+            className="w-full bg-card/30 border border-border rounded px-3 py-2 text-foreground"
+            placeholder="1024"
           />
         </div>
       </div>
@@ -1063,7 +1064,7 @@ function ResourceForm({ resource, onSave, onCancel }: any) {
           onChange={handleChange}
           className="mr-2"
         />
-        <label className="text-sm font-medium text-white">Active</label>
+        <label className="text-sm font-medium text-foreground">Active</label>
       </div>
       
       <div className="flex justify-end space-x-2 pt-4">
@@ -1071,7 +1072,7 @@ function ResourceForm({ resource, onSave, onCancel }: any) {
           type="button" 
           variant="outline" 
           onClick={onCancel}
-          className="border-white/20"
+          className="border-border"
         >
           Cancel
         </Button>

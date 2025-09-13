@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="min-h-[100dvh] bg-background">
       <Header />
-      <main className="pt-16 sm:pt-20">
+      <main className="pt-20 sm:pt-24">
         <Hero />
         <Positioning />
         <HowItWorks />

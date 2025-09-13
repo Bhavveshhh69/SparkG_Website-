@@ -70,7 +70,7 @@ export default function SparkXtra() {
               <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-block">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300 group border-2 border-primary"
+                  className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 sm:px-14 py-5 sm:py-6 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-primary/25 transform hover:scale-105 transition-all duration-300 group border-2 border-primary"
                 >
                   Launch My Podcast-to-Sales System
                   <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />

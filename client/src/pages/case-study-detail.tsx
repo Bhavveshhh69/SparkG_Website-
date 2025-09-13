@@ -34,9 +34,9 @@ export default function CaseStudyDetail() {
     return (
       <div className="min-h-[100dvh] bg-background">
         <Header />
-        <main className="pt-20">
+        <main className="pt-20 sm:pt-24">
           <div className="container mx-auto px-6 py-20 text-center">
-            <div className="text-white text-xl">Case study not found</div>
+            <div className="text-foreground text-xl">Case study not found</div>
             <Link href="/case-studies">
               <Button className="mt-4 bg-primary hover:bg-primary/90 text-primary-foreground">
                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -50,11 +50,42 @@ export default function CaseStudyDetail() {
     );
   }
 
+  // Helper function to render results section
+  const renderResultsSection = () => {
+    if (!caseStudy.results || typeof caseStudy.results !== 'object' || Array.isArray(caseStudy.results) || Object.keys(caseStudy.results).length === 0) {
+      return null;
+    }
+
+    return (
+      <section className="py-16">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-primary/10 rounded-lg border border-primary/20 p-8">
+              <div className="flex items-center space-x-2 mb-6">
+                <TrendingUp className="w-6 h-6 text-primary" />
+                <h2 className="text-2xl font-bold text-primary">Key Results</h2>
+              </div>
+              <div className="text-foreground">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {Object.entries(caseStudy.results as Record<string, unknown>).map(([key, value]) => (
+                    <div key={key} className="text-center p-4 bg-white/5 rounded-lg">
+                      <div className="text-3xl font-bold text-primary mb-2">{String(value || '')}</div>
+                      <div className="text-muted-foreground font-medium">{key}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  };
+
   return (
     <div className="min-h-[100dvh] bg-background">
       <Header />
-      <main className="pt-20">
-        {/* Hero Section */}
+      <main className="pt-20 sm:pt-24">
         <section className="py-12 bg-gradient-to-br from-background via-muted to-card relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
@@ -104,7 +135,6 @@ export default function CaseStudyDetail() {
           </div>
         </section>
 
-        {/* Featured Image */}
         {caseStudy.featuredImage && (
           <section className="py-0">
             <div className="container mx-auto px-6">
@@ -122,37 +152,8 @@ export default function CaseStudyDetail() {
           </section>
         )}
 
-        {/* Results Section */}
-        {caseStudy.results && typeof caseStudy.results === 'object' && (
-          <section className="py-16">
-            <div className="container mx-auto px-6">
-              <div className="max-w-4xl mx-auto">
-                <div className="bg-primary/10 rounded-lg border border-primary/20 p-8">
-                  <div className="flex items-center space-x-2 mb-6">
-                    <TrendingUp className="w-6 h-6 text-primary" />
-                    <h2 className="text-2xl font-bold text-primary">Key Results</h2>
-                  </div>
-                  <div className="text-foreground">
-                    {typeof caseStudy.results === 'object' && caseStudy.results !== null ? (
-                      <div className="grid md:grid-cols-2 gap-6">
-                        {Object.entries(caseStudy.results as Record<string, any>).map(([key, value]) => (
-                          <div key={key} className="text-center p-4 bg-white/5 rounded-lg">
-                            <div className="text-3xl font-bold text-primary mb-2">{String(value || '')}</div>
-                            <div className="text-muted-foreground font-medium">{key}</div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-lg">{String(caseStudy.results || '')}</p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
+        {renderResultsSection()}
 
-        {/* Content Section */}
         <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
@@ -175,7 +176,6 @@ export default function CaseStudyDetail() {
           </div>
         </section>
 
-        {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 via-card to-muted">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">

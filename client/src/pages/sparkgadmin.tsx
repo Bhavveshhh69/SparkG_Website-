@@ -91,15 +91,15 @@ export default function SparkGAdmin() {
     queryKey: ["/api/admin/site-settings"],
   });
 
-  const { data: newsletters = [] } = useQuery<Newsletter[]>({
+  const { data: newsletters = [], isLoading: newslettersLoading } = useQuery<Newsletter[]>({
     queryKey: ["/api/admin/newsletters"],
   });
 
-  const { data: workshopRequests = [] } = useQuery<WorkshopRequest[]>({
+  const { data: workshopRequests = [], isLoading: workshopRequestsLoading } = useQuery<WorkshopRequest[]>({
     queryKey: ["/api/admin/workshop-requests"],
   });
 
-  const { data: contactForms = [] } = useQuery<ContactForm[]>({
+  const { data: contactForms = [], isLoading: contactFormsLoading } = useQuery<ContactForm[]>({
     queryKey: ["/api/admin/contact-forms"],
   });
 
@@ -152,10 +152,10 @@ export default function SparkGAdmin() {
   const heroCtaUrl = siteSettings.find(s => s.key === 'hero_cta_url')?.value || '/about';
   const headerCtaUrl = siteSettings.find(s => s.key === 'header_cta_url')?.value || '/about';
 
-  if (isLoading) {
+  if (newslettersLoading || workshopRequestsLoading || contactFormsLoading) {
     return (
       <div className="min-h-[100dvh] bg-background flex items-center justify-center">
-        <div className="text-white text-xl">Loading admin dashboard...</div>
+        <div className="text-foreground text-xl">Loading admin dashboard...</div>
       </div>
     );
   }
@@ -438,7 +438,7 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
       content: testimonial.content,
       image: testimonial.image || "",
       rating: testimonial.rating || 5,
-      isActive: testimonial.isActive,
+      isActive: testimonial.isActive ?? true,
     });
     setIsDialogOpen(true);
   };
@@ -459,13 +459,13 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
   };
 
   if (isLoading) {
-    return <div className="text-white">Loading testimonials...</div>;
+    return <div className="text-foreground">Loading testimonials...</div>;
   }
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-white">Testimonials Manager</h2>
+        <h2 className="text-2xl font-bold text-foreground">Testimonials Manager</h2>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button onClick={handleAdd} className="bg-primary hover:bg-primary/90">
@@ -651,7 +651,7 @@ function TestimonialManager({ testimonials, isLoading, onCreate, onUpdate, onDel
                   />
                 )}
                 <div>
-                  <p className="text-white font-semibold text-sm">{testimonial.name}</p>
+                  <p className="text-foreground font-semibold text-sm">{testimonial.name}</p>
                   <p className="text-primary text-xs">{testimonial.title} at {testimonial.company}</p>
                 </div>
               </div>
@@ -717,7 +717,7 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
       downloadUrl: resource.downloadUrl || "",
       fileType: resource.fileType || "",
       fileSize: resource.fileSize || 0,
-      isActive: resource.isActive,
+      isActive: resource.isActive ?? true,
     });
     setIsDialogOpen(true);
   };
@@ -739,13 +739,13 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
   };
 
   if (isLoading) {
-    return <div className="text-white">Loading resources...</div>;
+    return <div className="text-foreground">Loading resources...</div>;
   }
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-white">Resources Manager</h2>
+        <h2 className="text-2xl font-bold text-foreground">Resources Manager</h2>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button onClick={handleAdd} className="bg-primary hover:bg-primary/90">
@@ -924,7 +924,7 @@ function ResourceManager({ resources, isLoading, onCreate, onUpdate, onDelete }:
                 </div>
               )}
               
-              <h3 className="text-lg font-bold text-white mb-2">{resource.title}</h3>
+              <h3 className="text-lg font-bold text-foreground mb-2">{resource.title}</h3>
               <p className="text-gray-300 text-sm mb-4 line-clamp-3">
                 {resource.description}
               </p>
@@ -1039,7 +1039,7 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
       industry: caseStudy.industry,
       summary: caseStudy.summary,
       featuredImage: caseStudy.featuredImage || "",
-      isPublished: caseStudy.isPublished,
+      isPublished: caseStudy.isPublished ?? false,
     });
     setContent(typeof caseStudy.content === 'object' && caseStudy.content !== null ? 
       (caseStudy.content as any).html || "" : String(caseStudy.content || ""));
@@ -1075,13 +1075,13 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
   };
 
   if (isLoading) {
-    return <div className="text-white">Loading case studies...</div>;
+    return <div className="text-foreground">Loading case studies...</div>;
   }
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-white">Case Study Manager</h2>
+        <h2 className="text-2xl font-bold text-foreground">Case Study Manager</h2>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button onClick={handleAdd} className="bg-primary hover:bg-primary/90">
@@ -1195,11 +1195,11 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
                 />
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">Content (HTML Editor)</label>
+                  <label className="text-sm font-medium text-foreground">Content (HTML Editor)</label>
                   <Textarea
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
-                    className="bg-white/5 border-white/20 text-white min-h-[300px] font-mono text-sm"
+                    className="bg-white/5 border-white/20 text-foreground min-h-[300px] font-mono text-sm"
                     placeholder="Write your case study content here... You can use HTML tags for formatting."
                   />
                   <p className="text-xs text-gray-400">
@@ -1208,11 +1208,11 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">Results (JSON Format)</label>
+                  <label className="text-sm font-medium text-foreground">Results (JSON Format)</label>
                   <Textarea
                     value={results}
                     onChange={(e) => setResults(e.target.value)}
-                    className="bg-white/5 border-white/20 text-white min-h-[100px] font-mono text-sm"
+                    className="bg-white/5 border-white/20 text-foreground min-h-[100px] font-mono text-sm"
                     placeholder='{"metric1": "300% increase", "metric2": "$2M generated"}'
                   />
                   <p className="text-xs text-gray-400">
@@ -1301,7 +1301,7 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
                 </div>
               )}
               
-              <h3 className="text-lg font-bold text-white mb-2">{caseStudy.title}</h3>
+              <h3 className="text-lg font-bold text-foreground mb-2">{caseStudy.title}</h3>
               <p className="text-primary text-sm mb-2">Client: {caseStudy.clientName}</p>
               <p className="text-gray-300 text-sm mb-4 line-clamp-3">
                 {caseStudy.summary}
@@ -1322,12 +1322,12 @@ function CaseStudyManager({ caseStudies, isLoading }: any) {
 function LeadsManager({ newsletters, workshopRequests, contactForms }: any) {
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-white">Leads Manager</h2>
+      <h2 className="text-2xl font-bold text-foreground">Leads Manager</h2>
       
       <div className="grid lg:grid-cols-3 gap-6">
-        <Card className="bg-white/5 border-white/10">
+        <Card className="bg-card/30 border-border/20">
           <CardHeader>
-            <CardTitle className="text-white flex items-center">
+            <CardTitle className="text-foreground flex items-center">
               <Mail className="w-5 h-5 mr-2 text-blue-500" />
               Newsletter Subscribers ({newsletters.length})
             </CardTitle>
@@ -1335,18 +1335,18 @@ function LeadsManager({ newsletters, workshopRequests, contactForms }: any) {
           <CardContent>
             <div className="space-y-2 max-h-60 overflow-y-auto">
               {newsletters.map((newsletter: Newsletter) => (
-                <div key={newsletter.id} className="p-2 bg-white/5 rounded text-sm">
-                  <p className="text-white font-medium">{newsletter.name}</p>
-                  <p className="text-gray-400">{newsletter.email}</p>
+                <div key={newsletter.id} className="p-2 bg-background/50 rounded text-sm">
+                  <p className="text-foreground font-medium">{newsletter.name}</p>
+                  <p className="text-muted-foreground">{newsletter.email}</p>
                 </div>
               ))}
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/5 border-white/10">
+        <Card className="bg-card/30 border-border/20">
           <CardHeader>
-            <CardTitle className="text-white flex items-center">
+            <CardTitle className="text-foreground flex items-center">
               <Building className="w-5 h-5 mr-2 text-green-500" />
               Workshop Requests ({workshopRequests.length})
             </CardTitle>
@@ -1354,18 +1354,18 @@ function LeadsManager({ newsletters, workshopRequests, contactForms }: any) {
           <CardContent>
             <div className="space-y-2 max-h-60 overflow-y-auto">
               {workshopRequests.map((request: WorkshopRequest) => (
-                <div key={request.id} className="p-2 bg-white/5 rounded text-sm">
-                  <p className="text-white font-medium">{request.companyName}</p>
-                  <p className="text-gray-400">{request.email}</p>
+                <div key={request.id} className="p-2 bg-background/50 rounded text-sm">
+                  <p className="text-foreground font-medium">{request.companyName}</p>
+                  <p className="text-muted-foreground">{request.email}</p>
                 </div>
               ))}
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/5 border-white/10">
+        <Card className="bg-card/30 border-border/20">
           <CardHeader>
-            <CardTitle className="text-white flex items-center">
+            <CardTitle className="text-foreground flex items-center">
               <MessageSquare className="w-5 h-5 mr-2 text-purple-500" />
               Contact Forms ({contactForms.length})
             </CardTitle>
@@ -1373,10 +1373,10 @@ function LeadsManager({ newsletters, workshopRequests, contactForms }: any) {
           <CardContent>
             <div className="space-y-2 max-h-60 overflow-y-auto">
               {contactForms.map((contact: ContactForm) => (
-                <div key={contact.id} className="p-2 bg-white/5 rounded text-sm">
-                  <p className="text-white font-medium">{contact.name}</p>
-                  <p className="text-gray-400">{contact.email}</p>
-                  <p className="text-gray-500 text-xs">{contact.subject}</p>
+                <div key={contact.id} className="p-2 bg-background/50 rounded text-sm">
+                  <p className="text-foreground font-medium">{contact.name}</p>
+                  <p className="text-muted-foreground">{contact.email}</p>
+                  <p className="text-muted-foreground text-xs">{contact.subject}</p>
                 </div>
               ))}
             </div>
@@ -1403,23 +1403,27 @@ function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
     onUpdate({ key: 'header_cta_url', value: headerCtaUrl });
   };
 
+  if (isLoading) {
+    return <div className="text-foreground">Loading settings...</div>;
+  }
+
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-white">Site Settings</h2>
+      <h2 className="text-2xl font-bold text-foreground">Site Settings</h2>
       
       <div className="grid lg:grid-cols-2 gap-6">
-        <Card className="bg-white/5 border-white/10">
+        <Card className="bg-card/30 border-border/20">
           <CardHeader>
-            <CardTitle className="text-white">CTA Button URLs</CardTitle>
+            <CardTitle className="text-foreground">CTA Button URLs</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <label className="text-sm text-gray-300">Hero Section CTA URL</label>
+              <label className="text-sm text-muted-foreground">Hero Section CTA URL</label>
               <div className="flex space-x-2">
                 <Input
                   value={heroCtaUrl || heroSetting?.value || "/about"}
                   onChange={(e) => setHeroCtaUrl(e.target.value)}
-                  className="bg-white/5 border-white/20 text-white"
+                  className="bg-card/30 border-border text-foreground"
                   placeholder="/about"
                 />
                 <Button 
@@ -1432,12 +1436,12 @@ function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm text-gray-300">Header Menu CTA URL</label>
+              <label className="text-sm text-muted-foreground">Header Menu CTA URL</label>
               <div className="flex space-x-2">
                 <Input
                   value={headerCtaUrl || headerSetting?.value || "/about"}
                   onChange={(e) => setHeaderCtaUrl(e.target.value)}
-                  className="bg-white/5 border-white/20 text-white"
+                  className="bg-card/30 border-border text-foreground"
                   placeholder="/about"
                 />
                 <Button 
@@ -1451,16 +1455,16 @@ function SiteSettingsManager({ settings, isLoading, onUpdate }: any) {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/5 border-white/10">
+        <Card className="bg-card/30 border-border/20">
           <CardHeader>
-            <CardTitle className="text-white">Current Settings</CardTitle>
+            <CardTitle className="text-foreground">Current Settings</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               {settings.map((setting: SiteSetting) => (
-                <div key={setting.id} className="flex justify-between items-center p-3 bg-white/5 rounded">
-                  <span className="text-gray-300 text-sm">{setting.key}</span>
-                  <code className="text-primary text-sm bg-white/10 px-2 py-1 rounded">
+                <div key={setting.id} className="flex justify-between items-center p-3 bg-background/50 rounded">
+                  <span className="text-muted-foreground text-sm">{setting.key}</span>
+                  <code className="text-primary text-sm bg-card/20 px-2 py-1 rounded">
                     {setting.value}
                   </code>
                 </div>

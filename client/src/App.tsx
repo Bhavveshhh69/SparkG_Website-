@@ -39,13 +39,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider
         attribute="class"
-        defaultTheme="light"
+        defaultTheme="dark"
         enableSystem
         disableTransitionOnChange
-        value={{
-          light: "light",
-          dark: "dark",
-        }}
       >
         <TooltipProvider>
           <Toaster />

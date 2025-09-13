@@ -38,7 +38,7 @@ export default function Header() {
               className="p-2 hover:bg-accent"
               aria-label="Open menu"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-6 w-6 text-foreground" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="bg-background border-border w-[280px] sm:w-[320px] mobile-landscape-sheet mobile-portrait-sheet mobile-landscape-menu">
@@ -54,7 +54,7 @@ export default function Header() {
                   href={item.href}
                   onClick={() => setIsOpen(false)}
                   className={`text-lg transition-colors hover:text-primary py-2 ${
-                    location === item.href ? "text-foreground" : "text-muted-foreground"
+                    location === item.href ? "text-foreground" : "text-foreground dark:text-muted-foreground"
                   }`}
                 >
                   {item.name}
@@ -62,7 +62,7 @@ export default function Header() {
               ))}
               <div className="flex flex-col space-y-4 pt-6 border-t border-border">
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Theme</span>
+                  <span className="text-foreground dark:text-muted-foreground">Theme</span>
                   <ModeToggle />
                 </div>
                 <a href="https://calendly.com/meetsubrat/30min" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
@@ -102,7 +102,7 @@ export default function Header() {
                   key={item.name}
                   href={item.href}
                   className={`transition-colors hover:text-primary text-sm lg:text-base ${
-                    location === item.href ? "text-foreground" : "text-muted-foreground"
+                    location === item.href ? "text-foreground" : "text-foreground dark:text-muted-foreground"
                   }`}
                 >
                   {item.name}
